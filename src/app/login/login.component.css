@@ -1,3 +1,10 @@
 .container {
     min-height: 600px; /* İhtiyaca göre ayarlayabilirsiniz */
 }
+@media (max-width: 575px){
+    .genderResponsive{
+        display: flex;
+        flex-direction: column;
+        
+    }
+}
