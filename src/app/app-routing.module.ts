@@ -5,6 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { CausesComponent } from './causes/causes.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'causes', component: CausesComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'login', component: LoginComponent },
 
 ];
 
