@@ -27,6 +27,7 @@ import { ContactFormComponent } from './contact/contact-form/contact-form.compon
 import { EventsCardComponent } from './events-card/events-card.component';
 import { GradientsDashboardComponent } from './home/gradients-dashboard/gradients-dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { AboutUsComponent } from './about/about-us/about-us.component';
 
 
 
@@ -57,6 +58,7 @@ import { LoginComponent } from './login/login.component';
     EventsCardComponent,
     GradientsDashboardComponent,
     LoginComponent,
+    AboutUsComponent,
 
   ],
   imports: [
