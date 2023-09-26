@@ -1,0 +1,13 @@
+@media screen and (max-width: 1280px) {
+   .contentAdmin{
+    margin-left: 78px;
+   }}
+
+   @media screen and (min-width: 1300px) {
+    .contentAdmin{
+     margin-left: 250px;
+    }}
+
+    table {
+      width: 100%;
+    }

@@ -8,21 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-  isSidebarActive = false;
+  isSidebarActive = true;
   activeLinkIndex = -1; // Başlangıçta hiçbir bağlantı seçili değil
 
-  toggleSidebar() {
-    this.isSidebarActive = !this.isSidebarActive;
-    const sidebar = document.querySelector('.sidebar') as HTMLElement;
-    
+ 
   
+ sidebarActive(){
+  const btn=document.querySelector('#btn')as HTMLElement;
     
-    if (this.isSidebarActive) {
-      sidebar.style.left = '0'; // Sidebar'ı sola doğru getir
-    } else {
-      sidebar.style.left = '-200px'; // Sidebar'ı sola doğru kaydır
-    }
+  const searchBtn=document.querySelector('.bx-serach')as HTMLElement;
+    const sidebar=document.querySelector('.sidebar')as HTMLElement;
+    sidebar.classList.toggle('active'); 
 
-  }
+}
+
+ 
+
 }
 

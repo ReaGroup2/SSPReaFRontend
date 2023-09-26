@@ -31,6 +31,9 @@ import { AboutUsComponent } from './about/about-us/about-us.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { materialize } from 'rxjs';
+import { ɵɵtsModuleIndicatorApiExtractorWorkaround } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -70,7 +73,11 @@ import { AllUsersComponent } from './admin/all-users/all-users.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule
+    
+  
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

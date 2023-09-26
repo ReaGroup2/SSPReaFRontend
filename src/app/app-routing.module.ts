@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AdminComponent } from './admin/admin.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
@@ -17,8 +18,9 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'event-detail', component: EventDetailComponent}, 
   { path: 'admin', component: AdminComponent},
-  { path: 'event-detail', component: EventDetailComponent},//
+  { path: 'admin-allusers', component: AllUsersComponent},
 
 ];
 
