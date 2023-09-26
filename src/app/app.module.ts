@@ -62,6 +62,10 @@ import { AllUsersComponent } from './admin/all-users/all-users.component';
     GradientsDashboardComponent,
     LoginComponent,
     AboutUsComponent,
+    EventDetailComponent,
+    AdminComponent,
+    AllUsersComponent
+    
 
   ],
   imports: [

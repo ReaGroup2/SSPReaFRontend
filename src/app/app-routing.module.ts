@@ -17,6 +17,8 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminComponent},
+  { path: 'event-detail', component: EventDetailComponent},
 
 ];
 
