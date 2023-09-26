@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component'; 
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { CausesComponent } from './causes/causes.component';
@@ -24,10 +24,11 @@ import { FeaturedCauseComponent } from './causes/featured-cause/featured-cause.c
 import { EventsComponent } from './causes/events/events.component';
 import { LatestBlogsComponent } from './blog/latest-blogs/latest-blogs.component';
 import { ContactFormComponent } from './contact/contact-form/contact-form.component';
-import { EventsCardComponent } from './events-card/events-card.component';
+import { EventsCardComponent } from './components/events-card/events-card.component';
 import { GradientsDashboardComponent } from './home/gradients-dashboard/gradients-dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AboutUsComponent } from './about/about-us/about-us.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 
@@ -61,8 +62,6 @@ import { AllUsersComponent } from './admin/all-users/all-users.component';
     GradientsDashboardComponent,
     LoginComponent,
     AboutUsComponent,
-    AdminComponent,
-    AllUsersComponent,
 
   ],
   imports: [
