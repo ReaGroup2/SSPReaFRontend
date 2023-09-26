@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-events-card',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./events-card.component.css']
 })
 export class EventsCardComponent {
-
+@Input() cardColor: String ="light blue";
+cardColors=["light blue","light green","light yellow","light red"];
 }
