@@ -28,6 +28,8 @@ import { EventsCardComponent } from './events-card/events-card.component';
 import { GradientsDashboardComponent } from './home/gradients-dashboard/gradients-dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AboutUsComponent } from './about/about-us/about-us.component';
+import { AdminComponent } from './admin/admin.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 
 
@@ -59,6 +61,8 @@ import { AboutUsComponent } from './about/about-us/about-us.component';
     GradientsDashboardComponent,
     LoginComponent,
     AboutUsComponent,
+    AdminComponent,
+    AllUsersComponent,
 
   ],
   imports: [
