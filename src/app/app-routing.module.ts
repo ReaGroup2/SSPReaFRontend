@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent},
-  { path: 'event-detail', component: EventDetailComponent},
+  { path: 'event-detail', component: EventDetailComponent},//
 
 ];
 
