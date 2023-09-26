@@ -1,0 +1,30 @@
+
+    /* Özel CSS stillemeleri */
+    .custom-bg {
+        background: linear-gradient(45deg, #e1e5ea, #bbd2e2);
+        border-radius: 10px; /* Kenar yuvarlama */
+        padding: 30px; /* İçerik aralığı */
+
+    }
+
+    /* Resimlerin yuvarlak köşeleri */
+    .img-rounded {
+        border-radius: 20%;
+    }
+     /* Resmin büyümesi */
+     .img-container img {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Resmin büyümesi:hover */
+    .img-container:hover img {
+        transform: scale(1.2);
+    }
+    .overflow-hidden {
+        overflow: hidden;
+    }
+    .content{
+       margin-top: 50px;
+    }
+  
+
