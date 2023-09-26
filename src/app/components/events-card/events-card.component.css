@@ -31,6 +31,8 @@ a:hover {
 
 /* Cards */
 .postcard {
+  position: relative;
+
   flex-wrap: wrap;
   display: flex;
   box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
@@ -376,4 +378,29 @@ a:hover {
       transparent 50%
     );
   }
+}
+.kalp {
+	animation: kalp 1s steps(28);
+	background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+	background-position: 0 0;
+  position: absolute;
+            top: 0px;
+            right: 0px;
+	cursor: pointer;
+	height: 100px;
+	width: 100px;
+}
+
+.kalp:hover {
+	background-position: -2800px 0;
+	transition: background 1s steps(28);
+}
+
+@keyframes kalp {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: -2800px 0;
+	}
 }

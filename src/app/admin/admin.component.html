@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<div class="sidebar" [class.active]="isSidebarActive">
+    <a class="toggle-button" (click)="toggleSidebar()">&#9776;</a>
+    <div style="margin-top: 15vh;">
+    <a class="active menu" href="#home">Kullanıcılar</a>
+    <a class="menu" href="#news">News</a>
+    <a class="menu" href="#contact">Contact</a>
+    <a class="menu" href="#about">About</a>
+    </div>
+</div>
