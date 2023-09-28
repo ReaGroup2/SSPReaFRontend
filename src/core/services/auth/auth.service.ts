@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from '../api/api.service';
 import { LoginRequest } from '../../models/request/login-request.model';
+import { RegisterRequest } from 'src/core/models/request/register-request.model';
 import { ResponseStatus } from '../../models/response/base-response.model';
 import { TokenResponse } from '../../models/response/token-response.model';
 import { User } from '../../models/user.model';
@@ -76,6 +77,24 @@ export class AuthService {
       }
     }
 
+    return status;
+  }
+
+
+  public async register(request: RegisterRequest): Promise<ResponseStatus> {
+
+
+    const registerResponse = await this.apiService.register(request).toPromise();
+  
+    let status = registerResponse!.status;
+  
+    if (status == ResponseStatus.Ok) {
+      this.router.navigate(['/login']);
+      this.setToken(registerResponse!.data);
+      sessionStorage.setItem('current_user', JSON.stringify({}));
+      this.currentUserSubject.next({} as User);
+    }
+  
     return status;
   }
 

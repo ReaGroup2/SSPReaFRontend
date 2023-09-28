@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { LoginRequest } from 'src/core/models/request/login-request.model';
 import { AuthService } from 'src/core/services/auth/auth.service';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
-import { ApiService } from 'src/core/services/api/api.service';
 import { RegisterRequest } from 'src/core/models/request/register-request.model';
 
 
@@ -16,11 +15,13 @@ import { RegisterRequest } from 'src/core/models/request/register-request.model'
 export class LoginComponent {
   public loginRequest: LoginRequest = <LoginRequest>{};
   public registerRequest: RegisterRequest = <RegisterRequest>{};
-
+  public rePassword: string = '';
+  public passwordResponse:string='';
+  
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
-    private readonly apiService: ApiService,
+  
   ) { }
 
   ngOnInit(): void {
@@ -37,28 +38,39 @@ export class LoginComponent {
     }
   }
 
+ 
   async register() {
+    if(this.rePassword==this.registerRequest.Password){
+
+   
     let selectedValue: string = '';
 
     //Cinsiyet seçenekleri için HTML'den alınan değeri registerRequest nesnesine atayın
-    // const maleRadioButton = document.querySelector('input[name="IsMale"]:checked') as HTMLInputElement;
+    const maleRadioButton = document.querySelector('input[name="IsMale"]:checked') as HTMLInputElement;
+        selectedValue = maleRadioButton.value;
+        
+    if (selectedValue == 'true')
+      this.registerRequest.IsMale = true;
+    else if (selectedValue == 'false')
+      this.registerRequest.IsMale = false;
+  
+      this.registerRequest.ImagePath='deneme';  
+    
 
+   
+  
+   
+    let status = await this.authService.register(this.registerRequest);
+    if (status==ResponseStatus.Ok) {
+      await this.router.navigate(['']);
+    } else if (status == ResponseStatus.Invalid)
+      this.registerRequest.Password = '';
+      this.passwordResponse='';
 
-
-    //     selectedValue = maleRadioButton.value;
-
-
-    // if (selectedValue == 'true')
-    //   this.registerRequest.IsMale = true;
-    // else if (selectedValue == 'false')
-    //   this.registerRequest.IsMale = false;
-
-    this.registerRequest.IsMale = true;
-    this.registerRequest.Phone = '01234'
-    this.registerRequest.ImagePath = 'string.jpg'
-    let status = this.apiService.register(this.registerRequest);
-
-
+    }
+    else{
+      this.passwordResponse="Şifreler uyuşmuyor veya resim eklenemedi."
+    }
 
   }
 }
