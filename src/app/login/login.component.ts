@@ -22,7 +22,9 @@ export class LoginComponent {
     private readonly authService: AuthService,
     private readonly router: Router,
   
-  ) { }
+  ) { 
+    console.log("login component çalıştı");
+  }
 
   ngOnInit(): void {
   }
@@ -62,7 +64,7 @@ export class LoginComponent {
    
     let status = await this.authService.register(this.registerRequest);
     if (status==ResponseStatus.Ok) {
-      await this.router.navigate(['']);
+      await this.router.navigate(['/login']);
     } else if (status == ResponseStatus.Invalid)
       this.registerRequest.Password = '';
       this.passwordResponse='';

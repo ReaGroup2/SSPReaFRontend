@@ -94,7 +94,7 @@ export class AuthService {
       sessionStorage.setItem('current_user', JSON.stringify({}));
       this.currentUserSubject.next({} as User);
     }
-  
+    this.router.navigate(['/login']);
     return status;
   }
 
