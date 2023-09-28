@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component'; 
+import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { CausesComponent } from './causes/causes.component';
@@ -31,7 +31,7 @@ import { LoginComponent } from './login/login.component';
 import { AboutUsComponent } from './about/about-us/about-us.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AdminComponent } from './admin/admin.component';
-import { AllUsersComponent} from './admin/all-users/all-users.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 
 
@@ -68,22 +68,21 @@ import { AllUsersComponent} from './admin/all-users/all-users.component';
     EventDetailComponent,
     AdminComponent,
     AllUsersComponent,
- 
 
-    
-    
+
+
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-  
     FormsModule,
     HttpClientModule,
 
-   
-    
-  
+
+
+
 
   ],
   providers: [],
