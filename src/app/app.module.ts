@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -34,6 +35,7 @@ import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { materialize } from 'rxjs';
 import { ɵɵtsModuleIndicatorApiExtractorWorkaround } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
+import { NgFor } from '@angular/common';
 
 
 
@@ -74,7 +76,10 @@ import { MatTableModule } from '@angular/material/table';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
+    FormsModule,
+    NgFor
     
   
     
