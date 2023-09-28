@@ -8,8 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-  isSidebarActive = true;
-  activeLinkIndex = -1; // Başlangıçta hiçbir bağlantı seçili değil
+
 
  
   
@@ -19,6 +18,7 @@ export class AdminComponent {
   const searchBtn=document.querySelector('.bx-serach')as HTMLElement;
     const sidebar=document.querySelector('.sidebar')as HTMLElement;
     sidebar.classList.toggle('active'); 
+    
 
 }
 
