@@ -79,7 +79,8 @@ import { MatTableModule } from '@angular/material/table';
     BrowserModule,
     AppRoutingModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
     
   ],
   providers: [],
