@@ -1,25 +1,10 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table'; // MatTableModule'ü içe aktarın
+import { User } from './user';
 
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+
+
 @Component({
   selector: 'app-all-users',
   templateUrl: './all-users.component.html',
@@ -27,8 +12,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 })
 export class AllUsersComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  Invoiceheader: any;
+
+
+
+
+  
+  ngOnInit(): void {
+    
+    this.LoadInvoice();
+  }
+
+  LoadInvoice() {
+    this.Invoiceheader = [
+      new User(1, 'John Doe', 'johndoe@example.com', '123-456-7890', 'User'),
+      new User(2, 'Jane Smith', 'janesmith@example.com', '987-654-3210', 'Admin'),
+      new User(3, 'Alice Johnson', 'alice@example.com', '555-555-5555', 'User'),
+      new User(4, 'Bob Brown', 'bob@example.com', '111-222-3333', 'Admin'),
+      new User(5, 'Eve Wilson', 'eve@example.com', '777-888-9999', 'User')
+   ];
  
-}
+}}
 
