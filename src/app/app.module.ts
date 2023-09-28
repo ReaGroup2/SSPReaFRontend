@@ -77,12 +77,11 @@ import { AllUsersComponent} from './admin/all-users/all-users.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatTableModule,
+  
     FormsModule,
     HttpClientModule,
 
-    FormsModule,
-    HttpClientModule,
+   
     
   
 
