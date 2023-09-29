@@ -10,6 +10,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { RefleshPage } from './refleshPage';
+import { CategoriesComponent } from './admin/categories/categories.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
@@ -19,19 +20,15 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'event-detail', component: EventDetailComponent}, 
-  { path: 'admin', component: AdminComponent},
-  { path: 'admin-allusers', component: AllUsersComponent},
-
+  { path: 'event-detail', component: EventDetailComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin-allusers', component: AllUsersComponent },
+  { path: 'admin-categories', component: CategoriesComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: RefleshPage}
-  ]
+  providers: [{ provide: RouteReuseStrategy, useClass: RefleshPage }],
 })
-export class AppRoutingModule { 
-  
-}
+export class AppRoutingModule {}

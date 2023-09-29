@@ -32,6 +32,7 @@ import { AboutUsComponent } from './about/about-us/about-us.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { CategoriesComponent } from './admin/categories/categories.component';
 
 
 
@@ -68,6 +69,7 @@ import { AllUsersComponent } from './admin/all-users/all-users.component';
     EventDetailComponent,
     AdminComponent,
     AllUsersComponent,
+    CategoriesComponent,
 
 
 
