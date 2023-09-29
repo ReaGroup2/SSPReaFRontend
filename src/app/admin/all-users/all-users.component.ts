@@ -2,10 +2,12 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatTableModule } from '@angular/material/table'; // MatTableModule'ü içe aktarın
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/core/services/api/api.service';
+import { User } from 'src/core/models/user.model';
 
-import { MasterserviceService } from 'src/app/masterservice.service';
-import { DataTablesModule } from 'angular-datatables';
-import { User } from './user';
+
+
+
 
 
 @Component({
@@ -16,25 +18,31 @@ import { User } from './user';
 })
 
 export class AllUsersComponent {
-  Invoiceheader: any;
 
-
-
-
-  
-  ngOnInit(): void {
-    
-    this.LoadInvoice();
+  constructor(private router: Router, private service: ApiService,) {
+   
   }
 
-  LoadInvoice() {
-    this.Invoiceheader = [
-      new User(1, 'John Doe', 'johndoe@example.com', '123-456-7890', 'User'),
-      new User(2, 'Jane Smith', 'janesmith@example.com', '987-654-3210', 'Admin'),
-      new User(3, 'Alice Johnson', 'alice@example.com', '555-555-5555', 'User'),
-      new User(4, 'Bob Brown', 'bob@example.com', '111-222-3333', 'Admin'),
-      new User(5, 'Eve Wilson', 'eve@example.com', '777-888-9999', 'User')
-   ];
- 
-}}
+
+  users?: User[];
+  searchItem?: string;
+  ngOnInit(): void {
+
+    this.LoadUsers();
+  }
+
+  LoadUsers() {
+    this.service.getAllEntities(User).subscribe((res) => {
+      this.users = this.searchItem ==null ? res.data : res.data.filter((x: User) => x.fullName?.toLowerCase().includes(this.searchItem!.toLowerCase()));
+      console.log(this.users);
+    });
+
+  }
+  RefleshUsers() {
+
+    this.LoadUsers();
+    
+  }
+
+}
 

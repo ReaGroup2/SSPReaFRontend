@@ -35,14 +35,14 @@ export class LoginComponent {
     if (status == ResponseStatus.Ok) {
       await this.router.navigate(['']);
     } else if (status == ResponseStatus.Invalid) {
-      this.loginRequest.Password = '';
+      this.loginRequest.password = '';
 
     }
   }
 
  
   async register() {
-    if(this.rePassword==this.registerRequest.Password){
+    if(this.rePassword==this.registerRequest.password){
 
    
     let selectedValue: string = '';
@@ -52,11 +52,11 @@ export class LoginComponent {
         selectedValue = maleRadioButton.value;
         
     if (selectedValue == 'true')
-      this.registerRequest.IsMale = true;
+      this.registerRequest.isMale = true;
     else if (selectedValue == 'false')
-      this.registerRequest.IsMale = false;
+      this.registerRequest.isMale = false;
   
-      this.registerRequest.ImagePath='deneme';  
+      this.registerRequest.imagePath='deneme';  
     
 
    
@@ -66,7 +66,7 @@ export class LoginComponent {
     if (status==ResponseStatus.Ok) {
       await this.router.navigate(['/login']);
     } else if (status == ResponseStatus.Invalid)
-      this.registerRequest.Password = '';
+      this.registerRequest.password = '';
       this.passwordResponse='';
 
     }
