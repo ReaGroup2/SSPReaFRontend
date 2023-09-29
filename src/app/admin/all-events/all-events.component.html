@@ -1,0 +1,48 @@
+<app-admin></app-admin>
+
+<div class="contentAdmin container">
+  <table class="table table-striped table-centered mb-0">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Kategori</th>
+        <th>Resim</th>
+        <th>Başlık</th>
+        <th>Tanım</th>
+        <th>Başlangıç Tarihi</th>
+        <th>Bitiş Tarihi</th>
+        <th>Durum</th>
+        <th>Organizator</th>
+        <th>Limit</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of events">
+        <td>{{ item.id }}</td>
+        <td>{{ item.categoryId}}</td>
+        <td>{{item.imagePath}}</td>
+        <td>{{item.title}}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.startDate }}</td>
+        <td>{{ item.finishDate }}</td>
+        <td>{{ item.isActive }}</td>
+        <td>{{ item.creatorId }}</td>
+        <td>{{ item.limit }}</td>
+        <td>
+          <a href="javascript: void(0);" class="btn btn-sm bg-danger text-white"
+            >delete</a
+          >
+        </td>
+        <td>
+          <a
+            href="javascript: void(0);"
+            class="btn btn-sm bg-warning text-white ml-2"
+            >edit</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

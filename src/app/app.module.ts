@@ -33,6 +33,9 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
+import { AllEventsComponent } from './admin/all-events/all-events.component';
+
+
 
 
 
@@ -70,6 +73,8 @@ import { CategoriesComponent } from './admin/categories/categories.component';
     AdminComponent,
     AllUsersComponent,
     CategoriesComponent,
+    AllEventsComponent,
+    
 
 
 
