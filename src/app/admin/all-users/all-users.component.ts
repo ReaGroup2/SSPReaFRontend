@@ -23,8 +23,10 @@ export class AllUsersComponent {
    
   }
 
-
+searchFilter?:number=0;
+roleFilter?:number=3;
   users?: User[];
+tempUsers?: User[];
   searchItem?: string;
   ngOnInit(): void {
 
@@ -33,15 +35,57 @@ export class AllUsersComponent {
 
   LoadUsers() {
     this.service.getAllEntities(User).subscribe((res) => {
-      this.users = this.searchItem ==null ? res.data : res.data.filter((x: User) => x.fullName?.toLowerCase().includes(this.searchItem!.toLowerCase()));
+      switch(this.searchFilter){
+        case 0:
+          this.tempUsers = res.data;
+          break;
+        case 1:
+          this.tempUsers = this.searchItem ==undefined ? res.data : res.data.filter((x: User) =>
+        x.id?.toString().toLowerCase().includes(this.searchItem?.toLowerCase() as string)
+
+      );
+          break;
+        case 2:
+          this.tempUsers = this.searchItem ==undefined ? res.data : res.data.filter((x: User) =>
+        x.fullName?.toString().toLowerCase().includes(this.searchItem?.toLowerCase() as string)
+
+      );
+          break;
+        case 3:
+          this.tempUsers = this.searchItem ==undefined ? res.data : res.data.filter((x: User) =>
+        x.email?.toString().toLowerCase().includes(this.searchItem?.toLowerCase() as string)
+
+      );
+          break;
+        
+      }
+      this.users = this.roleFilter==3 ? this.tempUsers : this.tempUsers?.filter((x: User) =>
+        x.userType==this.roleFilter
+      );
       console.log(this.users);
     });
+
 
   }
   RefleshUsers() {
 
     this.LoadUsers();
     
+  }
+  roleFilterSelectedItem(){
+    document.getElementById("roleFilter")?.addEventListener("change", (event) => {
+      this.roleFilter = Number((event.target as HTMLInputElement).value);
+      this.LoadUsers(); 
+      console.log(this.roleFilter);
+    });
+  }
+  searchFilterSelectedItem(){
+    document.getElementById("searchFilter")?.addEventListener("change", (event) => {
+      this.searchFilter = Number((event.target as HTMLInputElement).value);
+      this.searchItem=undefined;
+      this.LoadUsers(); 
+      console.log(this.searchFilter);
+    });
   }
 
 }
