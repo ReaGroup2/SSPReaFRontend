@@ -12,6 +12,7 @@ import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { RefleshPage } from './refleshPage';
 import { CategoriesComponent } from './admin/categories/categories.component';
 import { AllEventsComponent } from './admin/all-events/all-events.component';
+import { AllCommentsComponent } from './admin/all-comments/all-comments.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'admin-allusers', component: AllUsersComponent },
   { path: 'admin-categories', component: CategoriesComponent },
   { path: 'admin-allevents', component: AllEventsComponent },
+  {path:'admin-allcomments',component:AllCommentsComponent  }
 ];
 
 @NgModule({

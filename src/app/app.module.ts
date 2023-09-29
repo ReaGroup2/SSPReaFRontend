@@ -34,6 +34,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
 import { AllEventsComponent } from './admin/all-events/all-events.component';
+import { AllCommentsComponent } from './admin/all-comments/all-comments.component';
 
 
 
@@ -74,6 +75,7 @@ import { AllEventsComponent } from './admin/all-events/all-events.component';
     AllUsersComponent,
     CategoriesComponent,
     AllEventsComponent,
+    AllCommentsComponent,
     
 
 
