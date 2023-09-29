@@ -15,8 +15,8 @@ export class AllCommentsComponent {
     this.LoadComments();
  }
   LoadComments(){
-    this.apiService.getAllEntities(Comment).subscribe((res)=>{
-      this.comments=res.data;
+      this.apiService.getAllEntities(Comment).subscribe((res)=>{
+        this.comments=res.data;
     });
   }
 }
