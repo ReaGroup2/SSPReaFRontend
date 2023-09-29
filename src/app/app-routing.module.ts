@@ -10,6 +10,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { RefleshPage } from './refleshPage';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
   { path: 'home', component: HomeComponent },

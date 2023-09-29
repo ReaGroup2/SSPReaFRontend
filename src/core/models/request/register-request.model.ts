@@ -1,11 +1,11 @@
 export interface RegisterRequest {
-  Email: string;
-  UserName: string;
-  Password: string;
-  FullName: string;
-  Phone: string;
-  IsMale:boolean;
-  ImagePath:string;
+  email: string;
+  userName: string;
+  password: string;
+  fullName: string;
+  phone: string;
+  isMale:boolean;
+  imagePath:string;
 }
 /*  public string Email { get; set; } = default!;
         public string UserName { get; set; } = default!;

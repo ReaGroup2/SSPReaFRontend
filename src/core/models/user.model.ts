@@ -8,17 +8,17 @@
     public byte[] PasswordSalt { get; set; } = default!;
     public byte[] PasswordHash { get; set; } = default!;
     public UserType UserType { get; set; } = UserType.Member;*/
-export interface User {
-  Id: number;
-  Email: string;
-  UserName: string;
-  Fullname: string;
-  Phone: string;
-  ImagePath:string;
-  IsMale:boolean;
+export class User {
+  id?: number;
+  email?: string;
+  userName?: string;
+  fullName?: string;
+  phone?: string;
+  imagePath?: string;
+  isMale?: boolean;
   
   
-  UserType: UserType;
+  userType?: UserType;
 
 
 
