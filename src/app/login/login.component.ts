@@ -33,7 +33,7 @@ export class LoginComponent {
     let status = await this.authService.login(this.loginRequest);
 
     if (status == ResponseStatus.Ok) {
-      await this.router.navigate(['']);
+      await this.router.navigate(['admin']);
     } else if (status == ResponseStatus.Invalid) {
       this.loginRequest.password = '';
 

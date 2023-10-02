@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div  class="sidebar">
   <div class="logo_content">
     <div class="logo">
       <i class="fa-solid fa-face-smile"></i>
@@ -69,17 +69,19 @@
     <div class="profile">
       <div class="profile_details">
         <img
-          src="https://media.licdn.com/dms/image/D4D03AQGI58RPGgpzqQ/profile-displayphoto-shrink_800_800/0/1692825806185?e=2147483647&v=beta&t=L64rSe1cnPTc6N_WKdMOnx0V8g2pKEf4eFqn28_GItc"
+          src="{{currentUser?.imagePath}}"
           alt=""
         />
 
         <div class="name_job">
-          <div class="name">Tubanur Yazıcı</div>
-          <div class="job">Admin</div>
+          <div class="name">{{currentUser?.fullName}}</div>
+          <div *ngIf="currentUser?.userType==0" class="job">Admin</div>
+          <div *ngIf="currentUser?.userType==1" class="job">Organizatör</div>
+          <div *ngIf="currentUser?.userType==2" class="job">Kullanıcı</div>
         </div>
       </div>
 
-      <a href="/home">
+      <a href="/home" (click)="logout()">
         <i class="bx bx-log-out" id="log_out"></i>
       </a>
     </div>
