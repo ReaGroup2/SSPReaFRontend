@@ -9,24 +9,18 @@
     public byte[] PasswordHash { get; set; } = default!;
     public UserType UserType { get; set; } = UserType.Member;*/
 export class User {
-  id?: number;
-  email?: string;
-  userName?: string;
-  fullName?: string;
-  phone?: string;
-  imagePath?: string;
-  isMale?: boolean;
-  
-  
-  userType?: UserType;
-
-
-
-
+  id: number = 0;
+  email: string = '';
+  userName: string = '';
+  fullName?: string = '';
+  phone: string = '';
+  imagePath: string = '';
+  isMale: boolean = false;
+  userType: UserType = 0;
 }
 
 export enum UserType {
   Admin,
   Organizator,
-  Member
+  Member,
 }

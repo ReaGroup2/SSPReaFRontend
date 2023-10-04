@@ -16,6 +16,8 @@ import { AllCommentsComponent } from './admin/all-comments/all-comments.componen
 import { AllEventParticipantComponent } from './admin/all-event-participant/all-event-participant.component';
 import { ErrorComponent } from './error/error.component';
 import { adminControl } from './admin-control';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
@@ -36,7 +38,9 @@ const routes: Routes = [
     component: AllEventParticipantComponent,
   },
   { path: 'error', component: ErrorComponent },
+   {path:'admin-profile', component: AdminProfileComponent}
   
+
 ];
 
 @NgModule({

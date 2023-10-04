@@ -13,6 +13,7 @@ import { AuthService } from '../auth/auth.service';
 export class JwtInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
+
   //prettier-ignore
   intercept(
     request: HttpRequest<any>,
@@ -46,4 +47,6 @@ export class JwtInterceptor implements HttpInterceptor {
       },
     });
   }
+
+
 }
