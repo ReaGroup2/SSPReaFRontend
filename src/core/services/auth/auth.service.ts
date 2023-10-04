@@ -138,5 +138,8 @@ logOut fonksiyonu, sessionStorage'deki tüm verileri temizler ve currentUserSubj
   async logOut() {
     sessionStorage.clear();
     this.currentUserSubject.next(null);
+    this.router.navigate(['/home']);
+    location.reload();
+
   }
 }

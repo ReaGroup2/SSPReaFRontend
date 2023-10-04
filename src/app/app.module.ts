@@ -37,8 +37,10 @@ import { AllEventsComponent } from './admin/all-events/all-events.component';
 import { AllCommentsComponent } from './admin/all-comments/all-comments.component';
 import { AllEventParticipantComponent } from './admin/all-event-participant/all-event-participant.component';
 import { JwtInterceptor } from 'src/core/services/interceptor/jwt.interceptor';
-
-
+import { ToastrService } from 'ngx-toastr';
+import { ShowDialogComponent } from './admin/components/show-dialog/show-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -79,8 +81,8 @@ import { JwtInterceptor } from 'src/core/services/interceptor/jwt.interceptor';
     AllEventsComponent,
     AllCommentsComponent,
     AllEventParticipantComponent,
-    
-
+    ShowDialogComponent,
+    ErrorComponent,
 
 
 
@@ -91,6 +93,7 @@ import { JwtInterceptor } from 'src/core/services/interceptor/jwt.interceptor';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MatDialogModule,
 
 
 

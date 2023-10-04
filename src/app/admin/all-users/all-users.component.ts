@@ -4,6 +4,9 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/core/services/api/api.service';
 import { User } from 'src/core/models/user.model';
+import { ShowDialogComponent } from '../components/show-dialog/show-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogData } from '../model/dialogdata';
 
 
 
@@ -19,7 +22,7 @@ import { User } from 'src/core/models/user.model';
 
 export class AllUsersComponent {
 
-  constructor(private router: Router, private service: ApiService,) {
+  constructor(private router: Router, private service: ApiService,private matDialog:MatDialog ) {
    
   }
 
@@ -66,6 +69,33 @@ tempUsers?: User[];
     });
 
 
+  }
+  openDialog(id?: number) {
+    
+     
+    if(id!=null){
+      this.matDialog.open(ShowDialogComponent, {
+        position: {
+          top: '24vh',
+          left: '40vw'
+      },
+        width: '300px',
+        data: new DialogData(
+          "Kullanıcı Silme",
+          "Kullanıcı silinecek emin misiniz?",
+          id,
+          User,
+           
+        ),
+      });
+      this.matDialog.afterAllClosed.subscribe((res) => {
+  
+        this.LoadUsers();
+      });
+      
+    }else{
+
+    }
   }
   RefleshUsers() {
 
