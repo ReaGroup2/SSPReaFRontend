@@ -16,6 +16,7 @@ export class User {
   phone: string = '';
   imagePath: string = '';
   isMale: boolean = false;
+  password: string = '';
   userType: UserType = 0;
 }
 

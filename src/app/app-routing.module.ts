@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'event-detail', component: EventDetailComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminProfileComponent },
   { path: 'admin-allusers', component: AllUsersComponent,canActivate:[adminControl]},
   { path: 'admin-categories', component: CategoriesComponent ,canActivate:[adminControl]},
   { path: 'admin-allevents', component: AllEventsComponent ,canActivate:[adminControl]},

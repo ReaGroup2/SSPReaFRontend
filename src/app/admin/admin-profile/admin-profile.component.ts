@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { User } from 'src/core/models/user.model';
 import { ApiService } from 'src/core/services/api/api.service';
 import { AuthService } from 'src/core/services/auth/auth.service';
@@ -11,20 +13,30 @@ import { AuthService } from 'src/core/services/auth/auth.service';
 export class AdminProfileComponent {
   users: User[] = [];
 
-  constructor(private readonly apiService: ApiService,private readonly authService:AuthService) {}
-
+  constructor(private readonly apiService: ApiService,private readonly authService:AuthService,private readonly router:Router) {}
+  currentUser?: User | null;
   ngOnInit() {
-    this.getUser();
+    this.authService.currentUser.subscribe(user=>{
+      this.currentUser=user;
+  });
+  }
+  showModal = false;
+  async updateUser() {
+    let status=await this.apiService.updateEntity(this.currentUser!.id,this.currentUser,User);
+    if(status?.status==ResponseStatus.Ok){
+      alert("Güncelleme Başarılı");
+      this.router.navigate(['/admin-profile']);
+    }else{
+      alert("Güncelleme Başarısız");
+    }
   }
 
-  
-  getUser() {
-    this.apiService.getAllEntities(User).subscribe((response) => {
-      this.users = response.data;
-      
-
-      // this.users.filter(u => u.id === this.apiService.getProfileInfo(parseInt(u=>u.id)));
-      console.log(this.users);
-    });
+  openModal() {
+    this.showModal = true;
   }
+
+  closeModal() {
+    this.showModal = false;
+  }
+ 
 }
