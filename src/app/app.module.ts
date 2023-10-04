@@ -37,6 +37,7 @@ import { AllEventsComponent } from './admin/all-events/all-events.component';
 import { AllCommentsComponent } from './admin/all-comments/all-comments.component';
 import { AllEventParticipantComponent } from './admin/all-event-participant/all-event-participant.component';
 import { JwtInterceptor } from 'src/core/services/interceptor/jwt.interceptor';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 
 
 
@@ -79,6 +80,7 @@ import { JwtInterceptor } from 'src/core/services/interceptor/jwt.interceptor';
     AllEventsComponent,
     AllCommentsComponent,
     AllEventParticipantComponent,
+    AdminProfileComponent,
     
 
 
