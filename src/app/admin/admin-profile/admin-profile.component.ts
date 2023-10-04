@@ -16,8 +16,8 @@ export class AdminProfileComponent {
   constructor(private readonly apiService: ApiService,private readonly authService:AuthService,private readonly router:Router) {}
   currentUser?: User | null;
   ngOnInit() {
-    this.authService.currentUser.subscribe(user=>{
-      this.currentUser=user;
+    this.apiService.getProfileInfo().subscribe(user=>{
+      this.currentUser=user.data;
   });
   }
   showModal = false;
