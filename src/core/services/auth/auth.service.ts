@@ -92,8 +92,8 @@ export class AuthService {
     if (status == ResponseStatus.Ok) {
       this.router.navigate(['/login']);
       this.setToken(registerResponse!.data);
-      sessionStorage.setItem('current_user', JSON.stringify({}));
-      this.currentUserSubject.next({} as User);
+      /*sessionStorage.setItem('current_user', JSON.stringify({}));*/
+      /*this.currentUserSubject.next({} as User);*/
     }
     this.router.navigate(['/login']);
     return status;

@@ -119,4 +119,17 @@ export class ApiService {
     return this.http.request<BaseDataResponse<TEntity[]>>
       ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
   }
+
+  uploadProfileImage(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name); 
+
+    return this.http.post(`${this.endpoint}/Image/UploadImage`, formData);
+  }
+
+  getResim(resimKimlik: string): Observable<Blob> {
+    return this.http.get(`${this.endpoint}/Image/GetImage/?resimKimlik=${resimKimlik}`, {
+      responseType: 'blob'
+    });
+  }
 }

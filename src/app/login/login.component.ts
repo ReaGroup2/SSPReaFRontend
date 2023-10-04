@@ -4,6 +4,7 @@ import { LoginRequest } from 'src/core/models/request/login-request.model';
 import { AuthService } from 'src/core/services/auth/auth.service';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { RegisterRequest } from 'src/core/models/request/register-request.model';
+import { ApiService } from 'src/core/services/api/api.service';
 
 
 
@@ -21,10 +22,14 @@ export class LoginComponent {
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
+    private readonly apiService:ApiService
+    
   
   ) { 
     console.log("login component çalıştı");
   }
+
+  selectedImage: File | null = null;
 
   ngOnInit(): void {
   }
@@ -37,6 +42,36 @@ export class LoginComponent {
     } else if (status == ResponseStatus.Invalid) {
       this.loginRequest.password = '';
 
+    }
+  }
+
+  onImageSelect(event: any) {
+    this.selectedImage = event.target.files[0];
+
+  }
+  uploadProfileImage() {
+    
+    if (this.selectedImage) {
+      const selectedImageCopy: File = new File([this.selectedImage], this.registerRequest.email + '.jpeg', {
+        type: this.selectedImage.type,
+      });
+      this.selectedImage = selectedImageCopy;
+      
+      this.apiService.uploadProfileImage(this.selectedImage).subscribe(
+        (response) => {
+          // Yükleme başarılı
+          console.log('Resim yükleme başarılı:', response);
+
+          // Profil resmi ile ilgili başka işlemleri yapabilirsiniz
+        },
+        (error) => {
+          // Yükleme sırasında hata oluştu
+          console.error('Resim yükleme hatası:', error);
+        }
+      );
+    } else {
+      // Resim seçilmedi
+      console.error('Lütfen bir resim seçin.');
     }
   }
 
@@ -56,7 +91,7 @@ export class LoginComponent {
     else if (selectedValue == 'false')
       this.registerRequest.isMale = false;
   
-      this.registerRequest.imagePath='deneme';  
+      this.registerRequest.imagePath=this.registerRequest.email+'.jpeg';  
     
 
    
@@ -64,14 +99,16 @@ export class LoginComponent {
    
     let status = await this.authService.register(this.registerRequest);
     if (status==ResponseStatus.Ok) {
+      this.uploadProfileImage();
       await this.router.navigate(['/login']);
+      location.reload();
     } else if (status == ResponseStatus.Invalid)
       this.registerRequest.password = '';
       this.passwordResponse='';
 
     }
     else{
-      this.passwordResponse="Şifreler uyuşmuyor veya resim eklenemedi."
+      this.passwordResponse="Şifreler uyuşmuyor veya resim eklenemedi.";
     }
 
   }

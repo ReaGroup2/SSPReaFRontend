@@ -12,12 +12,23 @@ import { AuthService } from 'src/core/services/auth/auth.service';
 })
 export class AdminProfileComponent {
   users: User[] = [];
+  resimKimlik!: string;
+  resimUrl!: string;
+  getResim(): void {
+    this.apiService.getResim(this.resimKimlik).subscribe((resimVerisi) => {
+      const resimUrl = URL.createObjectURL(resimVerisi);
+      this.resimUrl = resimUrl;
+      console.log(resimUrl)
+    });
+  }
 
   constructor(private readonly apiService: ApiService,private readonly authService:AuthService,private readonly router:Router) {}
   currentUser?: User | null;
   ngOnInit() {
     this.apiService.getProfileInfo().subscribe(user=>{
       this.currentUser=user.data;
+      this.resimKimlik=user.data.imagePath;
+      this.getResim();
   });
   }
   showModal = false;
