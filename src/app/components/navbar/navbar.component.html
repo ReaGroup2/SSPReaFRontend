@@ -32,7 +32,7 @@
             src="{{currentUser.imagePath}}"
             alt=""
           /></a></li>
-          <li *ngIf="currentUser!=null"><a href="/contact" (click)="logout()" class="nav-link">LogOut</a></li>
+          <li *ngIf="currentUser!=null"><a style=" cursor: pointer;" (click)="logout()" class="nav-link">LogOut</a></li>
         </ul>
       </nav>
 

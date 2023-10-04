@@ -14,7 +14,10 @@ import { CategoriesComponent } from './admin/categories/categories.component';
 import { AllEventsComponent } from './admin/all-events/all-events.component';
 import { AllCommentsComponent } from './admin/all-comments/all-comments.component';
 import { AllEventParticipantComponent } from './admin/all-event-participant/all-event-participant.component';
+import { ErrorComponent } from './error/error.component';
+import { adminControl } from './admin-control';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
@@ -26,15 +29,18 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'event-detail', component: EventDetailComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'admin-allusers', component: AllUsersComponent },
-  { path: 'admin-categories', component: CategoriesComponent },
-  { path: 'admin-allevents', component: AllEventsComponent },
-  { path: 'admin-allcomments', component: AllCommentsComponent },
+  { path: 'admin-allusers', component: AllUsersComponent ,canActivate:[adminControl]},
+  { path: 'admin-categories', component: CategoriesComponent ,canActivate:[adminControl]},
+  { path: 'admin-allevents', component: AllEventsComponent ,canActivate:[adminControl]},
+  { path: 'admin-allcomments', component: AllCommentsComponent ,canActivate:[adminControl]},
   {
     path: 'admin-all-event-participant',
     component: AllEventParticipantComponent,
   },
-  {path:'admin-profile', component: AdminProfileComponent}
+  { path: 'error', component: ErrorComponent },
+   {path:'admin-profile', component: AdminProfileComponent}
+  
+
 ];
 
 @NgModule({
@@ -42,4 +48,6 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [{ provide: RouteReuseStrategy, useClass: RefleshPage }],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  constructor() {}
+}

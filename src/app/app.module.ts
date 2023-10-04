@@ -38,8 +38,10 @@ import { AllCommentsComponent } from './admin/all-comments/all-comments.componen
 import { AllEventParticipantComponent } from './admin/all-event-participant/all-event-participant.component';
 import { JwtInterceptor } from 'src/core/services/interceptor/jwt.interceptor';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
-
-
+import { ToastrService } from 'ngx-toastr';
+import { ShowDialogComponent } from './admin/components/show-dialog/show-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -80,8 +82,10 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
     AllEventsComponent,
     AllCommentsComponent,
     AllEventParticipantComponent,
-    AdminProfileComponent,
-    
+ AdminProfilePageComponent
+    AdminProfileComponent,   
+    ShowDialogComponent,
+    ErrorComponent,
 
 
 
@@ -93,6 +97,7 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MatDialogModule,
 
 
 
