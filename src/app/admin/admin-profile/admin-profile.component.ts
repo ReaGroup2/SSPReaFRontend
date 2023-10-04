@@ -25,9 +25,12 @@ export class AdminProfileComponent {
     let status=await this.apiService.updateEntity(this.currentUser!.id,this.currentUser,User);
     if(status?.status==ResponseStatus.Ok){
       alert("Güncelleme Başarılı");
-      this.router.navigate(['/admin-profile']);
+     this.currentUser;
+     
     }else{
       alert("Güncelleme Başarısız");
+      this.authService.currentUser.subscribe(user=>{
+        this.currentUser=user;});
     }
   }
 

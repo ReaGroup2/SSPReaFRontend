@@ -15,13 +15,50 @@
         <td>{{ item.id }}</td>
         <td>{{ item.categoryName }}</td>
         <td>
-          <button class="btn btn-danger btn-sm" mat-button (click)="openDialog(item.id!)">Delete</button>
+          
+          <button class="btn btn-danger btn-sm"  (click)="confirmDelete(item.id)">Sil</button>
+
         </td>
         
         <td>
-          <a href="javascript: void(0);" class="btn btn-sm bg-warning text-white ml-2">edit</a>
+          <button class="btn btn-warning"(click)="openModal(item)" class="btn btn-sm bg-warning text-white ml-2">edit</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+<div class="modal-container" *ngIf="showModal" >
+  <div class="modal-content">
+    <h2>Kullanıcı Bilgileri Formu</h2>
+    <div >
+      <form>
+          <div class="row">
+              <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                      <label for="Email">Id:</label>
+                      <input [(ngModel)]="selectedCategory!.id" [ngModelOptions]="{standalone: true}" type="email" class="form-control" id="Email" name="Email" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="UserName">Kategori Adı:</label>
+                      <input [(ngModel)]="selectedCategory!.categoryName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="UserName" name="UserName" required>
+                  </div>     
+                  <br>
+                  
+             
+                  
+                  
+                 
+                 
+              </div>
+          </div>
+          
+          
+          
+    
+          <button (click)="updateCategory()"  class="btn btn-primary">Register</button>
+      </form>
+  </div>
+    <!-- Kullanıcı bilgileri formu burada yer alabilir -->
+    <button (click)="closeModal()">Kapat</button>
+  </div>
 </div>
