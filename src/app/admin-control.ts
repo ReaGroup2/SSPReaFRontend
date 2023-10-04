@@ -25,6 +25,6 @@ export class adminControl implements CanActivate {
       }
     });
 
-    return false; // Önceki abonelik tamamlanana kadar true döndürün.
+    return true; // Önceki abonelik tamamlanana kadar true döndürün.
   }
 }

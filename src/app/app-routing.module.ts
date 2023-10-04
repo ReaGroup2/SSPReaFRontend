@@ -19,6 +19,7 @@ import { adminControl } from './admin-control';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
   { path: 'home', component: HomeComponent },
@@ -29,7 +30,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'event-detail', component: EventDetailComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'admin-allusers', component: AllUsersComponent ,canActivate:[adminControl]},
+  { path: 'admin-allusers', component: AllUsersComponent,canActivate:[adminControl]},
   { path: 'admin-categories', component: CategoriesComponent ,canActivate:[adminControl]},
   { path: 'admin-allevents', component: AllEventsComponent ,canActivate:[adminControl]},
   { path: 'admin-allcomments', component: AllCommentsComponent ,canActivate:[adminControl]},

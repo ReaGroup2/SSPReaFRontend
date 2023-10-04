@@ -29,7 +29,7 @@
           
           <li *ngIf="currentUser!=null"><a href="/admin" class="nav-link">Profile</a></li>
           <li *ngIf="currentUser!=null"><a href="admin" class="nav-link"><img style="width: 30px;height: 30px;"
-            src="{{currentUser.imagePath}}"
+            src="{{currentUser?.imagePath}}"
             alt=""
           /></a></li>
           <li *ngIf="currentUser!=null"><a style=" cursor: pointer;" (click)="logout()" class="nav-link">LogOut</a></li>
