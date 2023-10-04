@@ -23,7 +23,7 @@
   </div>
   </div>
 
-<div class=" contentAdmin">
+<div class="contentAdmin" style="position: absolute;">
  
   <table *ngIf="users!.length>0" class="table table-striped table-centered mb-0">
     <thead>
@@ -61,7 +61,7 @@
         <td>{{item.phone }}</td>
 
         <td class="table-action">
-          <a href="javascript: void(0);" class="btn btn-sm bg-danger text-white">delete</a>
+          <button class="btn btn-danger btn-sm" mat-button (click)="openDialog(item.id!)">Delete</button>
           <a href="javascript: void(0);" class="btn btn-sm bg-warning text-white ml-2">edit</a>
         </td>
 

@@ -11,7 +11,8 @@ import { TokenResponse } from '../../models/response/token-response.model';
 import { LoginRequest } from '../../models/request/login-request.model';
 import { RegisterRequest } from '../../models/request/register-request.model';
 import { User } from '../../models/user.model';
-
+import { BaseResponse } from 'src/core/models/response/base-response.model';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root',
 })
@@ -75,6 +76,34 @@ export class ApiService {
   //getProfileInfo fonksiyonu, kullanıcının profil bilgilerini almak için bir istek gönderir.
   //HttpClient.get fonksiyonunu kullanarak API'ye istek gönderir
 
+  getEntityById<TEntity>(id: number, entityType: Type<TEntity>) {
+    return this.http.get<BaseDataResponse<TEntity>>
+    (`${environment.api_url}/${entityType.name}/GetById?id=${id}`)
+    .pipe(share()).toPromise();
+  }
+
+
+  createEntity<TEntity>(entity: TEntity, entityType: string) {
+    return this.http.post<BaseDataResponse<TEntity[]>>
+      (environment.api_url + "/" + entityType + "/Create", entity)
+      .pipe(share()).toPromise();
+  }
+
+  deleteEntity<TEntity>(id: number, entityType: Type<TEntity>) {
+    return this.http.delete<BaseResponse>
+      (environment.api_url + "/" + entityType.name + "/Delete?id=" + id)
+      .pipe(share()).toPromise();
+  }
+
+  updateEntity<TEntity>(id: number, newEntity: TEntity, entityType: Type<TEntity>) {
+    return this.http.put<BaseDataResponse<TEntity[]>>
+      (environment.api_url + "/" + entityType.name + "/Update?id=" + id, newEntity)
+      .pipe(share()).toPromise();
+  }
+
+ 
+
+  //Profil Getir
   getProfileInfo(): Observable<BaseDataResponse<User>> {
     return this.http
       .get<BaseDataResponse<User>>(this.endpoint + '/Auth/GetProfileInfo')
@@ -84,6 +113,8 @@ export class ApiService {
         })
       );
   }
+
+
   getAllEntities<TEntity>(entityType: Type<TEntity>) {
     return this.http.request<BaseDataResponse<TEntity[]>>
       ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
