@@ -72,6 +72,11 @@ export class AuthService {
  İşlem başarısız olursa, logOut işlevini çağırarak oturumu sonlandırır.*/
       if (status == ResponseStatus.Ok) {
         sessionStorage.setItem('current_user', JSON.stringify(profileResponse!.data));
+        this.apiService.getResim(profileResponse!.data.email+"").subscribe((resimVerisi) => {
+          const resimUrl = URL.createObjectURL(resimVerisi);
+          profileResponse!.data.imagePath = resimUrl;
+          console.log(resimUrl)
+        });
         this.currentUserSubject.next(profileResponse!.data);
       } else {
         await this.logOut();

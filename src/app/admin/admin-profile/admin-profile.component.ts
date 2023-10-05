@@ -14,6 +14,7 @@ export class AdminProfileComponent {
   users: User[] = [];
   resimKimlik!: string;
   resimUrl!: string;
+  selectedImage: File | null = null;
   getResim(): void {
     this.apiService.getResim(this.resimKimlik).subscribe((resimVerisi) => {
       const resimUrl = URL.createObjectURL(resimVerisi);
@@ -35,6 +36,8 @@ export class AdminProfileComponent {
   async updateUser() {
     let status=await this.apiService.updateEntity(this.currentUser!.id,this.currentUser,User);
     if(status?.status==ResponseStatus.Ok){
+      await this.uploadProfileImage();
+      
       alert("Güncelleme Başarılı");
      this.currentUser;
      
@@ -43,6 +46,8 @@ export class AdminProfileComponent {
       this.authService.currentUser.subscribe(user=>{
         this.currentUser=user;});
     }
+    await this.getResim();
+    this.closeModal();
   }
 
   openModal() {
@@ -52,5 +57,34 @@ export class AdminProfileComponent {
   closeModal() {
     this.showModal = false;
   }
+onImageSelect(event: any) {
+  this.selectedImage = event.target.files[0];
+
+}
+uploadProfileImage() {
+  
+  if (this.selectedImage) {
+    const selectedImageCopy: File = new File([this.selectedImage], this.currentUser!.email + '.jpeg', {
+      type: this.selectedImage.type,
+    });
+    this.selectedImage = selectedImageCopy;
+    
+    this.apiService.uploadProfileImage(this.selectedImage).subscribe(
+      (response) => {
+        // Yükleme başarılı
+        console.log('Resim yükleme başarılı:', response);
+
+        // Profil resmi ile ilgili başka işlemleri yapabilirsiniz
+      },
+      (error) => {
+        // Yükleme sırasında hata oluştu
+        console.error('Resim yükleme hatası:', error);
+      }
+    );
+  } else {
+    // Resim seçilmedi
+    console.error('Lütfen bir resim seçin.');
+  }
+}
  
 }

@@ -222,7 +222,7 @@
                   
                   <div class="form-group">
                       <label for="register-profile-picture">Profil Resmi Yükle:</label>
-                      <input type="file" class="form-control-file" id="register-profile-picture" name="ImagePath">
+                      <input  (change)="onImageSelect($event)" type="file" class="form-control-file" id="register-profile-picture"  name="ImagePath" >
                   </div>
                   <div class="form-group genderResponsive">
                       <label for="register-gender" class="mr-2 ml-2">Cinsiyet:</label>
