@@ -12,6 +12,7 @@ import { User } from "./user.model";
       "isActive": true,
       "creatorId": 0,
       "limit": 0*/
+
       export class Event{
         id?:number;
         categoryId?:number;
@@ -26,4 +27,5 @@ import { User } from "./user.model";
         category?:Category;
         creator?:User;
 
-      }
+
+
