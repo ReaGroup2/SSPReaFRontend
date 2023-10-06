@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'event-detail', component: EventDetailComponent },
   { path: 'admin-allusers', component: AllUsersComponent,canActivate:[adminControl]},
-  { path: 'admin-categories', component: CategoriesComponent ,canActivate:[adminControl]},
+  { path: 'admin-allcategories', component: CategoriesComponent ,canActivate:[adminControl]},
   { path: 'admin-allevents', component: AllEventsComponent ,canActivate:[adminControl]},
   { path: 'admin-allcomments', component: AllCommentsComponent ,canActivate:[adminControl]},
   {
@@ -41,7 +41,7 @@ const routes: Routes = [
     component: AllEventParticipantComponent,canActivate:[adminControl]
   },
   {path: 'error', component: ErrorComponent },
-  {path:'admin-profile', component: AdminProfileComponent,canActivate:[loginControl]},
+  {path:'profile', component: AdminProfileComponent,canActivate:[loginControl]},
   {path:'member-attendent-events',component:AttendedEventsComponent,canActivate:[organizatorMemberControl]},
   {path:'member-mycomments',component:MyCommentsComponent,canActivate:[organizatorMemberControl]},
   {path:'member-mylikes',component:MyLikesComponent,canActivate:[organizatorMemberControl]}
