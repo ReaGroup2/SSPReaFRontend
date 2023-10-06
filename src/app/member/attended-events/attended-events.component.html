@@ -1,0 +1,52 @@
+<app-admin></app-admin>
+<div class="contentAdmin container" style="position: relative;">
+<p>attended-events works!</p>
+<table class="table table-striped table-centered mb-0">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Katılımcı</th>
+        <th>Etkinlik Adı</th>    
+        <!-- <th>Etkinlik Kategorisi</th>    -->
+        <th>Başlangıç Tarihi</th>
+        <th>Bitiş Tarihi</th>
+        <th>Durum</th>
+        <th>Organizator</th>
+        <th>Limit</th>
+        <th>Vazgeç</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+
+
+    
+      <tr *ngFor="let item of myEvents">
+        <td>{{item.id}}</td>
+        <td>{{item.user?.fullName}}</td>
+        <td>{{item.event?.title}}</td>
+        <!-- <td>{{item.event?.category?.categoryName}}</td>         -->
+        <td>{{item.event?.startDate}}</td>
+        <td>{{item.event?.finishDate}}</td>
+        <td>{{item.event?.isActive}}</td>
+        <td>{{item.event?.creator?.fullName}}</td>
+        <td>{{item.event?.limit}}</td>
+       
+      
+
+        
+      
+        <td>
+          <a
+            style="cursor: pointer;" (click)="cancelParticipant(item.id)"
+            class="btn btn-sm bg-danger text-white ml-2"
+            >Katılmaktan Vazgeç</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+ 
+</div>
+
