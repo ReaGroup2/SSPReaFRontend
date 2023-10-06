@@ -6,8 +6,8 @@
       <tr>
         <th>Id</th>
         <th>Ad</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
+        <th>Action</th>
+     
       </tr>
     </thead>
     <tbody>
@@ -18,10 +18,9 @@
           
           <button class="btn btn-danger btn-sm"  (click)="confirmDelete(item.id)">Sil</button>
 
-        </td>
         
-        <td>
           <button class="btn btn-warning"(click)="openModal(item)" class="btn btn-sm bg-warning text-white ml-2">edit</button>
+          <button class="btn btn-warning"(click)="openModal(item)" class="btn btn-sm bg-success text-white ml-2">edit</button>
         </td>
       </tr>
     </tbody>

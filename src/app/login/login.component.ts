@@ -77,7 +77,7 @@ export class LoginComponent {
 
  
   async register() {
-    if(this.rePassword==this.registerRequest.password){
+    if(this.rePassword==this.registerRequest.password || this.selectedImage!=null){
 
    
     let selectedValue: string = '';
@@ -91,15 +91,17 @@ export class LoginComponent {
     else if (selectedValue == 'false')
       this.registerRequest.isMale = false;
   
-      this.registerRequest.imagePath=this.registerRequest.email+'.jpeg';  
+      
     
-
+      this.uploadProfileImage();
+      this.registerRequest.imagePath="http://localhost:5258/api/Image/GetImage?resimKimlik="+this.registerRequest.email+'.jpeg';  
    
   
    
     let status = await this.authService.register(this.registerRequest);
     if (status==ResponseStatus.Ok) {
-      this.uploadProfileImage();
+      
+
       await this.router.navigate(['/login']);
       location.reload();
     } else if (status == ResponseStatus.Invalid)

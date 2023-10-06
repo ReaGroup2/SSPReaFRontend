@@ -7,6 +7,7 @@ import { User } from 'src/core/models/user.model';
 import { ShowDialogComponent } from '../components/show-dialog/show-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogData } from '../model/dialogdata';
+import { ResponseStatus } from 'src/core/models/response/base-response.model';
 
 
 
@@ -25,11 +26,13 @@ export class AllUsersComponent {
   constructor(private router: Router, private service: ApiService,private matDialog:MatDialog ) {
    
   }
-
+  selectedImage: File | null = null;
+showModal = false;
 searchFilter?:number=0;
 roleFilter?:number=3;
   users?: User[];
 tempUsers?: User[];
+selectedEditUser?: User;
   searchItem?: string;
   ngOnInit(): void {
 
@@ -65,6 +68,8 @@ tempUsers?: User[];
       this.users = this.roleFilter==3 ? this.tempUsers : this.tempUsers?.filter((x: User) =>
         x.userType==this.roleFilter
       );
+      this.users?.sort((a, b) => a.id! - b.id!);
+     
       console.log(this.users);
     });
 
@@ -116,6 +121,58 @@ tempUsers?: User[];
       this.LoadUsers(); 
       console.log(this.searchFilter);
     });
+  }
+  openModal(user?:User) {
+    this.selectedEditUser=user;
+    this.showModal = true;
+  }
+  closeModal() {
+    this.showModal = false;
+    location.reload();
+  }
+  onImageSelect(event: any) {
+    this.selectedImage = event.target.files[0];
+
+  }
+  async updateUser() {
+    if(this.selectedEditUser!=undefined){
+      this.selectedEditUser.imagePath="http://localhost:5258/api/Image/GetImage?resimKimlik="+this.selectedEditUser.email+'.jpeg';
+    await this.service.updateEntity(this.selectedEditUser.id,this.selectedEditUser,User).then(response=>{
+      if(response?.status==ResponseStatus.Ok){
+        this.uploadProfileImage();
+        alert("Güncelleme Başarılı");
+        this.closeModal();
+      }else{
+        alert("Güncelleme Başarısız");
+      }
+    });
+ 
+  }
+  }
+  uploadProfileImage() {
+    
+    if (this.selectedImage) {
+      const selectedImageCopy: File = new File([this.selectedImage], this.selectedEditUser!.email + '.jpeg', {
+        type: this.selectedImage.type,
+      });
+      this.selectedImage = selectedImageCopy;
+      
+      this.service.uploadProfileImage(this.selectedImage).subscribe(
+        (response) => {
+          // Yükleme başarılı
+          console.log('Resim yükleme başarılı:', response);
+
+          // Profil resmi ile ilgili başka işlemleri yapabilirsiniz
+        },
+        (error) => {
+          // Yükleme sırasında hata oluştu
+          console.error('Resim yükleme hatası:', error);
+        }
+      );
+    } else {
+      // Resim seçilmedi
+      console.error('Lütfen bir resim seçin.');
+    }
   }
 
 }
