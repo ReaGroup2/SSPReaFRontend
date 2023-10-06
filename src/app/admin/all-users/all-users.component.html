@@ -62,7 +62,8 @@
 
         <td class="table-action">
           <button class="btn btn-danger btn-sm" mat-button (click)="openDialog(item.id!)">Delete</button>
-          <a href="javascript: void(0);" class="btn btn-sm bg-warning text-white ml-2">edit</a>
+          <a href="javascript: void(0);" (click)="openModal(item)" class="btn btn-sm bg-warning text-white ml-2">edit</a>
+          <a href="javascript: void(0);" class="btn btn-sm bg-success text-white ml-2">ekle</a>
         </td>
 
       </tr>
@@ -73,4 +74,67 @@
   Kullanıcı bulunamadı
 </div>
 
+</div>
+<div class="modal-container" *ngIf="showModal" >
+  <div class="modal-content">
+    <h2>Kullanıcı Bilgileri Formu</h2>
+    <div >
+      <form>
+        <div class="row">
+          <div class="col-6">
+              <div class="form-group">
+                  <label for="Email">Email:</label>
+                  <input [(ngModel)]="selectedEditUser!.email" [ngModelOptions]="{standalone: true}" type="email" class="form-control" id="Email" name="Email" required>
+              </div>
+              <div class="form-group">
+                  <label for="UserName">Kullanıcı Adı:</label>
+                  <input [(ngModel)]="selectedEditUser!.userName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="UserName" name="UserName" required>
+              </div>
+              <div class="form-group">
+                  <label for="FullName">Ad Soyad:</label>
+                  <input [(ngModel)]="selectedEditUser!.fullName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="FullName" name="FullName" required>
+              </div>
+              <div class="form-group">
+                  <label for="Phone">Telefon:</label>
+                  <input [(ngModel)]="selectedEditUser!.phone" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="FullName" name="FullName" required>
+              </div>
+             
+              
+              
+          </div>
+          <div class="col-6">
+              <div class="form-group">
+                  <label for="register-password">Şifre:</label>
+                  <input [(ngModel)]="selectedEditUser!.password" [ngModelOptions]="{standalone: true}" type="password" class="form-control" id="register-password" name="register-password" required>
+              </div>
+        
+              <div class="form-group">
+                  <label for="register-profile-picture">Profil Resmi Yükle:</label>
+                  <input type="file" class="form-control-file" id="register-profile-picture" name="ImagePath" (change)="onImageSelect($event)">
+              </div>
+              <div class="form-group genderResponsive">
+                  <label for="register-gender" class="mr-2 ml-2">Cinsiyet:</label>
+                  <div class="form-check form-check-inline">
+                      <input type="radio" class="form-check-input" id="male" name="IsMale" value="true" required>
+                      <label class="form-check-label" for="male">Erkek</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input type="radio" class="form-check-input" id="female" name="IsMale" value="false" required>
+                      <label class="form-check-label" for="female">Kadın</label>
+                  </div>
+                  
+              </div>
+             
+          </div>
+      </div>
+          
+          
+          
+    
+          <button (click)="updateUser()"  class="btn btn-primary">Register</button>
+      </form>
+  </div>
+    <!-- Kullanıcı bilgileri formu burada yer alabilir -->
+    <button (click)="closeModal()">Kapat</button>
+  </div>
 </div>

@@ -12,36 +12,39 @@
         <th>Başlangıç Tarihi</th>
         <th>Bitiş Tarihi</th>
         <th>Durum</th>
-        <th>Organizator</th>
+        <th>OrganizatorId</th>
+        <th>OrganizatorName</th>
         <th>Limit</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
+        <th>Action</th>
+       
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of events">
         <td>{{ item.id }}</td>
-        <td>{{ findCategoryNameById(item.categoryId!)}}</td>
+        <td>{{ item.category!.categoryName}}</td>
         <td>{{item.imagePath}}</td>
         <td>{{item.title}}</td>
         <td><p>{{ item.description?.substring(0,30) }}...</p></td>
         <td>{{ item.startDate }}</td>
         <td>{{ item.finishDate }}</td>
         <td>{{ item.isActive }}</td>
-        <td>{{ item.creatorId }}</td>
+        <td>{{ item.creator?.id }}</td>
+        <td>{{ item.creator?.fullName }}</td>
         <td>{{ item.limit }}</td>
+       
         <td>
           <a href="javascript: void(0);" class="btn btn-sm bg-danger text-white"
             >delete</a
           >
-        </td>
-        <td>
           <a
             href="javascript: void(0);"
             class="btn btn-sm bg-warning text-white ml-2"
             >edit</a
           >
+          <a href="javascript: void(0);" class="btn btn-sm bg-success text-white ml-2">ekle</a>
         </td>
+        
       </tr>
     </tbody>
   </table>
