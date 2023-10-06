@@ -17,6 +17,9 @@ import { AllEventParticipantComponent } from './admin/all-event-participant/all-
 import { ErrorComponent } from './error/error.component';
 import { adminControl } from './admin-control';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { AttendedEventsComponent } from './member/attended-events/attended-events.component';
+import { MyCommentsComponent } from './member/my-comments/my-comments.component';
+import { MyLikesComponent } from './member/my-likes/my-likes.component';
 
 
 
@@ -38,8 +41,12 @@ const routes: Routes = [
     path: 'admin-all-event-participant',
     component: AllEventParticipantComponent,
   },
-  { path: 'error', component: ErrorComponent },
-   {path:'admin-profile', component: AdminProfileComponent}
+  {path: 'error', component: ErrorComponent },
+  {path:'admin-profile', component: AdminProfileComponent},
+  {path:'member-attendent-events',component:AttendedEventsComponent},
+  {path:'member-mycomments',component:MyCommentsComponent},
+  {path:'member-mylikes',component:MyLikesComponent}
+
   
 
 ];

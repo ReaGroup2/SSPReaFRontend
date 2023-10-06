@@ -1,3 +1,6 @@
+import { Category } from "./category.model";
+import { User } from "./user.model";
+
 /*
      "id": 0,
       "categoryId": 0,
@@ -20,5 +23,7 @@
         isActive?:boolean;
         creatorId?:number;
         limit?:number;
+        category?:Category;
+        creator?:User;
 
       }
