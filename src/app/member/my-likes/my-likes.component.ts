@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CommentLike } from 'src/core/models/commentLike.model';
 import { ApiService } from 'src/core/services/api/api.service';
 import { Event } from 'src/core/models/event.model';
+import { ResponseStatus } from 'src/core/models/response/base-response.model';
 
 
 @Component({
@@ -46,7 +47,25 @@ findEventName(id?:number){
     });
   }
   cancelLike(id:any){
+    const confirmDelete = window.confirm("Beğeninizi geri almak istiyor musunuz?");
+    if(confirmDelete){
 
+   
+let status=this.service.deleteEntity(id,CommentLike);
+
+status.then(response=>{
+  if (response?.status == ResponseStatus.Ok) {
+    window.alert('beğeni geri alındı')
+    this.getMyLikes();
+  this.getAllEvent();
+  
+  }
+  else{
+    window.alert('bir hata oluştu tekrar deneyin')
+  }
+})
+
+  }
   }
 
 }
