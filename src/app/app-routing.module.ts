@@ -15,7 +15,7 @@ import { AllEventsComponent } from './admin/all-events/all-events.component';
 import { AllCommentsComponent } from './admin/all-comments/all-comments.component';
 import { AllEventParticipantComponent } from './admin/all-event-participant/all-event-participant.component';
 import { ErrorComponent } from './error/error.component';
-import { adminControl } from './admin-control';
+import { adminControl, loginControl, organizatorMemberControl } from './admin-control';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { AttendedEventsComponent } from './member/attended-events/attended-events.component';
 import { MyCommentsComponent } from './member/my-comments/my-comments.component';
@@ -32,20 +32,19 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'event-detail', component: EventDetailComponent },
-  { path: 'admin', component: AdminProfileComponent },
   { path: 'admin-allusers', component: AllUsersComponent,canActivate:[adminControl]},
   { path: 'admin-categories', component: CategoriesComponent ,canActivate:[adminControl]},
   { path: 'admin-allevents', component: AllEventsComponent ,canActivate:[adminControl]},
   { path: 'admin-allcomments', component: AllCommentsComponent ,canActivate:[adminControl]},
   {
     path: 'admin-all-event-participant',
-    component: AllEventParticipantComponent,
+    component: AllEventParticipantComponent,canActivate:[adminControl]
   },
   {path: 'error', component: ErrorComponent },
-  {path:'admin-profile', component: AdminProfileComponent},
-  {path:'member-attendent-events',component:AttendedEventsComponent},
-  {path:'member-mycomments',component:MyCommentsComponent},
-  {path:'member-mylikes',component:MyLikesComponent}
+  {path:'admin-profile', component: AdminProfileComponent,canActivate:[loginControl]},
+  {path:'member-attendent-events',component:AttendedEventsComponent,canActivate:[organizatorMemberControl]},
+  {path:'member-mycomments',component:MyCommentsComponent,canActivate:[organizatorMemberControl]},
+  {path:'member-mylikes',component:MyLikesComponent,canActivate:[organizatorMemberControl]}
 
   
 
