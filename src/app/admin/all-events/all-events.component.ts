@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/core/services/api/api.service';
+
 import { Router } from '@angular/router';
 import { Event } from 'src/core/models/event.model';
 import { Category } from 'src/core/models/category.model';
@@ -7,12 +8,15 @@ import { Category } from 'src/core/models/category.model';
 @Component({
   selector: 'app-all-events',
   templateUrl: './all-events.component.html',
-  styleUrls: ['./all-events.component.css']
+  styleUrls: ['./all-events.component.css'],
 })
-export class AllEventsComponent {
-  constructor(private router: Router, private service: ApiService) {}
+export class AllEventsComponent implements OnInit {
+  constructor(
+    private readonly router: Router,
+    private readonly service: ApiService
+  ) {}
 
-  events?: Event[];
+  events: Event[] = [];
   categories?: Category[];
   ngOnInit(): void {
     this.getAllEvents();
@@ -23,14 +27,17 @@ export class AllEventsComponent {
   }
   getAllCategories() {
     this.service.getAllEntities(Category).subscribe((response) => {
-      this.categories = response.data;   
-       //console.log(this.events);
+      this.categories = response.data;
+      console.log(this.events);
     });
   }
   getAllEvents() {
     this.service.getAllEntities(Event).subscribe((response) => {
-      this.events = response.data;      
-       //console.log(this.events);
+      this.events = response.data;
+      console.log(this.events);
     });
   }
+
+  cardColor: String = 'light blue';
+  cardColors = ['light blue', 'light green', 'light yellow', 'light red'];
 }
