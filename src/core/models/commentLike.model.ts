@@ -10,14 +10,5 @@ export class CommentLike{
     comment?:Comment;
     
 }
-import { User } from "./user.model";
-import { Comment } from "./comment.model";
 
-        export class CommentLike{
-            id?:number;
-            userId?:number;
-            commentId?:number;
-            user?:User;
-            comment?:Comment
-        }
 
