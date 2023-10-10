@@ -1,3 +1,5 @@
+import { Event } from "./event.model";
+import { User } from "./user.model";
 
 
 export class Comment{
@@ -5,4 +7,6 @@ export class Comment{
     description?:string;
     eventId?:number;
     userId?:number;
+    event?:Event;
+    user?:User;
 }

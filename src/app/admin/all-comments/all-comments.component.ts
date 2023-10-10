@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Comment } from 'src/core/models/comment.model';
+import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { ApiService } from 'src/core/services/api/api.service';
 
 @Component({
@@ -19,4 +20,22 @@ export class AllCommentsComponent {
         this.comments=res.data;
     });
   }
+  confirmDelete(id:any) {
+    const confirmDelete = window.confirm("Silmek istiyor musunuz?");
+    if(confirmDelete){
+      let status= this.apiService.deleteEntity(id,Comment);
+status.then(response=>{
+  if (response?.status == ResponseStatus.Ok) {
+    window.alert('kategori silindi!')
+  this.LoadComments();
+  }
+  else{
+    window.alert('silme işleminde hata oluştu')
+  }
+});
+    }else{
+      window.alert("Silme işlemi iptal edildi");
+    }
+  
+}
 }

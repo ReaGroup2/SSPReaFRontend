@@ -1,4 +1,5 @@
 <app-admin></app-admin>
+<button  class="btn btn-warning"(click)="openAddModal()" class="btn btn-sm bg-success text-white ml-2 addButton">Ekle</button>
 
 <div class="contentAdmin"style="position: absolute;">
   <table class="table table-striped table-centered mb-0">
@@ -19,8 +20,8 @@
           <button class="btn btn-danger btn-sm"  (click)="confirmDelete(item.id)">Sil</button>
 
         
-          <button class="btn btn-warning"(click)="openModal(item)" class="btn btn-sm bg-warning text-white ml-2">edit</button>
-          <button class="btn btn-warning"(click)="openModal(item)" class="btn btn-sm bg-success text-white ml-2">edit</button>
+          <button class="btn btn-warning"(click)="openModal(item)" class="btn btn-sm bg-warning text-white ml-2">Güncelle</button>
+          
         </td>
       </tr>
     </tbody>
@@ -28,33 +29,35 @@
 </div>
 <div class="modal-container" *ngIf="showModal" >
   <div class="modal-content">
-    <h2>Kullanıcı Bilgileri Formu</h2>
+    <h2 *ngIf="selectedCategory==undefined" >Category Ekleme</h2>
+    <h2 *ngIf="selectedCategory!=undefined" >Category Güncelleme</h2>
     <div >
       <form>
           <div class="row">
               <div class="col-md-6 col-sm-12">
-                  <div class="form-group">
+                  <div *ngIf="selectedCategory!=undefined" class="form-group">
                       <label for="Email">Id:</label>
-                      <input [(ngModel)]="selectedCategory!.id" [ngModelOptions]="{standalone: true}" type="email" class="form-control" id="Email" name="Email" required>
+                      <input readonly [(ngModel)]="selectedCategory!.id" [ngModelOptions]="{standalone: true}" type="email" class="form-control" required>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" *ngIf="selectedCategory==undefined">
+                    <label for="UserName">Kategori Adı:</label>
+                    <input [(ngModel)]=" categoryRequest!.categoryName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" required>
+                   
+                </div>  
+                  <div *ngIf="selectedCategory!=undefined" class="form-group" >
                       <label for="UserName">Kategori Adı:</label>
-                      <input [(ngModel)]="selectedCategory!.categoryName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="UserName" name="UserName" required>
+                      <input [(ngModel)]="selectedCategory!.categoryName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" required>
+                      
                   </div>     
                   <br>
-                  
-             
-                  
-                  
-                 
-                 
+       
               </div>
           </div>
           
           
           
     
-          <button (click)="updateCategory()"  class="btn btn-primary">Register</button>
+          <button (click)="selectedCategory==undefined?addCategory(): updateCategory()"  class="btn btn-primary">Tamamla</button>
       </form>
   </div>
     <!-- Kullanıcı bilgileri formu burada yer alabilir -->

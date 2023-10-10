@@ -41,6 +41,7 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
 import { ShowDialogComponent } from './admin/components/show-dialog/show-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ErrorComponent } from './error/error.component';
+import { AllCommentLikesComponent } from './admin/all-comment-likes/all-comment-likes.component';
 
 
 
@@ -84,6 +85,8 @@ import { ErrorComponent } from './error/error.component';
     AdminProfileComponent,   
     ShowDialogComponent,
     ErrorComponent,
+    AllCommentLikesComponent,
+    LoginComponent,
 
 
 

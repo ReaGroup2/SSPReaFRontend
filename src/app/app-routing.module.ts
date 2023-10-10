@@ -17,6 +17,7 @@ import { AllEventParticipantComponent } from './admin/all-event-participant/all-
 import { ErrorComponent } from './error/error.component';
 import { adminControl } from './admin-control';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { AllCommentLikesComponent } from './admin/all-comment-likes/all-comment-likes.component';
 
 
 
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'admin-categories', component: CategoriesComponent ,canActivate:[adminControl]},
   { path: 'admin-allevents', component: AllEventsComponent ,canActivate:[adminControl]},
   { path: 'admin-allcomments', component: AllCommentsComponent ,canActivate:[adminControl]},
+  { path: 'admin-allcomment-likes', component: AllCommentLikesComponent ,canActivate:[adminControl]},
   {
     path: 'admin-all-event-participant',
     component: AllEventParticipantComponent,
