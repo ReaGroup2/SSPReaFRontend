@@ -1,6 +1,7 @@
 import { Event } from './event.model';
 import { User } from './user.model';
 
+
 export class Comment {
   id?: number;
   description?: string;
@@ -10,3 +11,4 @@ export class Comment {
   user?: User;
   createdAt?: Date;
 }
+

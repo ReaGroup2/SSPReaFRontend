@@ -7,8 +7,10 @@
           <th>Id</th>
           <th>Description</th>
           <th>Event Id</th>
+          <th>Event Title</th>
           <th>User Id</th>
-       
+          <th>User Name</th>
+          <th>User Email</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -17,12 +19,15 @@
           <td>{{item.id}}</td>
           <td>{{item.description}}</td>
           <td>{{item.eventId }}</td>
+          <td>{{item.event?.title}}</td>
+          
           <td>{{item.userId }}</td>
+          <td>{{item.user?.fullName}}</td>
+          <td>{{item.user?.email}}</td>
   
-          <td class="table-action">
-            <a href="javascript: void(0);" class="btn btn-sm bg-danger text-white">delete</a>
-            <a href="javascript: void(0);" class="btn btn-sm bg-warning text-white ml-2">edit</a>
-            <a href="javascript: void(0);" class="btn btn-sm bg-success text-white ml-2">ekle</a>
+          <td class="table-action" style="display: flex;">
+            <a href="javascript: void(0);" class="btn btn-sm bg-danger text-white" (click)="confirmDelete(item.id)">delete</a>
+           
           </td>
   
         </tr>

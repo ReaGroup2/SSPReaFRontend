@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { EventParticipant } from 'src/core/models/eventParticipant.model';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/core/services/api/api.service';
+import { ResponseStatus } from 'src/core/models/response/base-response.model';
 
 @Component({
   selector: 'app-all-event-participant',
@@ -22,4 +23,22 @@ export class AllEventParticipantComponent {
       this.eventParticipants = res.data;
     });
   }
+  confirmDelete(id:any) {
+    const confirmDelete = window.confirm("Silmek istiyor musunuz?");
+    if(confirmDelete){
+      let status= this.apiService.deleteEntity(id,EventParticipant);
+status.then(response=>{
+  if (response?.status == ResponseStatus.Ok) {
+    window.alert('kategori silindi!')
+  this.LoadEventParticipants();
+  }
+  else{
+    window.alert('silme işleminde hata oluştu')
+  }
+});
+    }else{
+      window.alert("Silme işlemi iptal edildi");
+    }
+  
+}
 }
