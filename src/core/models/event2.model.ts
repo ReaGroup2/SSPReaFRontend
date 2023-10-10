@@ -19,8 +19,8 @@ export class Event {
   imagePath?: string='';
   title?: string='';//
   description?: string='';//
-  startDate?: Date;
-  finishDate?: Date;
+  startDate?: string='';
+  finishDate?: string='';
   isActive?: boolean=true;
   creatorId?: number=0;
   limit?: number=0;

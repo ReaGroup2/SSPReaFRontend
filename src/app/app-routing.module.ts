@@ -44,11 +44,13 @@ const routes: Routes = [
   {path:'profile', component: AdminProfileComponent,canActivate:[loginControl]},
   {path:'member-attendent-events',component:AttendedEventsComponent,canActivate:[organizatorMemberControl]},
   {path:'member-mycomments',component:MyCommentsComponent,canActivate:[organizatorMemberControl]},
-  {path:'member-mylikes',component:MyLikesComponent,canActivate:[organizatorMemberControl]}
+  {path:'member-mylikes',component:MyLikesComponent,canActivate:[organizatorMemberControl]},
 
   
-
 ];
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
