@@ -3,7 +3,7 @@ import { MatTableModule } from '@angular/material/table'; // MatTableModule'ü i
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/core/services/api/api.service';
-import { User } from 'src/core/models/user.model';
+import { User, UserType } from 'src/core/models/user.model';
 import { ShowDialogComponent } from '../components/show-dialog/show-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogData } from '../model/dialogdata';
@@ -29,12 +29,15 @@ export class AllUsersComponent {
   selectedImage: File | null = null;
 showModal = false;
 searchFilter?:number=0;
+chooseRole?:number;
 roleFilter?:number=3;
   users?: User[];
 tempUsers?: User[];
 selectedEditUser?: User;
   searchItem?: string;
   ngOnInit(): void {
+    this.roleFilterSelectedItem();
+this.searchFilterSelectedItem();
 
     this.LoadUsers();
   }
@@ -116,15 +119,18 @@ selectedEditUser?: User;
   }
   searchFilterSelectedItem(){
     document.getElementById("searchFilter")?.addEventListener("change", (event) => {
+      console.log("searchFilter:"+this.searchFilter);
       this.searchFilter = Number((event.target as HTMLInputElement).value);
       this.searchItem=undefined;
       this.LoadUsers(); 
-      console.log(this.searchFilter);
+      
     });
   }
   openModal(user?:User) {
     this.selectedEditUser=user;
     this.showModal = true;
+    this.chooseRole=this.selectedEditUser?.userType;
+    this.chooseRoleForUsers();
   }
   closeModal() {
     this.showModal = false;
@@ -135,15 +141,29 @@ selectedEditUser?: User;
 
   }
   async updateUser() {
-    if(this.selectedEditUser!=undefined){
-      this.selectedEditUser.imagePath="http://localhost:5258/api/Image/GetImage?resimKimlik="+this.selectedEditUser.email+'.jpeg';
+    console.log(this.selectedEditUser);
+    console.log(this.chooseRole);
+    if(this.selectedEditUser!=undefined && this.chooseRole!=3){
+     switch(this.chooseRole){
+        case 0:
+          this.selectedEditUser.userType= 0;
+          break;
+        case 1:
+          this.selectedEditUser.userType=1;
+          break;
+        case 2:
+          this.selectedEditUser.userType=2;
+          break;
+     };
+     this.selectedEditUser.password="123123123";
+     console.log(this.selectedEditUser);
     await this.service.updateEntity(this.selectedEditUser.id,this.selectedEditUser,User).then(response=>{
       if(response?.status==ResponseStatus.Ok){
-        this.uploadProfileImage();
+       
         alert("Güncelleme Başarılı");
         this.closeModal();
       }else{
-        alert("Güncelleme Başarısız");
+        alert("Güncelleme Başarısız Role seçiniz");
       }
     });
  
@@ -173,6 +193,12 @@ selectedEditUser?: User;
       // Resim seçilmedi
       console.error('Lütfen bir resim seçin.');
     }
+  }
+  chooseRoleForUsers(){
+    document.getElementById("chooseRole")?.addEventListener("change", (event) => {
+      this.chooseRole = Number((event.target as HTMLInputElement).value);
+      console.log("selectedRole:"+this.chooseRole);
+    });
   }
 
 }

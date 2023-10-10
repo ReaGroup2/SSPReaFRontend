@@ -8,5 +8,7 @@ export class Comment{
     eventId?:number;
     userId?:number;
     event?:Event;
-    user?:User
+    user?:User;
+
+
 }

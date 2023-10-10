@@ -45,3 +45,16 @@
       right: 10px;
       cursor: pointer;
     }
+    .form-group {
+      margin-bottom: 20px;
+  }
+  
+  .form-group label {
+      font-weight: bold;
+  }
+  
+  .form-group span {
+      display: inline-block;
+      padding: 10px;
+     
+      border-radius: 5px;}

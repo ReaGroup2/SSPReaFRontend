@@ -109,12 +109,16 @@ export class ApiService {
       .get<BaseDataResponse<User>>(this.endpoint + '/Auth/GetProfileInfo')
       .pipe(
         map((result) => {
+          console.log("GetProfileInfo:"+result.data.password);
           return result;
+
         })
       );
   }
 
-
+  getImage(email:string){
+    return "http://localhost:5258/api/Image/GetImage?resimKimlik="+email+'.jpeg';
+  }
   getAllEntities<TEntity>(entityType: Type<TEntity>) {
     return this.http.request<BaseDataResponse<TEntity[]>>
       ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
