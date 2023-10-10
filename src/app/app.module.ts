@@ -44,6 +44,7 @@ import { ErrorComponent } from './error/error.component';
 import { AttendedEventsComponent } from './member/attended-events/attended-events.component';
 import { MyCommentsComponent } from './member/my-comments/my-comments.component';
 import { MyLikesComponent } from './member/my-likes/my-likes.component';
+import { EventDetailCommentComponent } from './event-detail/event-detail-comment/event-detail-comment.component';
 
 
 
@@ -90,6 +91,7 @@ import { MyLikesComponent } from './member/my-likes/my-likes.component';
     AttendedEventsComponent,
     MyCommentsComponent,
     MyLikesComponent,
+    EventDetailCommentComponent,
 
 
 
