@@ -12,7 +12,7 @@ export class User {
   id: number = 0;
   email: string = '';
   userName: string = '';
-  fullName?: string = '';
+  fullName: string = '';
   phone: string = '';
   imagePath: string = '';
   isMale: boolean = false;

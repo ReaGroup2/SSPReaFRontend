@@ -380,27 +380,127 @@ a:hover {
   }
 }
 .kalp {
-	animation: kalp 1s steps(28);
-	background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
-	background-position: 0 0;
+  animation: kalp 1s steps(28);
+  background: url(https://cssanimation.rocks/images/posts/steps/heart.png)
+    no-repeat;
+  background-position: 0 0;
   position: absolute;
-            top: 0px;
-            right: 0px;
-	cursor: pointer;
-	height: 100px;
-	width: 100px;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
 }
 
 .kalp:hover {
-	background-position: -2800px 0;
-	transition: background 1s steps(28);
+  background-position: -2800px 0;
+  transition: background 1s steps(28);
 }
 
 @keyframes kalp {
-	0% {
-		background-position: 0 0;
-	}
-	100% {
-		background-position: -2800px 0;
-	}
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2800px 0;
+  }
+}
+
+/* --------- 6.3 Testimonials ---------- */
+
+.testimonial {
+  padding: 15px;
+}
+
+blockquote {
+  position: relative;
+}
+
+.testimonial img {
+  max-height: 120px;
+  border-radius: 250em;
+}
+
+.testimonial footer {
+  padding-top: 12px;
+}
+
+/* Style Classic - Avatar above Testimonial */
+
+.testimonial.classic img {
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+.testimonial.classic q {
+  display: block;
+}
+
+.testimonial.classic footer:before {
+  display: block;
+  content: "";
+  width: 30px;
+  height: 4px;
+  margin: 10px auto 15px auto;
+}
+
+/* Style Big */
+
+.testimonial.bigtest {
+  padding-top: 0;
+}
+
+.testimonial.bigtest q {
+  font-size: 22px;
+}
+
+/* Section Headings */
+
+.section-heading {
+  padding: 0 0 15px 0;
+  font-size: 50px !important;
+}
+.section-heading h3 {
+  font-size: 60px !important;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  padding-top: 0;
+}
+
+.section-heading h3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ccc;
+  letter-spacing: 2px;
+  padding-bottom: 0;
+}
+
+/*Style*/
+
+.button {
+  font-size: 16px;
+  margin: 35px 0;
+  padding: 11px 16px;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  display: inline-block;
+  border-width: 3px;
+  border-style: solid;
+}
+
+/* Play Button */
+
+#video-section {
+  position: relative;
+}
+
+.play-video {
+  height: 110px;
+  position: absolute;
+  top: 50%;
+  margin-top: -110px;
+  width: 100%;
 }
