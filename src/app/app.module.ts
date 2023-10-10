@@ -42,6 +42,10 @@ import { ShowDialogComponent } from './admin/components/show-dialog/show-dialog.
 import {MatDialogModule} from '@angular/material/dialog';
 import { ErrorComponent } from './error/error.component';
 import { AllCommentLikesComponent } from './admin/all-comment-likes/all-comment-likes.component';
+import { AttendedEventsComponent } from './member/attended-events/attended-events.component';
+import { MyCommentsComponent } from './member/my-comments/my-comments.component';
+import { MyLikesComponent } from './member/my-likes/my-likes.component';
+
 
 
 
@@ -87,6 +91,10 @@ import { AllCommentLikesComponent } from './admin/all-comment-likes/all-comment-
     ErrorComponent,
     AllCommentLikesComponent,
     LoginComponent,
+    AttendedEventsComponent,
+    MyCommentsComponent,
+    MyLikesComponent,
+
 
 
 
@@ -99,9 +107,6 @@ import { AllCommentLikesComponent } from './admin/all-comment-likes/all-comment-
     FormsModule,
     HttpClientModule,
     MatDialogModule,
-
-
-
 
 
   ],

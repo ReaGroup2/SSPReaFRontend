@@ -29,12 +29,8 @@ constructor(private authService:AuthService) { }
     
   const searchBtn=document.querySelector('.bx-serach')as HTMLElement;
     const sidebar=document.querySelector('.sidebar')as HTMLElement;
-    sidebar.classList.toggle('active'); 
-    
-
+    sidebar.classList.toggle('active');     
 }
-
- 
 
 }
 

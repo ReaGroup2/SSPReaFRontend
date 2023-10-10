@@ -1,18 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
-  <body>
+
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
+rel="stylesheet"
+/>
+   
+   
     <app-navbar></app-navbar>
     <div class="etkinlik mt-5 ml-5 mr-5">
-      <app-events-card></app-events-card>
+      <!-- <app-events-card></app-events-card> -->
+      <a class="postcard__img_link" style="cursor: pointer;">
+        <article class="postcard {{cardColor}}  mt-2">
+         
+            <img
+              class="postcard__img"
+              src="https://picsum.photos/1000/1000"
+              alt="Image Title"
+            />
+         
+          <div class="postcard__text t-dark">
+            <h1 class="postcard__title blue"><a href="#">{{event?.title}}</a></h1>
+            <div class="postcard__subtitle small">
+              <time datetime="2020-05-25 12:00:00">
+                <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+              </time>
+            </div>
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt">
+             {{event?.description}}
+            </div>
+         
+             
+                <ul class="postcard__tagbox">
+              <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+              <li class="tag__item">
+                <i class="fas fa-clock mr-2"></i>55 mins.
+              </li>
+              <li class="tag__item play blue">
+                <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+              </li>
+              
+            </ul>
+            
+             
+        
+          </div>
+          <div class="kalp"></div>
+        </article>
+      </a>
     </div>
 
     <!-- Tab content -->
@@ -142,5 +176,4 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
-  </body>
-</html>
+

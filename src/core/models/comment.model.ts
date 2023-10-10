@@ -9,4 +9,6 @@ export class Comment{
     userId?:number;
     event?:Event;
     user?:User;
+
+
 }
