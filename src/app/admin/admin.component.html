@@ -1,4 +1,4 @@
-<div  class="sidebar">
+<div class="sidebar">
   <div class="logo_content">
     <div class="logo">
       <i class="fa-solid fa-face-smile"></i>
@@ -13,6 +13,7 @@
       <input placeholder="Search..." />
       <span class="tooltip">Arama</span>
     </li>
+     <!--KULLANICI PROFİL MENUSU  -->
     <li>
       <a href="/profile">
         <i class="fa-solid fa-user"></i>
@@ -20,6 +21,7 @@
       </a>
       <span class="tooltip">Profilim</span>
     </li>
+    <!--KULLANICININ MENULERİ  -->
     <li *ngIf="currentUser?.userType!=0">
       <a href="/member-attendent-events">
         <i class="fa-solid fa-calendar-days"></i>
@@ -27,14 +29,14 @@
       </a>
       <span class="tooltip">Katıldığım Etkinlikler</span>
     </li>
-    <li *ngIf="currentUser?.userType!=0" >
+    <li *ngIf="currentUser?.userType!=0">
       <a href="/member-mycomments">
         <i class="fa-regular fa-comment"></i>
         <span class="links_name">Yorumlarım</span>
       </a>
       <span class="tooltip">Yorumlarım</span>
     </li>
-    <li *ngIf="currentUser?.userType!=0"> 
+    <li *ngIf="currentUser?.userType!=0">
       <a href="/member-mylikes">
         <i class="fa-regular fa-heart"></i>
         <span class="links_name">Beğenilerim</span>
@@ -48,7 +50,7 @@
       </a>
       <span class="tooltip">Kullanıcılar</span>
     </li>
-
+    <!--ADMİNİN MENULERİ  -->
     <li *ngIf="currentUser?.userType==0">
       <a href="/admin-allcategories">
         <i class="fa-solid fa-list-check"></i>
@@ -84,7 +86,7 @@
       </a>
       <span class="tooltip">Katılımcılar</span>
     </li>
-
+    <!--ORTAK MENULER  -->
     <li>
       <a href="/home">
         <i class="fa-solid fa-backward"></i>
@@ -104,13 +106,10 @@
   <div class="profile_content">
     <div class="profile">
       <div class="profile_details">
-        <img
-          src="{{currentUser?.imagePath}}"
-          alt=""
-        />
+        <img src="{{currentUser?.imagePath}}" alt="" />
 
         <div class="name_job">
-          <div class="name">{{currentUser?.fullName}}</div>
+          <div style="font-size: 11px;" class="name">{{currentUser?.email}}</div>
           <div *ngIf="currentUser?.userType==0" class="job">Admin</div>
           <div *ngIf="currentUser?.userType==1" class="job">Organizatör</div>
           <div *ngIf="currentUser?.userType==2" class="job">Kullanıcı</div>
@@ -121,5 +120,6 @@
         <i class="bx bx-log-out" id="log_out"></i>
       </a>
     </div>
-  </div>
+      
+  </div>
 </div>

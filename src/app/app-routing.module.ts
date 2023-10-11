@@ -1,59 +1,52 @@
 import { NgModule } from '@angular/core';
 import { RouteReuseStrategy, RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+
+//Componentler
 import { AboutComponent } from './about/about.component';
-import { CausesComponent } from './causes/causes.component';
-import { BlogComponent } from './blog/blog.component';
-import { ContactComponent } from './contact/contact.component';
-import { LoginComponent } from './login/login.component';
-import { EventDetailComponent } from './event-detail/event-detail.component';
-import { AdminComponent } from './admin/admin.component';
-import { AllUsersComponent } from './admin/all-users/all-users.component';
-import { RefleshPage } from './refleshPage';
-import { CategoriesComponent } from './admin/categories/categories.component';
-import { AllEventsComponent } from './admin/all-events/all-events.component';
-import { AllCommentsComponent } from './admin/all-comments/all-comments.component';
-import { AllEventParticipantComponent } from './admin/all-event-participant/all-event-participant.component';
-import { ErrorComponent } from './error/error.component';
-import { adminControl, loginControl, organizatorMemberControl } from './admin-control';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { AllCommentLikesComponent } from './admin/all-comment-likes/all-comment-likes.component';
+import { AllCommentsComponent } from './admin/all-comments/all-comments.component';
+import { AllEventParticipantComponent } from './admin/all-event-participant/all-event-participant.component';
+import { AllEventsComponent } from './admin/all-events/all-events.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { AttendedEventsComponent } from './member/attended-events/attended-events.component';
+import { BlogComponent } from './blog/blog.component';
+import { CausesComponent } from './causes/causes.component';
+import { CategoriesComponent } from './admin/categories/categories.component';
+import { ContactComponent } from './contact/contact.component';
+import { ErrorComponent } from './error/error.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { MyCommentsComponent } from './member/my-comments/my-comments.component';
 import { MyLikesComponent } from './member/my-likes/my-likes.component';
-
-
+import { RefleshPage } from './refleshPage';
+import { adminControl, loginControl, organizatorMemberControl } from './admin-control';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
-  { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'causes', component: CausesComponent },
+  { path: 'admin-allcategories', component: CategoriesComponent, canActivate: [adminControl] },
+  { path: 'admin-allevents', component: AllEventsComponent, canActivate: [adminControl] },
+  { path: 'admin-allcomments', component: AllCommentsComponent, canActivate: [adminControl] },
+  { path: 'admin-allcomment-likes', component: AllCommentLikesComponent, canActivate: [adminControl] },
+  { path: 'admin-all-event-participant', component: AllEventParticipantComponent, canActivate: [adminControl] },
+  { path: 'admin-allusers', component: AllUsersComponent, canActivate: [adminControl] },
   { path: 'blog', component: BlogComponent },
+  { path: 'causes', component: CausesComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'error', component: ErrorComponent },
   { path: 'event-detail', component: EventDetailComponent },
-  { path: 'admin-allusers', component: AllUsersComponent,canActivate:[adminControl]},
-  { path: 'admin-allcategories', component: CategoriesComponent ,canActivate:[adminControl]},
-  { path: 'admin-allevents', component: AllEventsComponent ,canActivate:[adminControl]},
-  { path: 'admin-allcomments', component: AllCommentsComponent ,canActivate:[adminControl]},
-  { path: 'admin-allcomment-likes', component: AllCommentLikesComponent ,canActivate:[adminControl]},
-  {
-    path: 'admin-all-event-participant',
-    component: AllEventParticipantComponent,canActivate:[adminControl]
-  },
-  {path: 'error', component: ErrorComponent },
-  {path:'profile', component: AdminProfileComponent,canActivate:[loginControl]},
-  {path:'member-attendent-events',component:AttendedEventsComponent,canActivate:[organizatorMemberControl]},
-  {path:'member-mycomments',component:MyCommentsComponent,canActivate:[organizatorMemberControl]},
-  {path:'member-mylikes',component:MyLikesComponent,canActivate:[organizatorMemberControl]},
-
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'member-attendent-events', component: AttendedEventsComponent, canActivate: [organizatorMemberControl] },
+  { path: 'member-mycomments', component: MyCommentsComponent, canActivate: [organizatorMemberControl] },
+  { path: 'member-mylikes', component: MyLikesComponent, canActivate: [organizatorMemberControl] },
+  { path: 'profile', component: AdminProfileComponent, canActivate: [loginControl] },
   
 ];
-
-
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
@@ -61,5 +54,5 @@ const routes: Routes = [
   providers: [{ provide: RouteReuseStrategy, useClass: RefleshPage }],
 })
 export class AppRoutingModule {
-  constructor() {}
+  constructor() { }
 }

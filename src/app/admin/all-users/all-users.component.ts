@@ -23,117 +23,116 @@ import { ResponseStatus } from 'src/core/models/response/base-response.model';
 
 export class AllUsersComponent {
 
-  constructor(private router: Router, private service: ApiService,private matDialog:MatDialog ) {
-   
+  constructor(private router: Router, private service: ApiService, private matDialog: MatDialog) {
+
   }
   selectedImage: File | null = null;
-showModal = false;
-searchFilter?:number=0;
-chooseRole?:number;
-roleFilter?:number=3;
+  showModal = false;
+  searchFilter?: number = 0;
+  chooseRole?: number;
+  roleFilter?: number = 3;
   users?: User[];
-tempUsers?: User[];
-selectedEditUser?: User;
+  tempUsers?: User[];
+  selectedEditUser?: User;
   searchItem?: string;
   ngOnInit(): void {
     this.roleFilterSelectedItem();
-this.searchFilterSelectedItem();
+    this.searchFilterSelectedItem();
 
     this.LoadUsers();
   }
 
   LoadUsers() {
     this.service.getAllEntities(User).subscribe((res) => {
-      switch(this.searchFilter){
+      switch (this.searchFilter) {
         case 0:
           this.tempUsers = res.data;
           break;
         case 1:
-          this.tempUsers = this.searchItem ==undefined ? res.data : res.data.filter((x: User) =>
-        x.id?.toString().toLowerCase().includes(this.searchItem?.toLowerCase() as string)
+          this.tempUsers = this.searchItem == undefined ? res.data : res.data.filter((x: User) =>
+            x.id?.toString().toLowerCase().includes(this.searchItem?.toLowerCase() as string)
 
-      );
+          );
           break;
         case 2:
-          this.tempUsers = this.searchItem ==undefined ? res.data : res.data.filter((x: User) =>
-        x.fullName?.toString().toLowerCase().includes(this.searchItem?.toLowerCase() as string)
+          this.tempUsers = this.searchItem == undefined ? res.data : res.data.filter((x: User) =>
+            x.fullName?.toString().toLowerCase().includes(this.searchItem?.toLowerCase() as string)
 
-      );
+          );
           break;
         case 3:
-          this.tempUsers = this.searchItem ==undefined ? res.data : res.data.filter((x: User) =>
-        x.email?.toString().toLowerCase().includes(this.searchItem?.toLowerCase() as string)
+          this.tempUsers = this.searchItem == undefined ? res.data : res.data.filter((x: User) =>
+            x.email?.toString().toLowerCase().includes(this.searchItem?.toLowerCase() as string)
 
-      );
+          );
           break;
-        
+
       }
-      this.users = this.roleFilter==3 ? this.tempUsers : this.tempUsers?.filter((x: User) =>
-        x.userType==this.roleFilter
+      this.users = this.roleFilter == 3 ? this.tempUsers : this.tempUsers?.filter((x: User) =>
+        x.userType == this.roleFilter
       );
       this.users?.sort((a, b) => a.id! - b.id!);
-     
+
       console.log(this.users);
     });
 
 
   }
   openDialog(id?: number) {
-    
-     
-    if(id!=null){
+
+
+    if (id != null) {
       this.matDialog.open(ShowDialogComponent, {
         position: {
           top: '24vh',
           left: '40vw'
-      },
+        },
         width: '300px',
         data: new DialogData(
           "Kullanıcı Silme",
           "Kullanıcı silinecek emin misiniz?",
           id,
           User,
-           
+
         ),
       });
       this.matDialog.afterAllClosed.subscribe((res) => {
-  
+
         this.LoadUsers();
       });
-      
-    }else{
 
     }
   }
   RefleshUsers() {
 
     this.LoadUsers();
-    
+
   }
-  roleFilterSelectedItem(){
-    document.getElementById("roleFilter")?.addEventListener("change", (event) => {
+  roleFilterSelectedItem() {
+    document.getElementById("roleFilter")?.addEventListener("click", (event) => {
       this.roleFilter = Number((event.target as HTMLInputElement).value);
-      this.LoadUsers(); 
+      this.LoadUsers();
       console.log(this.roleFilter);
     });
   }
-  searchFilterSelectedItem(){
-    document.getElementById("searchFilter")?.addEventListener("change", (event) => {
-      console.log("searchFilter:"+this.searchFilter);
+  searchFilterSelectedItem() {
+    document.getElementById("searchFilter")?.addEventListener("click", (event) => {
+      console.log("searchFilter:" + this.searchFilter);
       this.searchFilter = Number((event.target as HTMLInputElement).value);
-      this.searchItem=undefined;
-      this.LoadUsers(); 
-      
+      this.searchItem = undefined;
+      this.LoadUsers();
+
     });
   }
-  openModal(user?:User) {
-    this.selectedEditUser=user;
+  openModal(user?: User) {
+    this.selectedEditUser = user;
+    this.selectedEditUser!.id = user!.id
     this.showModal = true;
-    this.chooseRole=this.selectedEditUser?.userType;
+    this.chooseRole = this.selectedEditUser?.userType;
     this.chooseRoleForUsers();
   }
   closeModal() {
-    this.showModal = false;
+    this.showModal = false;
     location.reload();
   }
   onImageSelect(event: any) {
@@ -143,40 +142,41 @@ this.searchFilterSelectedItem();
   async updateUser() {
     console.log(this.selectedEditUser);
     console.log(this.chooseRole);
-    if(this.selectedEditUser!=undefined && this.chooseRole!=3){
-     switch(this.chooseRole){
+    if (this.selectedEditUser != undefined && this.chooseRole != 3) {
+      switch (this.chooseRole) {
         case 0:
-          this.selectedEditUser.userType= 0;
+          this.selectedEditUser.userType = 0;
           break;
         case 1:
-          this.selectedEditUser.userType=1;
+          this.selectedEditUser.userType = 1;
           break;
         case 2:
-          this.selectedEditUser.userType=2;
+          this.selectedEditUser.userType = 2;
           break;
-     };
-     this.selectedEditUser.password="123123123";
-     console.log(this.selectedEditUser);
-    await this.service.updateEntity(this.selectedEditUser.id,this.selectedEditUser,User).then(response=>{
-      if(response?.status==ResponseStatus.Ok){
-       
-        alert("Güncelleme Başarılı");
-        this.closeModal();
-      }else{
-        alert("Güncelleme Başarısız Role seçiniz");
-      }
-    });
- 
-  }
+      };
+
+      console.log(this.selectedEditUser);
+      await this.service.updateEntity(this.selectedEditUser!.id, this.selectedEditUser, User).then(response => {
+        if (response?.status == ResponseStatus.Ok) {
+
+          alert("Güncelleme Başarılı");
+          this.closeModal();
+        } else {
+          alert("Güncelleme Başarısız Role seçiniz");
+        }
+      });
+      this.LoadUsers();
+
+    }
   }
   uploadProfileImage() {
-    
+
     if (this.selectedImage) {
       const selectedImageCopy: File = new File([this.selectedImage], this.selectedEditUser!.email + '.jpeg', {
         type: this.selectedImage.type,
       });
       this.selectedImage = selectedImageCopy;
-      
+
       this.service.uploadProfileImage(this.selectedImage).subscribe(
         (response) => {
           // Yükleme başarılı
@@ -194,10 +194,10 @@ this.searchFilterSelectedItem();
       console.error('Lütfen bir resim seçin.');
     }
   }
-  chooseRoleForUsers(){
-    document.getElementById("chooseRole")?.addEventListener("change", (event) => {
+  chooseRoleForUsers() {
+    document.getElementById("chooseRole")?.addEventListener("click", (event) => {
       this.chooseRole = Number((event.target as HTMLInputElement).value);
-      console.log("selectedRole:"+this.chooseRole);
+      console.log("selectedRole:" + this.chooseRole);
     });
   }
 
