@@ -24,7 +24,7 @@ export class ContactFormComponent {
 
   sendEmail() {
 this.message+="{"+this.name+this.surname+"} tarafından gönderildi"
-    if (this.email != null&&this.message!) {
+    if (this.email != null&&this.name!&&this.surname) {
       this.mailRequest.recepients = "ilkersenel5797@gmail.com";
       this.mailRequest.body = this.message;
       this.mailRequest.subject = "SSP:" + this.email + " İlker Şenel";
@@ -45,6 +45,7 @@ this.message+="{"+this.name+this.surname+"} tarafından gönderildi"
     }
     else {
       this.errorMessage = "lütfen boş kısımları doldurun";
+      this.name=this.surname=this.message=this.email='';
     }
     console.log(this.message)
   }
