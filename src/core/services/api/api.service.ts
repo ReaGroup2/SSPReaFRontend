@@ -13,6 +13,8 @@ import { RegisterRequest } from '../../models/request/register-request.model';
 import { User } from '../../models/user.model';
 import { BaseResponse } from 'src/core/models/response/base-response.model';
 import { ToastrService } from 'ngx-toastr';
+import { MailRequest } from 'src/core/models/request/mailrequest.model';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -133,5 +135,11 @@ export class ApiService {
     return this.http.get(`${this.endpoint}/Image/GetImage/?resimKimlik=${resimKimlik}`, {
       responseType: 'blob'
     });
+  }
+
+  sendEmail(emailRequest:MailRequest):Observable<any> {
+   
+
+    return this.http.post(`${this.endpoint}/mail`, emailRequest);
   }
 }
