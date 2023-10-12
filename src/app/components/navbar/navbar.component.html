@@ -25,26 +25,14 @@
           <li><a href="/causes" class="nav-link">Neden Biz</a></li>
           <li><a href="/blog" class="nav-link">Etkinlikler</a></li>
           <li><a href="/contact" class="nav-link">İletişim</a></li>
-          <li *ngIf="currentUser == null">
-            <a href="/login" class="nav-link">Giriş Yap/Kayıt Ol</a>
-          </li>
-
-          <li *ngIf="currentUser != null">
-            <a href="/profile" class="nav-link">Profile</a>
-          </li>
-          <li *ngIf="currentUser != null">
-            <a href="admin" class="nav-link"
-              ><img
-                style="width: 30px; height: 30px"
-                src="{{ currentUser.imagePath }}"
-                alt=""
-            /></a>
-          </li>
-          <li *ngIf="currentUser != null">
-            <a style="cursor: pointer" (click)="logout()" class="nav-link"
-              >LogOut</a
-            >
-          </li>
+          <li *ngIf="currentUser==null"><a href="/login" class="nav-link">Giriş Yap/Kayıt Ol</a></li>
+          
+          <li *ngIf="currentUser!=null"><a href="/profile" class="nav-link">Profile</a></li>
+          <li *ngIf="currentUser!=null"><a href="/profile" class="nav-link"><img style="width: 30px;height: 30px;"
+            src="{{currentUser?.imagePath}}"
+            alt=""
+          /></a></li>
+          <li *ngIf="currentUser!=null"><a style=" cursor: pointer;" (click)="logout()" class="nav-link">LogOut</a></li>
         </ul>
       </nav>
 

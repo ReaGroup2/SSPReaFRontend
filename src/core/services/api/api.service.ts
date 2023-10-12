@@ -13,6 +13,8 @@ import { RegisterRequest } from '../../models/request/register-request.model';
 import { User } from '../../models/user.model';
 import { BaseResponse } from 'src/core/models/response/base-response.model';
 import { ToastrService } from 'ngx-toastr';
+import { MailRequest } from 'src/core/models/request/mailrequest.model';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -78,8 +80,8 @@ export class ApiService {
 
   getEntityById<TEntity>(id: number, entityType: Type<TEntity>) {
     return this.http.get<BaseDataResponse<TEntity>>
-    (`${environment.api_url}/${entityType.name}/GetById?id=${id}`)
-    .pipe(share()).toPromise();
+      (`${environment.api_url}/${entityType.name}/GetById?id=${id}`)
+      .pipe(share()).toPromise();
   }
 
 
@@ -101,23 +103,21 @@ export class ApiService {
       .pipe(share()).toPromise();
   }
 
- 
+
 
   //Profil Getir
   getProfileInfo(): Observable<BaseDataResponse<User>> {
     return this.http
       .get<BaseDataResponse<User>>(this.endpoint + '/Auth/GetProfileInfo')
       .pipe(
-        map((result) => {
-          console.log("GetProfileInfo:"+result.data.password);
+        map((result) => {          
           return result;
-
         })
       );
   }
 
-  getImage(email:string){
-    return "http://localhost:5258/api/Image/GetImage?resimKimlik="+email+'.jpeg';
+  getImage(email: string) {
+    return "http://localhost:5258/api/Image/GetImage?resimKimlik=" + email + '.jpeg';
   }
   getAllEntities<TEntity>(entityType: Type<TEntity>) {
     return this.http.request<BaseDataResponse<TEntity[]>>
@@ -126,7 +126,7 @@ export class ApiService {
 
   uploadProfileImage(file: File): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append('file', file, file.name); 
+    formData.append('file', file, file.name);
 
     return this.http.post(`${this.endpoint}/Image/UploadImage`, formData);
   }
@@ -135,5 +135,11 @@ export class ApiService {
     return this.http.get(`${this.endpoint}/Image/GetImage/?resimKimlik=${resimKimlik}`, {
       responseType: 'blob'
     });
+  }
+
+  sendEmail(emailRequest:MailRequest):Observable<any> {
+   
+
+    return this.http.post(`${this.endpoint}/mail`, emailRequest);
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/core/models/user.model';
 import { AuthService } from 'src/core/services/auth/auth.service';
 
@@ -7,18 +8,30 @@ import { AuthService } from 'src/core/services/auth/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
-  constructor(private authService:AuthService) { }
-  currentUser:User  | null = null;
+export class NavbarComponent implements OnInit {
+  constructor(private authService: AuthService,private route:ActivatedRoute) { }
+  currentUser: User | null = null;
   ngOnInit(): void {
-    this.authService.currentUser.subscribe(user=>{
-        this.currentUser=user;
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
+    this.route.params.subscribe((params) => {
+      console.log("çalıştı")
+       const methodName = params;
+
+      // Metodu çağırın (örneğin, 'methodName' bir işlem adı olsun)
+      if (methodName.toString() === 'logout') {
+        this.logout();
+      }
     });
 
   }
-  logout(){
-    console.log("logout çalıştı");  
+  logout() {
+    console.log("logout çalıştı");
     this.authService.logOut();
-    console.log(this.currentUser);
+    //console.log(this.currentUser);
   }
+
+ 
+ 
 }
