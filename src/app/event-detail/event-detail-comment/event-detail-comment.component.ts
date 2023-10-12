@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/core/services/api/api.service';
-import { Event } from 'src/core/models/event.model';
 import { User } from 'src/core/models/user.model';
 import { CommentRequest } from 'src/core/models/request/comment-request.model';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { Comment } from 'src/core/models/response/comment-request.model';
 import { CommentLikeRequest } from 'src/core/models/request/commentLike-request.model';
 import { CommentLike } from 'src/core/models/commentLike.model';
+import { EventParticipant } from 'src/core/models/eventParticipant.model';
 
 @Component({
   selector: 'app-event-detail-comment',
@@ -120,6 +120,7 @@ export class EventDetailCommentComponent {
     return x;
   }
 
+  
   // handleLikeButtonClick() {
   //   // let likeCount: number = 0;
   //   // const button = document.querySelector<HTMLElement>('.like-button');
