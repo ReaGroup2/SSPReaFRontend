@@ -4,7 +4,6 @@ import { User } from 'src/core/models/user.model';
 import { ApiService } from 'src/core/services/api/api.service';
 import { AuthService } from 'src/core/services/auth/auth.service';
 
-import { Component, HostListener } from '@angular/core';
 
 
 
@@ -44,9 +43,6 @@ export class AppComponent {
 
     console.log(this.selectedUser);
   }
-
-  constructor(){}
-  title = 'SSPRea';
  
 
  

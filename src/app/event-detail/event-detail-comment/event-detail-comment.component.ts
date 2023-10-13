@@ -87,6 +87,7 @@ export class EventDetailCommentComponent {
     );
     if (index > -1) {
       window.alert('Bu yorum beğenilmiş.');
+      
     } else {
       this.commentLike.commentId = comment.id;
       this.commentLike.userId = this.currentUser.id;

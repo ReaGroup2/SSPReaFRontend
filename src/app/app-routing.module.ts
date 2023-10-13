@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'error', component: ErrorComponent },
   { path: 'event-detail', component: EventDetailComponent },
-  { path:"chat",component:ChatComponent}
+  { path:"chat",component:ChatComponent},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'member-attendent-events', component: AttendedEventsComponent, canActivate: [organizatorMemberControl] },
