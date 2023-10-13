@@ -23,22 +23,20 @@ export class AllEventParticipantComponent {
       this.eventParticipants = res.data;
     });
   }
-  confirmDelete(id:any) {
-    const confirmDelete = window.confirm("Silmek istiyor musunuz?");
-    if(confirmDelete){
-      let status= this.apiService.deleteEntity(id,EventParticipant);
-status.then(response=>{
-  if (response?.status == ResponseStatus.Ok) {
-    window.alert('kategori silindi!')
-  this.LoadEventParticipants();
-  }
-  else{
-    window.alert('silme işleminde hata oluştu')
-  }
-});
-    }else{
-      window.alert("Silme işlemi iptal edildi");
+  confirmDelete(id: any) {
+    const confirmDelete = window.confirm('Silmek istiyor musunuz?');
+    if (confirmDelete) {
+      let status = this.apiService.deleteEntity(id, EventParticipant);
+      status.then((response) => {
+        if (response?.status == ResponseStatus.Ok) {
+          window.alert('Silme işlemi başarılı!');
+          this.LoadEventParticipants();
+        } else {
+          window.alert('Silme işleminde hata oluştu');
+        }
+      });
+    } else {
+      window.alert('Silme işlemi iptal edildi');
     }
-  
-}
+  }
 }

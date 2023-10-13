@@ -3,14 +3,13 @@ import { ApiService } from 'src/core/services/api/api.service';
 import { Router } from '@angular/router';
 import { Event } from 'src/core/models/event.model';
 import { Category } from 'src/core/models/category.model';
-import { User } from 'src/core/models/user.model';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { EventRequest } from 'src/core/models/request/event-request.model';
 
 @Component({
   selector: 'app-all-events',
   templateUrl: './all-events.component.html',
-  styleUrls: ['./all-events.component.css']
+  styleUrls: ['./all-events.component.css'],
 })
 export class AllEventsComponent implements OnInit {
   constructor(private router: Router, private service: ApiService) {
@@ -35,19 +34,20 @@ export class AllEventsComponent implements OnInit {
   }
 
   async uploadProfileImage(text?: string) {
-
-
     if (this.selectedImage) {
-      const selectedImageCopy: File = new File([this.selectedImage], this.text + '.jpeg', {
-        type: this.selectedImage.type,
-      });
+      const selectedImageCopy: File = new File(
+        [this.selectedImage],
+        this.text + '.jpeg',
+        {
+          type: this.selectedImage.type,
+        }
+      );
       this.selectedImage = selectedImageCopy;
 
       await this.service.uploadProfileImage(this.selectedImage).subscribe(
         (response) => {
           // Yükleme başarılı
           console.log('Resim yükleme başarılı:', response);
-
           // Profil resmi ile ilgili başka işlemleri yapabilirsiniz
         },
         (error) => {
@@ -60,27 +60,26 @@ export class AllEventsComponent implements OnInit {
       console.error('Lütfen bir resim seçin.');
     }
   }
- 
- 
-  getAllEvents() {
 
+  getAllEvents() {
     this.service.getAllEntities(Event).subscribe((response) => {
       this.events = response.data.sort((a, b) => a.id! - b.id!);
-
-
     });
   }
   onImageSelect(event: any) {
     this.selectedImage = event.target.files[0];
   }
 
-
   selectCategoryOnModal() {
-    document.getElementById("selectCategory")?.addEventListener("click", (event) => {
-      this.selectedCategory = Number((event.target as HTMLInputElement).value);
+    document
+      .getElementById('selectCategory')
+      ?.addEventListener('click', (event) => {
+        this.selectedCategory = Number(
+          (event.target as HTMLInputElement).value
+        );
 
-      //console.log(this.selectedCategory);
-    });
+        //console.log(this.selectedCategory);
+      });
   }
   getAllCategories() {
     this.service.getAllEntities(Category).subscribe((response) => {
@@ -89,26 +88,25 @@ export class AllEventsComponent implements OnInit {
     });
   }
 
-//Modal Aç-Kapa
+  //Modal Aç-Kapa
   openAddModal() {
-    this.selectedEditEvent = new Event;
+    this.selectedEditEvent = new Event();
     this.showModal = true;
     this.getAllCategories();
     this.isCreate = true;
     this.selectedCategory = 0;
-    this.info = "Etkinlik Ekle";
+    this.info = 'Etkinlik Ekle';
     this.createEvent();
   }
 
   openModal(event?: Event) {
-    this.info = "Etkinlik Güncelle"
+    this.info = 'Etkinlik Güncelle';
     this.isCreate = false;
     this.showModal = true;
     this.selectedEditEvent = event;
     this.selectedCategory = event?.categoryId;
     this.getAllCategories();
     this.selectCategoryOnModal();
-
   }
 
   closeModal() {
@@ -119,33 +117,40 @@ export class AllEventsComponent implements OnInit {
     this.selectedEditEvent = undefined;
   }
 
-
-//Etkinlik Ekle-Sil-Güncelle metodları
+  //Etkinlik Ekle-Sil-Güncelle metodları
   confirmDelete(id: any) {
-    const confirmDelete = window.confirm("Silmek istiyor musunuz?");
+    const confirmDelete = window.confirm('Silmek istiyor musunuz?');
     if (confirmDelete) {
       let status = this.service.deleteEntity(id, Event);
-      status.then(response => {
+      status.then((response) => {
         if (response?.status == ResponseStatus.Ok) {
-          window.alert('etkinlik silindi!')
+          window.alert('etkinlik silindi!');
           this.getAllEvents();
-        }
-        else {
-          window.alert('silme işleminde hata oluştu')
+        } else {
+          window.alert('silme işleminde hata oluştu');
         }
       });
     } else {
-      window.alert("Silme işlemi iptal edildi");
+      window.alert('Silme işlemi iptal edildi');
     }
-
   }
   createEvent() {
-    console.log("ekleme çalıştı");
-    this.text = this.selectedEditEvent?.categoryId + '_' + this.selectedEditEvent?.creatorId + '_' + this.selectedEditEvent?.title?.substring(0, 20);
+    // console.log('ekleme çalıştı');
+    this.text =
+      this.selectedEditEvent?.categoryId +
+      '_' +
+      this.selectedEditEvent?.creatorId +
+      '_' +
+      this.selectedEditEvent?.title?.substring(0, 20);
     this.uploadProfileImage(this.text);
-    this.selectedEditEvent!.imagePath = "http://localhost:5258/api/Image/GetImage?resimKimlik=" + this.text + ".jpeg";
-    console.log(this.selectedEditEvent)
-    this.service.getProfileInfo().subscribe(user => this.selectedEditEvent!.creatorId = user.data.id);
+    this.selectedEditEvent!.imagePath =
+      'http://localhost:5258/api/Image/GetImage?resimKimlik=' +
+      this.text +
+      '.jpeg';
+    // console.log(this.selectedEditEvent);
+    this.service
+      .getProfileInfo()
+      .subscribe((user) => (this.selectedEditEvent!.creatorId = user.data.id));
 
     //ng modeldan gelen verileri event Requeste aktardık
     this.eventRequest!.creatorId = this.selectedEditEvent?.creatorId;
@@ -159,14 +164,13 @@ export class AllEventsComponent implements OnInit {
     this.eventRequest != this.selectedCategory;
     // console.log(this.eventRequest.categoryId)
     //console.log(this.eventRequest)
-    let status = this.service.createEntity(this.eventRequest!, "Event");
+    let status = this.service.createEntity(this.eventRequest!, 'Event');
     status.then((response) => {
       if (response?.status == ResponseStatus.Ok) {
-        window.alert('etkinlik eklendi')
+        window.alert('etkinlik eklendi');
         this.getAllCategories();
-      }
-      else {
-        window.alert('etkinlik eklerken bir hata oluştu')
+      } else {
+        window.alert('etkinlik eklerken bir hata oluştu');
       }
     });
   }
@@ -174,20 +178,31 @@ export class AllEventsComponent implements OnInit {
     //console.log("güncelleme çalıştı");
 
     this.selectedEditEvent!.categoryId = this.selectedCategory;
-    console.log(this.selectedEditEvent)
+    // console.log(this.selectedEditEvent);
     if (this.selectedImage != null) {
-      this.text = this.selectedEditEvent?.categoryId + '_' + this.selectedEditEvent?.creatorId + '_' + this.selectedEditEvent?.title?.substring(0, 20);
+      this.text =
+        this.selectedEditEvent?.categoryId +
+        '_' +
+        this.selectedEditEvent?.creatorId +
+        '_' +
+        this.selectedEditEvent?.title?.substring(0, 20);
       this.uploadProfileImage(this.text);
-      this.selectedEditEvent!.imagePath = "http://localhost:5258/api/Image/GetImage?resimKimlik=" + this.text + ".jpeg";
+      this.selectedEditEvent!.imagePath =
+        'http://localhost:5258/api/Image/GetImage?resimKimlik=' +
+        this.text +
+        '.jpeg';
     }
-    let status = await this.service.updateEntity(this.selectedEditEvent!.id!, this.selectedEditEvent, Event);
+    let status = await this.service.updateEntity(
+      this.selectedEditEvent!.id!,
+      this.selectedEditEvent,
+      Event
+    );
     if (status?.status == ResponseStatus.Ok) {
-      alert("Güncelleme Başarılı");
+      alert('Güncelleme Başarılı');
       this.showModal = false;
       this.closeModal();
     } else {
-      alert("Güncelleme Başarısız");
+      alert('Güncelleme Başarısız');
     }
-
   }
 }

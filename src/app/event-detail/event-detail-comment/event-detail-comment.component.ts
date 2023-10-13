@@ -7,7 +7,6 @@ import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { Comment } from 'src/core/models/response/comment-request.model';
 import { CommentLikeRequest } from 'src/core/models/request/commentLike-request.model';
 import { CommentLike } from 'src/core/models/commentLike.model';
-import { EventParticipant } from 'src/core/models/eventParticipant.model';
 
 @Component({
   selector: 'app-event-detail-comment',
@@ -20,7 +19,6 @@ export class EventDetailCommentComponent {
   currentUser!: User;
   commentRequest!: CommentRequest;
   commentText: string = '';
-  // likeCount: number = 0;
   commentLike!: CommentLikeRequest;
   allCommentLikes: CommentLike[] = [];
   countLike: number = 0;
@@ -33,7 +31,6 @@ export class EventDetailCommentComponent {
   ngOnInit(): void {
     this.getComments();
     this.getProfileInfo();
-    // this.handleLikeButtonClick();
     this.getAllCommentLike();
   }
 
@@ -48,8 +45,8 @@ export class EventDetailCommentComponent {
   }
 
   async createComment() {
-    console.log(this.commentText);
-    console.log(this.eventId);
+    // console.log(this.commentText);
+    // console.log(this.eventId);
     this.commentRequest.eventId = this.eventId;
     this.commentRequest.userId = this.currentUser.id;
 
@@ -61,11 +58,11 @@ export class EventDetailCommentComponent {
       'Comment'
     );
     if (status?.status == ResponseStatus.Ok) {
-      alert('Ekleme Başarılı');
+      window.alert('Yorum ekleme Başarılı.');
       this.getComments();
       this.commentText = '';
     } else {
-      alert('Ekleme Başarısız');
+      window.alert('Yorum ekleme Başarısız!');
     }
   }
 
@@ -91,20 +88,20 @@ export class EventDetailCommentComponent {
     } else {
       this.commentLike.commentId = comment.id;
       this.commentLike.userId = this.currentUser.id;
-      console.log(this.commentLike);
+      // console.log(this.commentLike);
       let status = this.apiService.createEntity(
         this.commentLike,
         'CommentLike'
       );
       status.then((response) => {
         if (response?.status == ResponseStatus.Ok) {
-          window.alert('like eklendi');
+          window.alert('Yorum beğenildi.');
           this.getAllCommentLike();
         } else {
-          window.alert('likelanırken bir hata oluştu');
+          window.alert('Yorum beğenilirken hata oluştu.');
         }
       });
-      console.log(this.commentLike);
+      // console.log(this.commentLike);
     }
   }
 
@@ -120,75 +117,4 @@ export class EventDetailCommentComponent {
     ).length;
     return x;
   }
-
-  
-  // handleLikeButtonClick() {
-  //   // let likeCount: number = 0;
-  //   // const button = document.querySelector<HTMLElement>('.like-button');
-  //   const button: HTMLElement | null =
-  //     document.querySelector<HTMLElement>('.like-button');
-
-  //   if (button) {
-  //     button.classList.toggle('active');
-  //     button.classList.add('animated');
-  //     generateClones(button);
-
-  //     // Beğeni sayısını artırın
-  //     this.likeCount++;
-
-  //     // Beğeni sayısını görüntüleyin
-  //     const likeCountElement: HTMLElement | null =
-  //       document.querySelector<HTMLElement>('.like-count');
-  //     if (likeCountElement) {
-  //       likeCountElement.textContent = `Beğeni Sayısı: ${this.likeCount}`;
-  //     }
-
-  //     button?.classList.toggle('active');
-  //     button?.classList.add('animated');
-  //     generateClones(button!);
-
-  //     function generateClones(button: HTMLElement) {
-  //       const clones = randomInt(2, 4);
-  //       for (let it = 1; it <= clones; it++) {
-  //         const clone = button
-  //           .querySelector<SVGElement>('svg')!
-  //           .cloneNode(true) as SVGElement;
-  //         const size = randomInt(5, 16);
-  //         button.appendChild(clone);
-  //         clone.setAttribute('width', size.toString());
-  //         clone.setAttribute('height', size.toString());
-  //         clone.style.position = 'absolute';
-  //         clone.style.transition =
-  //           'transform 0.5s cubic-bezier(0.12, 0.74, 0.58, 0.99) 0.3s, opacity 1s ease-out 0.5s';
-
-  //         const animTimeout = setTimeout(function () {
-  //           clearTimeout(animTimeout);
-  //           clone.style.transform = `translate3d(${
-  //             plusOrMinus() * randomInt(10, 25)
-  //           }px, ${plusOrMinus() * randomInt(10, 25)}px, 0)`;
-  //           clone.style.opacity = '0';
-  //         }, 1);
-
-  //         const removeNodeTimeout = setTimeout(function () {
-  //           clone.parentNode?.removeChild(clone);
-  //           clearTimeout(removeNodeTimeout);
-  //         }, 900);
-
-  //         const removeClassTimeout = setTimeout(function () {
-  //           button.classList.remove('animated');
-  //         }, 600);
-  //       }
-  //     }
-
-  //     function plusOrMinus() {
-  //       return Math.random() < 0.5 ? -1 : 1;
-  //     }
-
-  //     function randomInt(min: number, max: number) {
-  //       return Math.floor(Math.random() * (max - min + 1) + min);
-  //     }
-  //   }
-  //   console.log(this.likeCount.toString());
-  //   console.log('handleLikeButtonClick çalıştı');
-  // }
 }
