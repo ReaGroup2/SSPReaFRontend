@@ -66,7 +66,7 @@ export class EventDetailComponent {
       );
       console.log(status);
       if (status?.status == ResponseStatus.Ok) {
-        window.alert('Katılım Başarılı');
+        window.alert('Katılım Başarıyla sağlandı.');
       } else {
         window.alert('Katılım Başarısız');
       }
