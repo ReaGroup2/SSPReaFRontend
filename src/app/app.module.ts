@@ -51,6 +51,12 @@ import { AttendedEventsComponent } from './member/attended-events/attended-event
 import { MyCommentsComponent } from './member/my-comments/my-comments.component';
 import { MyLikesComponent } from './member/my-likes/my-likes.component';
 import { EventDetailCommentComponent } from './event-detail/event-detail-comment/event-detail-comment.component';
+import { ChatComponent } from './chat/chat.component';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -88,6 +94,8 @@ import { EventDetailCommentComponent } from './event-detail/event-detail-comment
     LoginComponent,
     MyCommentsComponent,
     MyLikesComponent,
+    EventDetailCommentComponent,
+    ChatComponent,
     NavbarComponent,
     OurMissionComponent,
     OurTeamComponent,
@@ -102,9 +110,18 @@ import { EventDetailCommentComponent } from './event-detail/event-detail-comment
     FormsModule,
     HttpClientModule,
     MatDialogModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    MatButtonModule,
+    MatIconModule,
     AppRoutingModule,
+
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+function providerFirebaseApp(arg0: () => any): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
+  throw new Error('Function not implemented.');
+}
+

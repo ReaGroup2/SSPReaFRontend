@@ -5,6 +5,10 @@ import { AuthService } from 'src/core/services/auth/auth.service';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { RegisterRequest } from 'src/core/models/request/register-request.model';
 import { ApiService } from 'src/core/services/api/api.service';
+import { FirestoreService } from 'src/core/services/firestore/firestore.service';
+import { Message } from 'src/core/models/message.model';
+import { DocumentChangeAction } from '@angular/fire/compat/firestore';
+import { Observable, Timestamp } from 'rxjs';
 
 
 
@@ -22,16 +26,23 @@ export class LoginComponent {
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
-    private readonly apiService:ApiService
+    private readonly apiService:ApiService,
+    private firestoreService:FirestoreService
     
   
   ) { 
-    console.log("login component çalıştı");
+    
   }
-
+  messages:Message[]=[];
   selectedImage: File | null = null;
+   
+  async ngOnInit(): Promise<void> {
+    console.log("login component çalıştı");
+    //Mesaj gönderme
 
-  ngOnInit(): void {
+    
+   
+    
   }
 
   async login() {
@@ -44,6 +55,7 @@ export class LoginComponent {
       this.loginRequest.password = '';
 
     }
+    
   }
 
   onImageSelect(event: any) {

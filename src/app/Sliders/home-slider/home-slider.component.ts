@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/core/models/user.model';
+import { AuthService } from 'src/core/services/auth/auth.service';
 // JavaScript dosyasını içe aktarın
 
 
@@ -9,11 +11,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-slider.component.css']
 })
 export class HomeSliderComponent implements OnInit {
-
+constructor(private authService:AuthService) { }
+ currentUser?:User;
 
 
   ngOnInit() {
-    // Slider'ı başlatın.
+    this.authService.currentUser.subscribe(user => {  
+      this.currentUser = user as User;
+    });
   }
 
 }
