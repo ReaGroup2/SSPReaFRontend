@@ -25,6 +25,7 @@
           <li><a href="/causes" class="nav-link">Neden Biz</a></li>
           <li><a href="/blog" class="nav-link">Etkinlikler</a></li>
           <li><a href="/contact" class="nav-link">İletişim</a></li>
+
           <li *ngIf="currentUser == null">
             <a href="/login" class="nav-link">Giriş Yap/Kayıt Ol</a>
           </li>
@@ -45,7 +46,9 @@
               >LogOut</a
             >
           </li>
+
         </ul>
+        
       </nav>
 
       <div class="ml-auto toggle-button d-inline-block d-lg-none">

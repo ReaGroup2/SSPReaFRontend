@@ -20,9 +20,11 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MyCommentsComponent } from './member/my-comments/my-comments.component';
 import { MyLikesComponent } from './member/my-likes/my-likes.component';
+import { ChatComponent } from './chat/chat.component';
 import { RefleshPage } from './refleshPage';
 import { adminControl, loginControl, organizatorMemberControl } from './admin-control';
 import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 
 const routes: Routes = [
@@ -39,12 +41,14 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'error', component: ErrorComponent },
   { path: 'event-detail', component: EventDetailComponent },
+  { path:"chat",component:ChatComponent}
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'member-attendent-events', component: AttendedEventsComponent, canActivate: [organizatorMemberControl] },
   { path: 'member-mycomments', component: MyCommentsComponent, canActivate: [organizatorMemberControl] },
   { path: 'member-mylikes', component: MyLikesComponent, canActivate: [organizatorMemberControl] },
   { path: 'profile', component: AdminProfileComponent, canActivate: [loginControl] },
+
   
 ];
 
