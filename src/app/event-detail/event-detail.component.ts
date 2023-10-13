@@ -33,6 +33,7 @@ export class EventDetailComponent {
   ngOnInit(): void {
     this.getEventById(this.id);
     this.getProfileInfo();
+    this.checkParticipant();
     // this.participantControl();
   }
 
@@ -41,7 +42,36 @@ export class EventDetailComponent {
       this.event = response?.data;
     });
   }
-
+  async leavePaticipant() {
+    
+    if (this.participantStatus == true) {
+     var response= await this.apiService
+        .deleteEntity(this.allEventParticipants[0].id!, EventParticipant)
+        
+          if (response?.status == ResponseStatus.Ok) {
+            window.alert('Katılım Başarıyla iptal edildi.');
+            location.reload();
+          } else {
+            window.alert('Katılım iptal edilemedi.');
+          }
+      
+    } else {
+      window.alert('Katılım iptal edilemedi.');
+    }
+  }
+  checkParticipant() {
+    this.apiService.getAllEntities(EventParticipant).subscribe((response) => {
+      this.allEventParticipants = response.data.filter(
+        (f) => f.userId == this.currentUser.id && f.eventId == this.id
+      );
+      let i = this.allEventParticipants.length;
+      if (i > 0) {
+        this.participantStatus = true;
+      } else {
+        this.participantStatus = false;
+      }
+    });
+  }
   async joinEvent() {
     this.apiService.getAllEntities(EventParticipant).subscribe((response) => {
       this.allEventParticipants = response.data.filter(
@@ -71,6 +101,8 @@ export class EventDetailComponent {
         window.alert('Katılım Başarısız');
       }
     }
+    location.reload();
+
   }
 
   // participantControl() {

@@ -23,12 +23,19 @@
 
       <!-- Just replace the Video ID "UYJ5IjBRlW8" with the ID of your video on YouTube (Found within the URL) -->
       <div class="join">
-        <a
+        <a *ngIf="participantStatus==false"
           (click)="joinEvent()"
           style="cursor: pointer"
           class="button video link-lightbox"
         >
           ETKİNLİĞE KATIL <i class="fa fa-star" aria-hidden="true"></i>
+        </a>
+        <a *ngIf="participantStatus==true"
+          (click)="leavePaticipant()"
+          style="cursor: pointer"
+          class="button video link-lightbox"
+        >
+          ETKİNLİĞE KATILINDI <i class="fa fa-star" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -42,174 +49,5 @@
 </div>
 <app-event-detail-comment [eventId]="event!.id"></app-event-detail-comment>
 
-<!-- 
-    <div class="etkinlik mt-5 ml-5 mr-5">
-      <!-- <app-events-card></app-events-card> -->
-<!-- <a class="postcard__img_link" style="cursor: pointer;">
-        <article class="postcard {{cardColor}}  mt-2">
-         
-            <img
-              class="postcard__img"
-              src="https://picsum.photos/1000/1000"
-              alt="Image Title"
-            />
-         
-          <div class="postcard__text t-dark">
-            <h1 class="postcard__title blue"><a href="#">{{event?.title}}</a></h1>
-            <div class="postcard__subtitle small">
-              <time datetime="2020-05-25 12:00:00">
-                <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-              </time>
-            </div>
-            <div class="postcard__bar"></div>
-            <div class="postcard__preview-txt">
-             {{event?.description}}
-            </div>
-         
-             
-                <ul class="postcard__tagbox">
-              <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-              <li class="tag__item">
-                <i class="fas fa-clock mr-2"></i>55 mins.
-              </li>
-              <li class="tag__item play blue">
-                <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-              </li>
-              
-            </ul>
-            
-             
-        
-          </div>
-          <div class="kalp"></div>
-        </article>
-      </a>
-    </div> -->
-
-<!-- Tab content -->
-<!-- 
-    <div class="ml-5 -mt-5 mb-4 border-b border-gray-200 dark:border-gray-700">
-      <ul
-        class="flex justify-center -mb-px text-sm font-medium text-center"
-        id="myTab"
-        data-tabs-toggle="#myTabContent"
-        role="tablist"
-      >
-        <li class="mr-2" role="presentation">
-          <button
-            class="inline-block p-4 border-b-2 rounded-t-lg"
-            id="profile-tab"
-            data-tabs-target="#profile"
-            type="button"
-            role="tab"
-            aria-controls="profile"
-            aria-selected="false"
-          >
-            Profile
-          </button>
-        </li>
-        <li class="mr-2" role="presentation">
-          <button
-            class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-            id="dashboard-tab"
-            data-tabs-target="#dashboard"
-            type="button"
-            role="tab"
-            aria-controls="dashboard"
-            aria-selected="false"
-          >
-            Dashboard
-          </button>
-        </li>
-        <li class="mr-2" role="presentation">
-          <button
-            class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-            id="settings-tab"
-            data-tabs-target="#settings"
-            type="button"
-            role="tab"
-            aria-controls="settings"
-            aria-selected="false"
-          >
-            Settings
-          </button>
-        </li>
-        <li role="presentation">
-          <button
-            class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-            id="contacts-tab"
-            data-tabs-target="#contacts"
-            type="button"
-            role="tab"
-            aria-controls="contacts"
-            aria-selected="false"
-          >
-            Contacts
-          </button>
-        </li>
-      </ul>
-    </div>
-    <div id="myTabContent">
-      <div
-        class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-        id="profile"
-        role="tabpanel"
-        aria-labelledby="profile-tab"
-      >
-        <p class="text-sm text-gray-500 dark:text-gray-400">
-          This is some placeholder content the
-          <strong class="font-medium text-gray-800 dark:text-white"
-            >Profile tab's associated content</strong
-          >. Clicking another tab will toggle the visibility of this one for the
-          next. The tab JavaScript swaps classes to control the content
-          visibility and styling.
-        </p>
-      </div>
-      <div
-        class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-        id="dashboard"
-        role="tabpanel"
-        aria-labelledby="dashboard-tab"
-      >
-        <p class="text-sm text-gray-500 dark:text-gray-400">
-          This is some placeholder content the
-          <strong class="font-medium text-gray-800 dark:text-white"
-            >Dashboard tab's associated content</strong
-          >. Clicking another tab will toggle the visibility of this one for the
-          next. The tab JavaScript swaps classes to control the content
-          visibility and styling.
-        </p>
-      </div>
-      <div
-        class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-        id="settings"
-        role="tabpanel"
-        aria-labelledby="settings-tab"
-      >
-        <p class="text-sm text-gray-500 dark:text-gray-400">
-          This is some placeholder content the
-          <strong class="font-medium text-gray-800 dark:text-white"
-            >Settings tab's associated content</strong
-          >. Clicking another tab will toggle the visibility of this one for the
-          next. The tab JavaScript swaps classes to control the content
-          visibility and styling.
-        </p>
-      </div>
-      <div
-        class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-        id="contacts"
-        role="tabpanel"
-        aria-labelledby="contacts-tab"
-      >
-        <p class="text-sm text-gray-500 dark:text-gray-400">
-          This is some placeholder content the
-          <strong class="font-medium text-gray-800 dark:text-white"
-            >Contacts tab's associated content</strong
-          >. Clicking another tab will toggle the visibility of this one for the
-          next. The tab JavaScript swaps classes to control the content
-          visibility and styling.
-        </p>
-      </div>
-    </div> -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
