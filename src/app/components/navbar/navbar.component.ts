@@ -26,11 +26,13 @@ export class NavbarComponent implements OnInit {
     });
 
   }
-  logout() {
+  logout():void {
     console.log("logout çalıştı");
     this.authService.logOut();
+
     //console.log(this.currentUser);
   }
+  
 
  
  
