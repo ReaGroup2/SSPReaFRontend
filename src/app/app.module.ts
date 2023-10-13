@@ -1,8 +1,15 @@
+// Angular Modülleri
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
+
+// HTTP İnterceptorları
+import { JwtInterceptor } from 'src/core/services/interceptor/jwt.interceptor';
+
+// Bileşenler
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -36,10 +43,8 @@ import { CategoriesComponent } from './admin/categories/categories.component';
 import { AllEventsComponent } from './admin/all-events/all-events.component';
 import { AllCommentsComponent } from './admin/all-comments/all-comments.component';
 import { AllEventParticipantComponent } from './admin/all-event-participant/all-event-participant.component';
-import { JwtInterceptor } from 'src/core/services/interceptor/jwt.interceptor';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { ShowDialogComponent } from './admin/components/show-dialog/show-dialog.component';
-import {MatDialogModule} from '@angular/material/dialog';
 import { ErrorComponent } from './error/error.component';
 import { AllCommentLikesComponent } from './admin/all-comment-likes/all-comment-likes.component';
 import { AttendedEventsComponent } from './member/attended-events/attended-events.component';
@@ -52,68 +57,56 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { NbChatModule } from '@nebular/theme';
-
-
-
-
-
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    HomeComponent,
     AboutComponent,
-    CausesComponent,
-    BlogComponent,
-    ContactComponent,
-    SliderComponent,
-    HomeSliderComponent,
-    HomeCards1Component,
-    LatestCausesComponent,
-    WhyChooseUsComponent,
-    LatestEventsComponent,
-    DonateNowComponent,
-    SloganComponent,
-    OurMissionComponent,
-    OurTeamComponent,
-    FeaturedCauseComponent,
-    EventsComponent,
-    LatestBlogsComponent,
-    ContactFormComponent,
-    EventsCardComponent,
-    GradientsDashboardComponent,
-    LoginComponent,
     AboutUsComponent,
-    EventDetailComponent,
     AdminComponent,
-    AllUsersComponent,
-    CategoriesComponent,
-    AllEventsComponent,
+    AdminProfileComponent,
+    AllCommentLikesComponent,
     AllCommentsComponent,
     AllEventParticipantComponent,
-    AdminProfileComponent,   
-    ShowDialogComponent,
-    ErrorComponent,
-    AllCommentLikesComponent,
-    LoginComponent,
+    AllEventsComponent,
+    AllUsersComponent,
+    AppComponent,
     AttendedEventsComponent,
+    BlogComponent,
+    CausesComponent,
+    CategoriesComponent,
+    ContactComponent,
+    ContactFormComponent,
+    DonateNowComponent,
+    ErrorComponent,
+    EventDetailComponent,
+    EventsComponent,
+    EventDetailCommentComponent,
+    EventsCardComponent,
+    FeaturedCauseComponent,
+    FooterComponent,
+    GradientsDashboardComponent,
+    HomeComponent,
+    HomeCards1Component,
+    HomeSliderComponent,
+    LatestBlogsComponent,
+    LatestCausesComponent,
+    LatestEventsComponent,
+    LoginComponent,
     MyCommentsComponent,
     MyLikesComponent,
     EventDetailCommentComponent,
     ChatComponent,
-    
-
-
-
-
-
+    NavbarComponent,
+    OurMissionComponent,
+    OurTeamComponent,
+    ShowDialogComponent,
+    SloganComponent,
+    SliderComponent,
+    WhyChooseUsComponent
   ],
+
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     MatDialogModule,
@@ -121,13 +114,10 @@ import { NbChatModule } from '@nebular/theme';
     AngularFirestoreModule,
     MatButtonModule,
     MatIconModule,
-    NbChatModule
-
-
-
+    AppRoutingModule,
 
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

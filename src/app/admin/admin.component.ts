@@ -17,6 +17,8 @@ constructor(private authService:AuthService) { }
     this.authService.currentUser.subscribe(user=>{
         this.currentUser=user;
     });
+    const sidebar=document.querySelector('.sidebar')as HTMLElement;
+    sidebar.classList.toggle('active');  
   }
   logout(){
     console.log("logout çalıştı");  

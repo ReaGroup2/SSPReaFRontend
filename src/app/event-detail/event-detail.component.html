@@ -7,49 +7,39 @@
 <div id="services" class="scrollto clearfix" style="margin: 100px">
   <div class="row no-padding-bottom clearfix">
     <!--Content Left Side-->
-    <div class="col-4">
-      <!--User Testimonial-->
-      <blockquote class="testimonial text-right bigtest">
-        <q
-          >Üç yaşın­daki normal bir çocuk, hatta belki de hararetli ilgisini sık
-          sık sergileyen daha da küçük bir çocuk, ona yapılan açıklamaları diğer
-          şeyler kadar iyi kavrayabilecek zihinsel yeterliliğe sahiptir.
-          Muhtemelen bu çocuklar, daha kuvvetli bir direnç yüzünden bu alanlarda
-          duygusal anlam­da engellenmiş olan büyük bir çocuktan daha
-          yetkindirler.</q
-        >
-        <footer>— Tubanur Yazıcı, Organizatör</footer>
-      </blockquote>
-      <!-- End of Testimonial-->
-    </div>
+
     <!--End Content Left Side-->
 
     <!--Content of the Right Side-->
-    <div class="col-4">
+    <div class="col-6">
       <div class="section-heading">
         <h3>{{ event?.title }}</h3>
         <p class="section-subtitle">
           {{ event?.description }}
         </p>
+
+        <!-- End of Testimonial-->
       </div>
-      
+
       <!-- Just replace the Video ID "UYJ5IjBRlW8" with the ID of your video on YouTube (Found within the URL) -->
-      <a href="#" class="button video link-lightbox">
-        ETKİNLİĞE KATIL <i class="fa fa-star" aria-hidden="true"></i>
-      </a>
+      <div class="join">
+        <a
+          (click)="joinEvent()"
+          style="cursor: pointer"
+          class="button video link-lightbox"
+        >
+          ETKİNLİĞE KATIL <i class="fa fa-star" aria-hidden="true"></i>
+        </a>
+      </div>
     </div>
     <!--End Content Right Side-->
 
-    <div class="col-4 mt-5">
-      <img
-        src="https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-        alt=""
-      />
+    <div class="col-6">
+      <img src="{{ event?.imagePath }}" alt="" style="border-radius: 5px" />
     </div>
   </div>
 </div>
-
-<app-event-detail-comment></app-event-detail-comment>
+<app-event-detail-comment [eventId]="event!.id"></app-event-detail-comment>
 
 <!-- 
     <div class="etkinlik mt-5 ml-5 mr-5">

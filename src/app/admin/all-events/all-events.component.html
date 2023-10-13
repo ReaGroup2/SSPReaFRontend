@@ -1,61 +1,68 @@
-<app-admin></app-admin>
-<button  class="btn btn-warning"(click)="openAddModal()" class="btn btn-sm bg-success text-white ml-2 addButton">Ekle</button>
-<br><br>
-<div class="contentAdmin container" style="position: relative;">
-  <table class="table table-striped table-centered mb-0">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Kategori</th>
-        <th>Resim</th>
-        <th>Başlık</th>
-        <th>Tanım</th>
-        <th>Başlangıç Tarihi</th>
-        <th>Bitiş Tarihi</th>
-        <th>Durum</th>
-        <th>OrganizatorId</th>
-        <th>OrganizatorName</th>
-        <th>Limit</th>
-        <th>Action</th>
+<app-admin style="z-index: 10; position: absolute;"></app-admin>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of events">
-        <td>{{ item.id }}</td>
-        <td>{{ item.category!.categoryName}}</td>
-        <td>{{item.imagePath}}</td>
-        <td>{{item.title}}</td>
-        <td>
-          <p>{{ item.description?.substring(0,30) }}...</p>
-        </td>
-        <td>{{ item.startDate }}</td>
-        <td>{{ item.finishDate }}</td>
-        <td>{{ item.isActive }}</td>
-        <td>{{ item.creator?.id }}</td>
-        <td>{{ item.creator?.fullName }}</td>
-        <td>{{ item.limit }}</td>
+<div class="contentAdmin container" style="position: absolute; margin-right: 0;z-index: 1;">
+  <h2>Düzenlenen Etkinlikler</h2>
+  <button class="btn btn-warning" (click)="openAddModal()" class="btn btn-sm bg-success text-white ml-2">Etkinlik
+    Oluştur</button>
 
-        <td style="display: flex;">
-          <a href="javascript: void(0);" (click)="confirmDelete(item.id)" class="btn btn-sm bg-danger text-white">delete</a>
-          <a href="javascript: void(0);" class="btn btn-sm bg-warning text-white ml-2"
-            (click)="openModal(item)">edit</a>
-          
-        </td>
+  <div class="scrollbar">
 
-      </tr>
-    </tbody>
-  </table>
+    <table class="table table-striped table-centered mb-0 mt-2">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Kategori</th>
+          <th>Resim</th>
+          <th>Başlık</th>
+          <th>Tanım</th>
+          <th>Başlangıç Tarihi</th>
+          <th>Bitiş Tarihi</th>
+          <th>Durum</th>
+          <th>OrganizatorId</th>
+          <th>OrganizatorName</th>
+          <th>Limit</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of events">
+          <td>{{item.id}}</td>
+          <td>{{item.category!.categoryName}}</td>
+          <td><img src="{{item.imagePath}}" style="width: 80px; height: 80px;"></td>
+          <td>{{item.title}}</td>
+          <td>
+            <p>{{ item.description?.substring(0,30) }}...</p>
+          </td>
+          <td>{{ item.startDate }}</td>
+          <td>{{ item.finishDate }}</td>
+          <td>{{ item.isActive }}</td>
+          <td>{{ item.creator?.id }}</td>
+          <td>{{ item.creator?.fullName }}</td>
+          <td>{{ item.limit }}</td>
+
+          <td style="display: flex;">
+            <a href="javascript: void(0);" (click)="confirmDelete(item.id)"
+              class="btn btn-sm bg-danger text-white">delete</a>
+            <a href="javascript: void(0);" class="btn btn-sm bg-warning text-white ml-2"
+              (click)="openModal(item)">edit</a>
+
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="modal-container" *ngIf="showModal">
   <div class="modal-content">
-    <h2>Kullanıcı Bilgileri Formu</h2>
+    <h2>{{info}}</h2>
     <div>
       <form>
         <div class="row">
           <div class="col-md-6 col-sm-12">
-            <div *ngIf="selectedCategory != 0" class="form-group">
+            <div *ngIf="!isCreate" class="form-group">
               <label>Id:</label>
               <input readonly [(ngModel)]="selectedEditEvent!.id" [ngModelOptions]="{standalone: true}" type="email"
                 class="form-control" required>
@@ -63,11 +70,12 @@
             <div class="form-group">
               <label>Kategori:</label>
               <div>
-                <select class="form-control" id="selectCategory" [value]="selectedCategory" (change)="selectCategoryOnModal()">
-                  
-                  <option value="0" >Kategori Seçiniz</option>
-                  <option *ngFor="let item of categories"  value="{{item.id}}">{{item.categoryName}}</option>
-                  
+                <select class="form-control" id="selectCategory" [value]="selectedCategory"
+                  (click)="selectCategoryOnModal()">
+
+                  <option disabled selected value="0">Kategori Seçiniz</option>
+                  <option *ngFor="let item of categories" value="{{item.id}}">{{item.categoryName}}</option>
+
                 </select>
               </div>
             </div>
@@ -78,8 +86,8 @@
             </div>
             <div class="form-group">
               <label>Event Açıklama:</label>
-              <input [(ngModel)]="selectedEditEvent!.description" [ngModelOptions]="{standalone: true}" type="text"
-                class="form-control" required>
+              <textarea [(ngModel)]="selectedEditEvent!.description" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" required></textarea>
             </div>
             <div class="form-group">
               <label>Aktiflik:</label>
@@ -104,14 +112,23 @@
               <input [(ngModel)]="selectedEditEvent!.limit" [ngModelOptions]="{standalone: true}" type="number"
                 class="form-control" required>
             </div>
+            <div *ngIf="!isCreate" class="form-group">
+              <img  src="https://i0.wp.com/bakikaracay.com/wp-content/uploads/2016/09/Kamera-I%C5%9F%C4%B1k-Foto%C4%9Fraf.jpg?fit=1600%2C1067&ssl=1" style="width: 60px;height: 60px;">
+            </div>
+            <div class="form-group">
 
+              <label for="register-profile-picture">Profil Resmi Yükle:</label>
+              <input (change)="onImageSelect($event)" type="file" class="form-control-file"
+                id="register-profile-picture" name="ImagePath">
+            </div>
           </div>
         </div>
         <br><br>
 
 
 
-        <button (click)="updateEvent()" class="btn btn-primary">Güncelle</button>
+        <button *ngIf="!isCreate" (click)="updateEvent()" class="btn btn-primary">Güncelle</button>
+        <button *ngIf="isCreate" (click)="createEvent()" class="btn btn-primary">Ekle</button>
       </form>
     </div>
     <!-- Kullanıcı bilgileri formu burada yer alabilir -->
@@ -119,4 +136,3 @@
       
   </div>
 </div>
-

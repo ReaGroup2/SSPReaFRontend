@@ -10,14 +10,13 @@
     public UserType UserType { get; set; } = UserType.Member;*/
 export class User {
   id: number = 0;
-  email: string = '';
-  userName: string = '';
-  fullName: string = '';
-  phone: string = '';
-  imagePath: string = '';
-  isMale: boolean = false;
-  password: string = '123123123';
-  userType: UserType = 0;
+  email?: string;
+  userName?: string;
+  fullName?: string;
+  phone?: string;
+  imagePath?: string;
+  isMale?: boolean;
+  userType?: UserType;
 }
 
 export enum UserType {

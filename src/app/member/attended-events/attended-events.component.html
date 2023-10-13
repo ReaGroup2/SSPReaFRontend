@@ -1,12 +1,15 @@
-<app-admin></app-admin>
-<div class="contentAdmin container" style="position: relative;">
-<p>attended-events works!</p>
-<table class="table table-striped table-centered mb-0">
+<app-admin style="z-index: 10; position: absolute"></app-admin>
+
+<div
+  class="contentAdmin container"
+  style="position: absolute; margin-right: 0; z-index: 1"
+>
+  <table class="table table-striped table-centered mb-0">
     <thead>
       <tr>
         <th>Id</th>
         <th>Katılımcı</th>
-        <th>Etkinlik Adı</th>    
+        <th>Etkinlik Adı</th>
         <!-- <th>Etkinlik Kategorisi</th>    -->
         <th>Başlangıç Tarihi</th>
         <th>Bitiş Tarihi</th>
@@ -14,32 +17,24 @@
         <th>Organizator</th>
         <th>Limit</th>
         <th>Vazgeç</th>
-        
       </tr>
     </thead>
     <tbody>
-      
-
-
-    
       <tr *ngFor="let item of myEvents">
-        <td>{{item.id}}</td>
-        <td>{{item.user?.fullName}}</td>
-        <td>{{item.event?.title}}</td>
+        <td>{{ item.id }}</td>
+        <td>{{ item.user?.fullName }}</td>
+        <td>{{ item.event?.title }}</td>
         <!-- <td>{{item.event?.category?.categoryName}}</td>         -->
-        <td>{{item.event?.startDate}}</td>
-        <td>{{item.event?.finishDate}}</td>
-        <td>{{item.event?.isActive}}</td>
-        <td>{{item.event?.creator?.fullName}}</td>
-        <td>{{item.event?.limit}}</td>
-       
-      
+        <td>{{ item.event?.startDate }}</td>
+        <td>{{ item.event?.finishDate }}</td>
+        <td>{{ item.event?.isActive }}</td>
+        <td>{{ item.event?.creator?.fullName }}</td>
+        <td>{{ item.event?.limit }}</td>
 
-        
-      
         <td>
           <a
-            style="cursor: pointer;" (click)="cancelParticipant(item.id)"
+            style="cursor: pointer"
+            (click)="cancelParticipant(item.id)"
             class="btn btn-sm bg-danger text-white ml-2"
             >Katılmaktan Vazgeç</a
           >
@@ -47,74 +42,114 @@
       </tr>
     </tbody>
   </table>
-  <br>
-  <button (click)="openModal()" class="btn btn-success">Etkinlik oluştur</button> 
-
-  
+  <br />
+  <button (click)="openModal()" class="btn btn-success">
+    Etkinlik oluştur
+  </button>
 </div>
-<div class="modal-container" *ngIf="showModal" >
+<div class="modal-container" *ngIf="showModal">
   <div class="modal-content">
     <h2>Kullanıcı Bilgileri Formu</h2>
-    <div >
+    <div>
       <form>
         <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="form-group">
-                    <label >Başlık:</label>
-                    <input [(ngModel)]="eventRequest!.title" [ngModelOptions]="{standalone: true}" type="text" class="form-control"  name="title" required>
-                </div>
-                <div class="form-group">
-                    <label >Limit:</label>
-                    <input [(ngModel)]="eventRequest!.limit" [ngModelOptions]="{standalone: true}" type="number" class="form-control"  name="limit" required>
-                </div>
-                <div class="form-group">
-                    <label >Açıklama:</label>
-                    <input [(ngModel)]="eventRequest!.description" [ngModelOptions]="{standalone: true}"  type="text" class="form-control"  name="fullName" required>
-                </div>
-                <div class="form-group">
-                    <label >Başlama Tarihi</label>
-                    <input [(ngModel)]="eventRequest!.startDate" [ngModelOptions]="{standalone: true}" type="datetime" class="form-control" name="startDate" required>
-                </div>
-             
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Başlık:</label>
+              <input
+                [(ngModel)]="eventRequest!.title"
+                [ngModelOptions]="{ standalone: true }"
+                type="text"
+                class="form-control"
+                name="title"
+                required
+              />
             </div>
-       
-            <div class="col-md-6 col-sm-6">
-                
-              <div class="form-group">
-                <label >Bitiş Tarihi</label>
-                <input [(ngModel)]="eventRequest!.finishDate" [ngModelOptions]="{standalone: true}" type="datetime" class="form-control"  name="finishDate" required>
+            <div class="form-group">
+              <label>Limit:</label>
+              <input
+                [(ngModel)]="eventRequest!.limit"
+                [ngModelOptions]="{ standalone: true }"
+                type="number"
+                class="form-control"
+                name="limit"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Açıklama:</label>
+              <input
+                [(ngModel)]="eventRequest!.description"
+                [ngModelOptions]="{ standalone: true }"
+                type="text"
+                class="form-control"
+                name="fullName"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Başlama Tarihi</label>
+              <input
+                [(ngModel)]="eventRequest!.startDate"
+                [ngModelOptions]="{ standalone: true }"
+                type="datetime"
+                class="form-control"
+                name="startDate"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <label>Bitiş Tarihi</label>
+              <input
+                [(ngModel)]="eventRequest!.finishDate"
+                [ngModelOptions]="{ standalone: true }"
+                type="datetime"
+                class="form-control"
+                name="finishDate"
+                required
+              />
             </div>
 
             <div class="form-group">
               <label for="comboBox">Kategori:</label>
-              <select class="form-control" id="categoryOptions" (click)="categorySelectedItem()" >                 
+              <select
+                class="form-control"
+                id="categoryOptions"
+                (click)="categorySelectedItem()"
+              >
                 <option value="0" disabled selected>Kategori Seçiniz..</option>
-                  <option *ngFor="let item of allCategories" value="{{item.id}}">{{item.categoryName}}</option>       
+                <option
+                  *ngFor="let item of allCategories"
+                  value="{{ item.id }}"
+                >
+                  {{ item.categoryName }}
+                </option>
               </select>
-          </div>
-         
-            
-                
-                
-                <div class="form-group">
-                    <label for="register-profile-picture">Profil Resmi Yükle:</label>
-                    <input  (change)="onImageSelect($event)" type="file" class="form-control-file" id="register-profile-picture"  name="ImagePath" >
-                </div>
-           
-               
             </div>
+
+            <div class="form-group">
+              <label for="register-profile-picture">Profil Resmi Yükle:</label>
+              <input
+                (change)="onImageSelect($event)"
+                type="file"
+                class="form-control-file"
+                id="register-profile-picture"
+                name="ImagePath"
+              />
+            </div>
+          </div>
         </div>
-        
-        
-       
-  
-        <button (click)="createEvent()"  class="btn btn-primary">Register</button>
-    </form>
-  </div>
+
+        <button (click)="createEvent()" class="btn btn-primary">
+          Register
+        </button>
+      </form>
+    </div>
     <!-- Kullanıcı bilgileri formu burada yer alabilir -->
     <button (click)="closeModal()">Kapat</button>
-  </div>
+      
+  </div>
 </div>
-
-
-
