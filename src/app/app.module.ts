@@ -15,7 +15,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { CausesComponent } from './causes/causes.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { SliderComponent } from './Sliders/slider/slider.component';
@@ -28,8 +27,6 @@ import { DonateNowComponent } from './home/donate-now/donate-now.component';
 import { SloganComponent } from './slogan/slogan.component';
 import { OurMissionComponent } from './about/our-mission/our-mission.component';
 import { OurTeamComponent } from './about/our-team/our-team.component';
-import { FeaturedCauseComponent } from './causes/featured-cause/featured-cause.component';
-import { EventsComponent } from './causes/events/events.component';
 import { LatestBlogsComponent } from './blog/latest-blogs/latest-blogs.component';
 import { ContactFormComponent } from './contact/contact-form/contact-form.component';
 import { EventsCardComponent } from './components/events-card/events-card.component';
@@ -72,17 +69,14 @@ import {MatIconModule} from '@angular/material/icon';
     AppComponent,
     AttendedEventsComponent,
     BlogComponent,
-    CausesComponent,
     CategoriesComponent,
     ContactComponent,
     ContactFormComponent,
     DonateNowComponent,
     ErrorComponent,
     EventDetailComponent,
-    EventsComponent,
     EventDetailCommentComponent,
     EventsCardComponent,
-    FeaturedCauseComponent,
     FooterComponent,
     GradientsDashboardComponent,
     HomeComponent,

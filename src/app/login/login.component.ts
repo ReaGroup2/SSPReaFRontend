@@ -49,7 +49,7 @@ export class LoginComponent {
     let status = await this.authService.login(this.loginRequest);
 
     if (status == ResponseStatus.Ok) {
-      await this.router.navigate(['profile']);
+      await this.router.navigate(['home']);
       location.reload();
     } else if (status == ResponseStatus.Invalid) {
       this.loginRequest.password = '';

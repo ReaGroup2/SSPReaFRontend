@@ -11,7 +11,6 @@ import { AllEventsComponent } from './admin/all-events/all-events.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
 import { AttendedEventsComponent } from './member/attended-events/attended-events.component';
 import { BlogComponent } from './blog/blog.component';
-import { CausesComponent } from './causes/causes.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
@@ -37,7 +36,6 @@ const routes: Routes = [
   { path: 'admin-all-event-participant', component: AllEventParticipantComponent, canActivate: [adminControl] },
   { path: 'admin-allusers', component: AllUsersComponent, canActivate: [adminControl] },
   { path: 'blog', component: BlogComponent },
-  { path: 'causes', component: CausesComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'error', component: ErrorComponent },
   { path: 'event-detail', component: EventDetailComponent },

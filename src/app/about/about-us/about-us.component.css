@@ -2,14 +2,14 @@
     /* Özel CSS stillemeleri */
     .custom-bg {
         background: linear-gradient(45deg, #e1e5ea, #bbd2e2);
-        border-radius: 10px; /* Kenar yuvarlama */
+        border-radius: 5px; /* Kenar yuvarlama */
         padding: 30px; /* İçerik aralığı */
 
     }
 
     /* Resimlerin yuvarlak köşeleri */
     .img-rounded {
-        border-radius: 20%;
+        border-radius: 2%;
     }
      /* Resmin büyümesi */
      .img-container img {
@@ -26,5 +26,9 @@
     .content{
        margin-top: 50px;
     }
-  
+  @media screen and (max-width: 992px) {
+    .row {
+        display: flex; justify-content: center; align-items: center;text-align: center;
+    }
+  }
 

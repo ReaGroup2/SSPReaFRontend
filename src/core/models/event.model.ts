@@ -16,7 +16,9 @@ import { User } from './user.model';
         limit?:number;
         category?:Category;
         creator?:User;
-
+        startDateString(){
+          return this.startDate?.toLocaleDateString();
+        }
       }
 
 

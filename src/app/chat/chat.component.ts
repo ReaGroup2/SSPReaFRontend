@@ -46,13 +46,13 @@ export class ChatComponent {
     //Write your code here
     this.getSnapShot();
     }   
-  sendMessage() {
+  async sendMessage() {
 
     if (this.user != null) {
       this.messages=[];
       this.fireStore.addMessage({ senderId: this.currentUser!.id.toString(), message: this.sendingMessage, createdAt: new Date() }, this.currentUser!.id.toString(), this.user.id.toString());
       this.sendingMessage = "";
-      this.getSnapShot();
+      await this.getSnapShot();
 
     }
   }
