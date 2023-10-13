@@ -1,7 +1,11 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/core/services/api/api.service';
 import { Event } from 'src/core/models/event.model';
+import { User } from 'src/core/models/user.model';
+import { ResponseStatus } from 'src/core/models/response/base-response.model';
+import { EventParticipantRequest } from 'src/core/models/request/eventParticipant-request.model';
+import { EventParticipant } from 'src/core/models/eventParticipant.model';
 
 @Component({
   selector: 'app-event-detail',
@@ -9,35 +13,90 @@ import { Event } from 'src/core/models/event.model';
   styleUrls: ['./event-detail.component.css'],
 })
 export class EventDetailComponent {
-  @Input() cardColor: String ="light blue";
-cardColors=["light blue","light green","light yellow","light red"];
-  id?:any;
-  event?:Event;
-  constructor(private route: ActivatedRoute,private apiService:ApiService) {
-    this.route.queryParams.subscribe(params => {
+  @Input() cardColor: String = 'light blue';
+  cardColors = ['light blue', 'light green', 'light yellow', 'light red'];
+  id?: any;
+  event?: Event;
+  currentUser!: User;
+  eventParticipant!: EventParticipantRequest;
+  allEventParticipants!: EventParticipant[];
+  participantStatus?: boolean = false;
+
+  constructor(private route: ActivatedRoute, private apiService: ApiService) {
+    this.route.queryParams.subscribe((params) => {
       this.id = params['id'];
       // Veriyi kullanabilirsiniz
+      this.eventParticipant = new EventParticipantRequest();
     });
   }
 
   ngOnInit(): void {
     this.getEventById(this.id);
-  }
-  
-
-
-
-  getEventById(id:any){
-this.apiService.getEntityById(id,Event).then((response)=>{
-  this.event=response?.data;
-
-})
-
+    this.getProfileInfo();
+    // this.participantControl();
   }
 
+  getEventById(id: any) {
+    this.apiService.getEntityById(id, Event).then((response) => {
+      this.event = response?.data;
+    });
+  }
+
+  async joinEvent() {
+    this.apiService.getAllEntities(EventParticipant).subscribe((response) => {
+      this.allEventParticipants = response.data.filter(
+        (f) => f.userId == this.currentUser.id && f.eventId == this.id
+      );
+      let i = this.allEventParticipants.length;
+      if (i > 0) {
+        this.participantStatus = true;
+      } else {
+        this.participantStatus = false;
+      }
+    });
+    if (this.participantStatus == true) {
+      window.alert('Zaten katıldınız ' + this.currentUser.fullName);
+    } else {
+      this.eventParticipant!.userId = this.currentUser.id;
+      this.eventParticipant!.eventId = this.id;
+      console.log(this.eventParticipant + 'join');
+      let status = await this.apiService.createEntity(
+        this.eventParticipant!,
+        'EventParticipant'
+      );
+      console.log(status);
+      if (status?.status == ResponseStatus.Ok) {
+        window.alert('Katılım Başarılı');
+      } else {
+        window.alert('Katılım Başarısız');
+      }
+    }
+  }
+
+  // participantControl() {
+  //   this.apiService.getAllEntities(EventParticipant).subscribe((response) => {
+  //     this.allEventParticipants = response.data.filter(
+  //       (f) => f.userId == this.currentUser.id && f.eventId == this.id
+  //     );
+  //     let i = this.allEventParticipants.length;
+  //     if (i > 0) {
+  //       this.participantStatus = true;
+  //     } else {
+  //       this.participantStatus = false;
+  //     }
+  //   });
+  //}
+
+  getProfileInfo() {
+    this.apiService.getProfileInfo().subscribe((user) => {
+      this.currentUser = user.data;
+      if (this.currentUser.imagePath == null) {
+        this.currentUser.imagePath =
+          'https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg';
+      }
+    });
+  }
 }
-
-
 
 // TypeScript ile seçilen tabı göster veya gizle
 const tabs: NodeListOf<Element> = document.querySelectorAll('.tab-button');
