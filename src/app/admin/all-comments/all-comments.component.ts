@@ -26,10 +26,10 @@ export class AllCommentsComponent {
       let status = this.apiService.deleteEntity(id, Comment);
       status.then((response) => {
         if (response?.status == ResponseStatus.Ok) {
-          window.alert('kategori silindi!');
+          window.alert('Yorum silindi!');
           this.LoadComments();
         } else {
-          window.alert('silme işleminde hata oluştu');
+          window.alert('Silme işleminde hata oluştu');
         }
       });
     } else {
