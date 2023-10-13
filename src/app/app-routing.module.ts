@@ -21,6 +21,7 @@ import { AllCommentLikesComponent } from './admin/all-comment-likes/all-comment-
 import { AttendedEventsComponent } from './member/attended-events/attended-events.component';
 import { MyCommentsComponent } from './member/my-comments/my-comments.component';
 import { MyLikesComponent } from './member/my-likes/my-likes.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path:'member-attendent-events',component:AttendedEventsComponent,canActivate:[organizatorMemberControl]},
   {path:'member-mycomments',component:MyCommentsComponent,canActivate:[organizatorMemberControl]},
   {path:'member-mylikes',component:MyLikesComponent,canActivate:[organizatorMemberControl]},
+  {path:"chat",component:ChatComponent}
 
   
 ];
