@@ -4,50 +4,65 @@
 />
 
 <app-navbar></app-navbar>
-<div id="services" class="scrollto clearfix" style="margin: 100px">
-  <div class="row no-padding-bottom clearfix">
-    <!--Content Left Side-->
+<body>
+  <div id="services" class="scrollto clearfix" style="margin: 100px">
+    <div class="row no-padding-bottom clearfix">
+      <!--Content Left Side-->
 
-    <!--End Content Left Side-->
+      <!--End Content Left Side-->
 
-    <!--Content of the Right Side-->
-    <div class="col-6">
-      <div class="section-heading">
-        <h3>{{ event?.title }}</h3>
-        <p class="section-subtitle">
-          {{ event?.description }}
-        </p>
+      <!--Content of the Right Side-->
+      <div class="col-6">
+        <div class="section-heading">
+          <h3>{{ event?.title }}</h3>
+          <p class="section-subtitle">
+            {{ event?.description }}
+          </p>
 
-        <!-- End of Testimonial-->
+          <!-- End of Testimonial-->
+        </div>
+
+        <!-- Just replace the Video ID "UYJ5IjBRlW8" with the ID of your video on YouTube (Found within the URL) -->
+        <div class="join">
+          <a
+            *ngIf="participantStatus == false"
+            (click)="joinEvent()"
+            style="cursor: pointer"
+            class="button video link-lightbox"
+          >
+            ETKİNLİĞE KATIL <i class="fa fa-star" aria-hidden="true"></i>
+          </a>
+          <a
+            *ngIf="participantStatus == true"
+            (click)="leavePaticipant()"
+            style="cursor: pointer"
+            class="button video link-lightbox"
+          >
+            ETKİNLİĞE KATILINDI <i class="fa fa-star" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
-
-      <!-- Just replace the Video ID "UYJ5IjBRlW8" with the ID of your video on YouTube (Found within the URL) -->
-      <div class="join">
-        <a *ngIf="participantStatus==false"
-          (click)="joinEvent()"
-          style="cursor: pointer"
-          class="button video link-lightbox"
-        >
-          ETKİNLİĞE KATIL <i class="fa fa-star" aria-hidden="true"></i>
-        </a>
-        <a *ngIf="participantStatus==true"
-          (click)="leavePaticipant()"
-          style="cursor: pointer"
-          class="button video link-lightbox"
-        >
-          ETKİNLİĞE KATILINDI <i class="fa fa-star" aria-hidden="true"></i>
-        </a>
+      <!--End Content Right Side-->
+      <!--End Content Right Side-->
+      <div class="col-6">
+        <div
+          class="collect"
+          role="img"
+          aria-label="Cartoon of a baseball card for player Alvaro Montoro from the Red SoCSS"
+          [ngStyle]="{ 'background-image': 'url(' + event?.imagePath + ')' }"
+        ></div>
       </div>
-    </div>
-    <!--End Content Right Side-->
-     <!--End Content Right Side-->
-
-    <div class="col-6">
-      <img src="{{ event?.imagePath }}" alt="" style="border-radius: 5px;" />
+      <!-- <div class="col-6">
+        <img src="{{ event?.imagePath }}" alt="" style="border-radius: 5px" />
+      </div> -->
     </div>
   </div>
-</div>
-<app-event-detail-comment [eventId]="event!.id"></app-event-detail-comment>
-
+  <div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+  <app-event-detail-comment [eventId]="event!.id"></app-event-detail-comment>
+</body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
