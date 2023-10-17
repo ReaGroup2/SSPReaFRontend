@@ -28,11 +28,9 @@ export class adminControl implements CanActivate {
     return true; // Önceki abonelik tamamlanana kadar true döndürün.
   }
 }
-
 @Injectable({
   providedIn: 'root',
 })
-
 export class organizatorMemberControl implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -56,11 +54,9 @@ export class organizatorMemberControl implements CanActivate {
     return true; // Önceki abonelik tamamlanana kadar true döndürün.
   }
 }
-
 @Injectable({
   providedIn: 'root',
 })
-
 export class loginControl implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
