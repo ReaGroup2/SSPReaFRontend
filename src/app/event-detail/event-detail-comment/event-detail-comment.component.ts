@@ -8,6 +8,8 @@ import { Comment } from 'src/core/models/response/comment-request.model';
 import { CommentLikeRequest } from 'src/core/models/request/commentLike-request.model';
 import { CommentLike } from 'src/core/models/commentLike.model';
 
+
+
 @Component({
   selector: 'app-event-detail-comment',
   templateUrl: './event-detail-comment.component.html',

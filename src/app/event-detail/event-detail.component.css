@@ -1,5 +1,152 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
-/* This pen */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600;800&display=swap");
+
+@keyframes flip {
+  0% {
+    transform: translate(-50%, -50%) rotate3d(1, 0, 1, -10deg)
+      rotate3d(0, 1, 0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate3d(1, 0, 1, -10deg)
+      rotate3d(0, 1, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .collect {
+    animation: none !important;
+  }
+}
+
+.collect {
+  animation: flip 8s infinite;
+  font-size: 3vmin;
+  line-height: 1em;
+  width: 23em;
+  height: 15em;
+  border-radius: 0.75em;
+  box-sizing: border-box;
+  border: 0.75em solid #fff;
+  box-shadow: inset 0 0 0 0.1em;
+  transform-origin: 0 100%;
+  transform: translate(-50%, -50%);
+  rotate: (1, 0, 1, -20deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  /* background-image: url(https://www.aylinbelizyildirim.av.tr/uploads/blog/86-hayvanlar%20yasas%C4%B1.jpg); */
+  background-repeat: no-repeat;
+  backface-visibility: hidden;
+  font-weight: 600;
+  /*   transform: translate(-50%, -50%) rotate3d(1,0,1,-20deg) rotateY(-180deg); */
+}
+
+.collect::after {
+  backface-visibility: hidden;
+  border-radius: 0.75em;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(230, 216, 216);
+  transform: rotateY(180deg);
+  box-shadow: inset 0 0 0 0.5em #369;
+
+  /* base */
+  /* background-image: url(https://www.aylinbelizyildirim.av.tr/uploads/blog/86-hayvanlar%20yasas%C4%B1.jpg); */
+  background-repeat: no-repeat;
+}
+
+.collect::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  box-sizing: border-box;
+  padding: 6.5em 2.25em 0em 19em;
+  font-weight: 800;
+  background: #0000;
+}
+
+body {
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: auto;
+  background: linear-gradient(
+    315deg,
+    rgb(209, 151, 205) 3%,
+    rgb(157, 188, 219) 38%,
+    rgb(110, 161, 158) 68%,
+    rgb(231, 209, 209) 98%
+  );
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.wave {
+  background: rgb(255 255 255 / 25%);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
+}
+
+@keyframes wave {
+  2% {
+    transform: translateX(1);
+  }
+
+  25% {
+    transform: translateX(-25%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(1);
+  }
+}
+
 body {
   font-family: "Baloo 2", cursive;
   font-size: 16px;

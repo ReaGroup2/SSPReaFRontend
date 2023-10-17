@@ -26,8 +26,9 @@ export class EventDetailComponent {
     this.route.queryParams.subscribe((params) => {
       this.id = params['id'];
       // Veriyi kullanabilirsiniz
-      this.eventParticipant = new EventParticipantRequest();
+      
     });
+    this.eventParticipant = new EventParticipantRequest();
   }
 
   ngOnInit(): void {

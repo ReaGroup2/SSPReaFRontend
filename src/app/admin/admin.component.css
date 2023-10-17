@@ -256,13 +256,7 @@ body {
   background: none;
 }
 
-.home_content {
-  position: absolute;
-  height: 100%;
-  width: calc(100% - 78px);
-  left: 78px;
-  transition: all 0.5s ease;
-}
+
 
 .home_content .text {
   font-size: 25px;
@@ -275,3 +269,12 @@ body {
   width: calc(100% - 240px);
   left: 240px;
 }
+
+.home_content {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 78px);
+  left: 78px;
+  transition: all 0.5s ease;
+}
+

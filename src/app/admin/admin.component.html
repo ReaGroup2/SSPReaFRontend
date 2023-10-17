@@ -19,7 +19,7 @@
     </li>
     <!--KULLANICININ MENULERİ  -->
     <li *ngIf="currentUser?.userType!=0">
-      <a href="/member-attendent-events">
+      <a href="/member-attendentevents">
         <i class="fa-solid fa-calendar-days"></i>
         <span class="links_name">Katıldığım Etkinlikler</span>
       </a>
@@ -69,14 +69,14 @@
       <span class="tooltip">Yorumlar</span>
     </li>
     <li *ngIf="currentUser?.userType==0">
-      <a href="admin-allcomment-likes">
+      <a href="admin-allcommentlikes">
         <i class="fa-regular fa-heart"></i>
         <span class="links_name">Beğeniler</span>
       </a>
       <span class="tooltip">Beğeniler</span>
     </li>
     <li *ngIf="currentUser?.userType==0">
-      <a href="/admin-all-event-participant">
+      <a href="/admin-alleventparticipant">
         <i class="fa-solid fa-person"></i>
         <span class="links_name">Katılımcılar</span>
       </a>
