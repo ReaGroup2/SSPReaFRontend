@@ -12,66 +12,18 @@
   }
 }
 
-@media (prefers-reduced-motion) {
-  .collect {
-    animation: none !important;
-  }
-}
 
-.collect {
-  animation: flip 8s infinite;
-  font-size: 3vmin;
-  line-height: 1em;
-  width: 23em;
-  height: 15em;
+
+.border {
   border-radius: 0.75em;
-  box-sizing: border-box;
   border: 0.75em solid #fff;
-  box-shadow: inset 0 0 0 0.1em;
-  transform-origin: 0 100%;
-  transform: translate(-50%, -50%);
-  rotate: (1, 0, 1, -20deg);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-style: preserve-3d;
-  /* background-image: url(https://www.aylinbelizyildirim.av.tr/uploads/blog/86-hayvanlar%20yasas%C4%B1.jpg); */
-  background-repeat: no-repeat;
-  backface-visibility: hidden;
-  font-weight: 600;
-  /*   transform: translate(-50%, -50%) rotate3d(1,0,1,-20deg) rotateY(-180deg); */
-}
-
-.collect::after {
-  backface-visibility: hidden;
-  border-radius: 0.75em;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(230, 216, 216);
-  transform: rotateY(180deg);
-  box-shadow: inset 0 0 0 0.5em #369;
-
-  /* base */
-  /* background-image: url(https://www.aylinbelizyildirim.av.tr/uploads/blog/86-hayvanlar%20yasas%C4%B1.jpg); */
-  background-repeat: no-repeat;
-}
-
-.collect::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-
   box-sizing: border-box;
-  padding: 6.5em 2.25em 0em 19em;
-  font-weight: 800;
-  background: #0000;
+  border-style: solid !important;
+  background-color: white;
+   
 }
 
-body {
+.bg {
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: auto;
