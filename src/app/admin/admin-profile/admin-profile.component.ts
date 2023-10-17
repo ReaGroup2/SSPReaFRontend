@@ -48,6 +48,14 @@ export class AdminProfileComponent implements OnInit {
       'http://localhost:5258/api/Image/GetImage?resimKimlik=' +
       this.currentUser!.email +
       '.jpeg';
+      const maleRadioButton = document.querySelector('input[name="IsMale"]:checked') as HTMLInputElement;
+      const selectedValue = maleRadioButton.value;
+
+      if (selectedValue == 'true')
+        this.currentUser!.isMale = true;
+      else if (selectedValue == 'false')
+        this.currentUser!.isMale = false;
+
 
     let status = await this.apiService.updateEntity(
       this.currentUser!.id,

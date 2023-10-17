@@ -41,6 +41,7 @@ export class EventDetailComponent {
   getEventById(id: any) {
     this.apiService.getEntityById(id, Event).then((response) => {
       this.event = response?.data;
+      console.log(this.event?.imagePath+"image")
     });
   }
   async leavePaticipant() {

@@ -81,12 +81,13 @@ export class AllUsersComponent {
   }
   openDialog(id?: number) {
     if (id != null) {
-      this.matDialog.open(ShowDialogComponent, {
-        position: {
-          top: '24vh',
-          left: '40vw',
-        },
+     this.matDialog.open(ShowDialogComponent, {
+    
+      
+        
         width: '300px',
+        
+       
         data: new DialogData(
           'Kullanıcı Silme',
           'Kullanıcı silinecek emin misiniz?',
@@ -94,6 +95,7 @@ export class AllUsersComponent {
           User
         ),
       });
+     
       this.matDialog.afterAllClosed.subscribe((res) => {
         this.LoadUsers();
       });
