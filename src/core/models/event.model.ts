@@ -9,16 +9,14 @@ import { User } from './user.model';
         imagePath?:string;
         title?:string;
         description?:string;
-        startDate?:Date;
-        finishDate?:Date;
+        startDate?:string;
+        finishDate?:string;
         isActive?:boolean;
         creatorId?:number;
         limit?:number;
         category?:Category;
         creator?:User;
-        startDateString(){
-          return this.startDate?.toLocaleDateString();
-        }
+      
       }
 
 

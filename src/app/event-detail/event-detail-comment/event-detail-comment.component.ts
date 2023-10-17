@@ -68,8 +68,8 @@ export class EventDetailCommentComponent {
     }
   }
 
-  getComments() {
-    this.apiService
+  async getComments() {
+    await this.apiService
       .getAllEntities(Comment)
       .subscribe(
         (response) =>
@@ -82,7 +82,7 @@ export class EventDetailCommentComponent {
   createLike(comment: Comment) {
     const index = this.allCommentLikes.findIndex(
       (a: CommentLike) =>
-        a.userId === comment.userId && a.commentId === comment.id
+        a.userId === this.currentUser.id && a.commentId === comment.id
     );
     if (index > -1) {
       window.alert('Bu yorum beğenilmiş.');
@@ -107,8 +107,8 @@ export class EventDetailCommentComponent {
     }
   }
 
-  getAllCommentLike() {
-    this.apiService.getAllEntities(CommentLike).subscribe((response) => {
+  async getAllCommentLike() {
+    await this.apiService.getAllEntities(CommentLike).subscribe((response) => {
       this.allCommentLikes = response.data;
     });
   }
