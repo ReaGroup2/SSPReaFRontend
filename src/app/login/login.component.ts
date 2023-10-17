@@ -9,8 +9,10 @@ import { FirestoreService } from 'src/core/services/firestore/firestore.service'
 import { Message } from 'src/core/models/message.model';
 import { DocumentChangeAction } from '@angular/fire/compat/firestore';
 import { Observable, Timestamp } from 'rxjs';
+import { BrowserPlatformLocation } from '@angular/common';
 import { MailRequest } from 'src/core/models/request/mailrequest.model';
 import { PasswordRequest } from 'src/core/models/request/password-request.model';
+
 
 
 
@@ -29,14 +31,17 @@ export class LoginComponent {
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
-    private readonly apiService: ApiService,
-    private firestoreService: FirestoreService
+    private readonly apiService:ApiService,
+    private firestoreService:FirestoreService,
+
+    
+  
+  ) { 
 
 
-
-  ) {
     this.mail = new MailRequest;
     this.passwordRequest=new PasswordRequest;
+
   }
   messages: Message[] = [];
   selectedImage: File | null = null;

@@ -20,12 +20,17 @@ import { PasswordRequest } from 'src/core/models/request/password-request.model'
   providedIn: 'root',
 })
 export class ApiService {
+  
   private endpoint = environment.api_url;
+
+  
+  
+
   public profilebar?:boolean;
 
   //constructor fonksiyonu, HttpClient nesnesini enjekte eder ve HTTP isteklerini yapmak için kullanır.
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {console.log("Api Yenilendi"); }
 
   //login fonksiyonu, kullanıcı giriş isteğini gerçekleştirir.
   // HttpClient.post fonksiyonunu kullanarak API'ye LoginRequest nesnesini ve isteği yapar.

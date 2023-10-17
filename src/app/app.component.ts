@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { User } from 'src/core/models/user.model';
 import { ApiService } from 'src/core/services/api/api.service';
 import { AuthService } from 'src/core/services/auth/auth.service';
@@ -24,7 +24,9 @@ export class AppComponent {
         this.currentUser=user as User;
     });
     this.getUsers();
+    
   }
+
   showModal:boolean=false;  
   openModal(){
     this.showModal=true;

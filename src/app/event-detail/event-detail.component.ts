@@ -106,20 +106,6 @@ export class EventDetailComponent {
 
   }
 
-  // participantControl() {
-  //   this.apiService.getAllEntities(EventParticipant).subscribe((response) => {
-  //     this.allEventParticipants = response.data.filter(
-  //       (f) => f.userId == this.currentUser.id && f.eventId == this.id
-  //     );
-  //     let i = this.allEventParticipants.length;
-  //     if (i > 0) {
-  //       this.participantStatus = true;
-  //     } else {
-  //       this.participantStatus = false;
-  //     }
-  //   });
-  //}
-
   getProfileInfo() {
     this.apiService.getProfileInfo().subscribe((user) => {
       this.currentUser = user.data;

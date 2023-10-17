@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Message } from 'src/core/models/message.model';
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+
 @Injectable({
   providedIn: 'root'
 })
