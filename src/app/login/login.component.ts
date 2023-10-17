@@ -9,6 +9,7 @@ import { FirestoreService } from 'src/core/services/firestore/firestore.service'
 import { Message } from 'src/core/models/message.model';
 import { DocumentChangeAction } from '@angular/fire/compat/firestore';
 import { Observable, Timestamp } from 'rxjs';
+import { BrowserPlatformLocation } from '@angular/common';
 
 
 
@@ -27,11 +28,12 @@ export class LoginComponent {
     private readonly authService: AuthService,
     private readonly router: Router,
     private readonly apiService:ApiService,
-    private firestoreService:FirestoreService
+    private firestoreService:FirestoreService,
+
     
   
   ) { 
-    
+
   }
   messages:Message[]=[];
   selectedImage: File | null = null;
