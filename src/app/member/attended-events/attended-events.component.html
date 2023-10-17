@@ -4,7 +4,9 @@
   class="contentAdmin container"
   style="position: absolute; margin-right: 0; z-index: 1"
 >
+<h2>Katıldığım Etkinlikler</h2>
   <table class="table table-striped table-centered mb-0">
+   
     <thead>
       <tr>
         <th>Id</th>
@@ -43,13 +45,57 @@
     </tbody>
   </table>
   <br />
-  <button (click)="openModal()" class="btn btn-success">
+  <button (click)="openModal()" class="btn btn-success" *ngIf="currentUser?.userType==1">
     Etkinlik oluştur
   </button>
+  <br>
+  <br>
+  <h2>Oluşturduğum Etkinlikler</h2>
+  <table class="table table-striped table-centered mb-0">
+    
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Etkinlik Adı</th>
+        <!-- <th>Etkinlik Kategorisi</th>    -->
+        <th>Başlangıç Tarihi</th>
+        <th>Bitiş Tarihi</th>
+        <th>Durum</th>
+        <th>Organizator</th>
+        <th>Limit</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of myAttendentEvents">
+        <td>{{ item.id }}</td>
+        <td>{{ item.title}}</td>
+        
+        <!-- <td>{{item.event?.category?.categoryName}}</td>         -->
+        <td>{{ item.startDate}}</td>
+        <td>{{ item.finishDate }}</td>
+        <td>{{ item.isActive }}</td>
+        <td>{{ item.creator?.fullName }}</td>
+        <td>{{ item.limit }}</td>
+        <td ><a class="btn btn-sm bg-warning text-white ml-2">Edit</a></td>
+
+        <td>
+          <a
+            style="cursor: pointer"
+            (click)="cancelParticipant(item.id)"
+            class="btn btn-sm bg-danger text-white ml-2"
+            >Sil</a
+          >
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
 </div>
-<div class="modal-container" *ngIf="showModal">
+<div class="modal-container" *ngIf="showModal&&currentUser?.userType==1">
   <div class="modal-content">
-    <h2>Kullanıcı Bilgileri Formu</h2>
+    <h2>Etkinlik Oluştur</h2>
     <div>
       <form>
         <div class="row">
@@ -144,7 +190,7 @@
         </div>
 
         <button (click)="createEvent()" class="btn btn-primary">
-          Register
+          Etkinlik Oluştur
         </button>
       </form>
     </div>

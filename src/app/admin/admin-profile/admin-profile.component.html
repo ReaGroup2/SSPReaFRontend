@@ -139,67 +139,66 @@
         </div>
       </footer>
     </section>
-  </main>
-
-  <div class="modal-container" *ngIf="showModal">
-    <div class="modal-content">
-      <h2>Kullanıcı Bilgileri Formu</h2>
-      <div>
-        <form>
-          <div class="row">
-            <div class="col-md-6 col-sm-12">
-              <div class="form-group">
-                <label for="Email">Email:</label>
-                <input readonly [(ngModel)]="currentUser!.email" [ngModelOptions]="{standalone: true}" type="email"
-                  class="form-control" id="Email" name="Email" required>
-              </div>
-              <div class="form-group">
-                <label for="UserName">Kullanıcı Adı:</label>
-                <input [(ngModel)]="currentUser!.userName" [ngModelOptions]="{standalone: true}" type="text"
-                  class="form-control" id="UserName" name="UserName" required>
-              </div>
-              <div class="form-group">
-                <label for="FullName">Ad Soyad:</label>
-                <input [(ngModel)]="currentUser!.fullName" [ngModelOptions]="{standalone: true}" type="text"
-                  class="form-control" id="FullName" name="FullName" required>
-              </div>
-              <div class="form-group">
-                <label for="Phone">Telefon:</label>
-                <input [(ngModel)]="currentUser!.phone" [ngModelOptions]="{standalone: true}" type="text"
-                  class="form-control" id="FullName" name="FullName" required>
-              </div>
-
+  </main> 
+</div>
+<div class="modal-container" *ngIf="showModal">
+  <div class="modal-content">
+    <h2>Kullanıcı Bilgileri Formu</h2>
+    <div>
+      <form>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="Email">Email:</label>
+              <input readonly [(ngModel)]="currentUser!.email" [ngModelOptions]="{standalone: true}" type="email"
+                class="form-control" id="Email" name="Email" required>
             </div>
-            <div class="col-md-6 col-sm-12">
-              <div class="form-group">
-                <label for="register-profile-picture">Profil Resmi Yükle:</label>
-                <input (change)="onImageSelect($event)" type="file" class="form-control-file"
-                  id="register-profile-picture" name="ImagePath">
-              </div>
-              <div class="form-group genderResponsive">
-                <label for="register-gender" class="mr-2 ml-2">Cinsiyet:</label>
-                <div class="form-check form-check-inline">
-                  <input type="radio" class="form-check-input" id="male" name="IsMale" value="true" required>
-                  <label class="form-check-label" for="male">Erkek</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input type="radio" class="form-check-input" id="female" name="IsMale" value="false" required>
-                  <label class="form-check-label" for="female">Kadın</label>
-                </div>
-              </div>
-
+            <div class="form-group">
+              <label for="UserName">Kullanıcı Adı:</label>
+              <input [(ngModel)]="currentUser!.userName" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="UserName" name="UserName" required>
             </div>
+            <div class="form-group">
+              <label for="FullName">Ad Soyad:</label>
+              <input [(ngModel)]="currentUser!.fullName" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="FullName" name="FullName" required>
+            </div>
+            <div class="form-group">
+              <label for="Phone">Telefon:</label>
+              <input [(ngModel)]="currentUser!.phone" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="FullName" name="FullName" required>
+            </div>
+
           </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="register-profile-picture">Profil Resmi Yükle:</label>
+              <input (change)="onImageSelect($event)" type="file" class="form-control-file"
+                id="register-profile-picture" name="ImagePath">
+            </div>
+            <div class="form-group genderResponsive">
+              <label for="register-gender" class="mr-2 ml-2">Cinsiyet:</label>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="male" name="IsMale" value="true" required>
+                <label class="form-check-label" for="male">Erkek</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="female" name="IsMale" value="false" required>
+                <label class="form-check-label" for="female">Kadın</label>
+              </div>
+            </div>
+
+          </div>
+        </div>
 
 
 
 
-          <button (click)="updateUser()" class="btn btn-primary">Bilgileri Güncelle</button>
-        </form>
-      </div>
-      <!-- Kullanıcı bilgileri formu burada yer alabilir -->
-      <button (click)="closeModal()">Kapat</button>
-        
+        <button (click)="updateUser()" class="btn btn-primary">Bilgileri Güncelle</button>
+      </form>
     </div>
+    <!-- Kullanıcı bilgileri formu burada yer alabilir -->
+    <button (click)="closeModal()">Kapat</button>
+      
   </div>
 </div>

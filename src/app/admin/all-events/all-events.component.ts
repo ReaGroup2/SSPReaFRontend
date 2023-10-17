@@ -5,6 +5,7 @@ import { Event } from 'src/core/models/event.model';
 import { Category } from 'src/core/models/category.model';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { EventRequest } from 'src/core/models/request/event-request.model';
+import { CharacterService } from 'src/core/services/characterService';
 
 @Component({
   selector: 'app-all-events',
@@ -142,6 +143,7 @@ export class AllEventsComponent implements OnInit {
       this.selectedEditEvent?.creatorId +
       '_' +
       this.selectedEditEvent?.title?.substring(0, 20);
+      this.text=CharacterService.TurkishCharacterFix(this.text);
     this.uploadProfileImage(this.text);
     this.selectedEditEvent!.imagePath =
       'http://localhost:5258/api/Image/GetImage?resimKimlik=' +
@@ -186,6 +188,7 @@ export class AllEventsComponent implements OnInit {
         this.selectedEditEvent?.creatorId +
         '_' +
         this.selectedEditEvent?.title?.substring(0, 20);
+        this.text=CharacterService.TurkishCharacterFix(this.text);
       this.uploadProfileImage(this.text);
       this.selectedEditEvent!.imagePath =
         'http://localhost:5258/api/Image/GetImage?resimKimlik=' +

@@ -25,30 +25,20 @@
       </div>
       <!--End Content Right Side-->
       <!--End Content Right Side-->
-      <div class="border col-lg-6 col-md-12 col-sm-12">
-        <div
-          style="transform: rotate(-10deg);       
-            background-image: url('{{ event?.imagePath }}');
-            background-size: cover;
-            background-repeat: no-repeat;"
-        ></div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="border" style="transform: rotate(-3deg); max-width: 90%;">
+          <img src="{{event?.imagePath}}">
+        </div>
+
       </div>
 
       <div class="join">
-        <a
-          *ngIf="participantStatus == false"
-          (click)="joinEvent()"
-          style="cursor: pointer"
-          class="button video link-lightbox"
-        >
+        <a *ngIf="participantStatus == false" (click)="joinEvent()" style="cursor: pointer"
+          class="button video link-lightbox">
           ETKİNLİĞE KATIL <i class="fa fa-star" aria-hidden="true"></i>
         </a>
-        <a
-          *ngIf="participantStatus == true"
-          (click)="leavePaticipant()"
-          style="cursor: pointer"
-          class="button video link-lightbox"
-        >
+        <a *ngIf="participantStatus == true" (click)="leavePaticipant()" style="cursor: pointer"
+          class="button video link-lightbox">
           ETKİNLİĞE KATILINDI <i class="fa fa-star" aria-hidden="true"></i>
         </a>
       </div>

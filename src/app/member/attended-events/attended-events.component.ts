@@ -6,6 +6,8 @@ import { EventParticipant } from 'src/core/models/eventParticipant.model';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { Category } from 'src/core/models/category.model';
 import { EventRequest } from 'src/core/models/request/event-request.model';
+import { User } from 'src/core/models/user.model';
+import { CharacterService } from 'src/core/services/characterService';
 
 
 
@@ -26,21 +28,25 @@ export class AttendedEventsComponent implements OnInit {
   text?: string;
   id?: number;
   myEvents?: EventParticipant[];
-  newEvent?: Event;
+  myAttendentEvents?:Event[];
+  newEvent?: Event[];
   allCategories?: Category[];
   selectedCategory?: Category;
   eventRequest?: EventRequest;
+  currentUser?:User;
   selectedImage: File | null = null;
 
   constructor(private router: Router, private service: ApiService) {
     this.eventRequest = new EventRequest();
+    
 
   }
 
-  ngOnInit(): void {
-    this.getAllCategories();
-    this.service.getProfileInfo().subscribe(user => this.id = user.data.id);
+  ngOnInit() {
+    this.getProfileInfo();
+    this.getAllCategories();    
     this.getMyEvents();
+    this.getCreatedEvents();
     this.categorySelectedItem();
 
 
@@ -78,7 +84,12 @@ export class AttendedEventsComponent implements OnInit {
   onSubmit(customerData: any): void {
     console.log(customerData.title);
   }
-
+async getProfileInfo(){
+  await this.service.getProfileInfo().subscribe((user) => {
+    this.currentUser = user.data;
+    // console.log('imagepath:' + this.currentUser.imagePath);
+  });
+}
   getAllCategories() {
     this.service.getAllEntities(Category).subscribe((respose) => {
       this.allCategories = respose.data;
@@ -86,14 +97,19 @@ export class AttendedEventsComponent implements OnInit {
       console.log("kategori listesi")
     })
   }
-  getMyEvents() {
-    this.service.getAllEntities(EventParticipant).subscribe((response) => {
-      this.myEvents = response.data.filter(f => f.userId == this.id);
+  async getMyEvents() {
+    await this.service.getAllEntities(EventParticipant).subscribe((response) => {
+      this.myEvents = response.data.filter(f => f.userId == this.currentUser?.id);
+      
       console.log(this.myEvents);
       console.log("çalıştı");
     });
   }
-
+async getCreatedEvents(){
+  await this.service.getAllEntities(Event).subscribe((res)=>{
+    this.myAttendentEvents=res.data.filter(f=>f.creatorId==this.currentUser?.id)
+  })
+}
   cancelParticipant(id: any) {
     const confirmDelete = window.confirm("Etkinlik katılımını iptal etmek istiyor musunuz?");
     if (confirmDelete) {
@@ -132,7 +148,7 @@ export class AttendedEventsComponent implements OnInit {
       this.eventRequest!.creatorId = user.data.id;
     })
     this.text = this.eventRequest?.categoryId + '_' + this.eventRequest?.creatorId + '_' + this.eventRequest?.title?.substring(0, 20);
-
+    this.text=CharacterService.TurkishCharacterFix(this.text);
     /*this.eventRequest!.isActive=true;*/
     this.eventRequest!.imagePath = this.text;
     /*2023-10-04T14:27:51.199Z*/
@@ -154,6 +170,7 @@ export class AttendedEventsComponent implements OnInit {
     })
     this.closeModal();
     this.getMyEvents();
+    this.getCreatedEvents();
 
     // console.log(this.eventRequest);
   }

@@ -30,7 +30,7 @@ export class MyCommentsComponent {
   }
 
   deleteComment(id:any){
-    const confirmDelete = window.confirm("Etkinlik katılımını iptal etmek istiyor musunuz?");
+    const confirmDelete = window.confirm("Yorumunuzu silmek istiyor musunuz?");
     if(confirmDelete){
 
    
