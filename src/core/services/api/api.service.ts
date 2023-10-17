@@ -14,12 +14,14 @@ import { User } from '../../models/user.model';
 import { BaseResponse } from 'src/core/models/response/base-response.model';
 import { ToastrService } from 'ngx-toastr';
 import { MailRequest } from 'src/core/models/request/mailrequest.model';
+import { PasswordRequest } from 'src/core/models/request/password-request.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   private endpoint = environment.api_url;
+  public profilebar?:boolean;
 
   //constructor fonksiyonu, HttpClient nesnesini enjekte eder ve HTTP isteklerini yapmak için kullanır.
 
@@ -138,8 +140,12 @@ export class ApiService {
   }
 
   sendEmail(emailRequest:MailRequest):Observable<any> {
-   
 
     return this.http.post(`${this.endpoint}/mail`, emailRequest);
+  }
+/*localhost:5258/api/User/ChangePassword*/
+  changePassword(passwordRequest:PasswordRequest) {
+    return this.http.put<BaseDataResponse<User>>(`${this.endpoint}/User/ChangePassword`, passwordRequest)
+      .pipe(share()).toPromise();
   }
 }
