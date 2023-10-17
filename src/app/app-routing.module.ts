@@ -29,11 +29,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to home page
   { path: 'about', component: AboutComponent },
-  { path: 'admin-allcategories', component: CategoriesComponent, canActivate: [adminControl] },
+  { path: "admin-allcategories", component: CategoriesComponent, canActivate: [adminControl] },
   { path: 'admin-allevents', component: AllEventsComponent, canActivate: [adminControl] },
   { path: 'admin-allcomments', component: AllCommentsComponent, canActivate: [adminControl] },
   { path: 'admin-allcomment-likes', component: AllCommentLikesComponent, canActivate: [adminControl] },
-  { path: 'admin-all-event-participant', component: AllEventParticipantComponent, canActivate: [adminControl] },
+  { path: 'admin-alleventparticipant', component: AllEventParticipantComponent, canActivate: [adminControl] },
   { path: 'admin-allusers', component: AllUsersComponent, canActivate: [adminControl] },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
@@ -42,7 +42,7 @@ const routes: Routes = [
   { path:"chat",component:ChatComponent},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'member-attendent-events', component: AttendedEventsComponent, canActivate: [organizatorMemberControl] },
+  { path: 'member-attendentevents', component: AttendedEventsComponent, canActivate: [organizatorMemberControl] },
   { path: 'member-mycomments', component: MyCommentsComponent, canActivate: [organizatorMemberControl] },
   { path: 'member-mylikes', component: MyLikesComponent, canActivate: [organizatorMemberControl] },
   { path: 'profile', component: AdminProfileComponent, canActivate: [loginControl] },

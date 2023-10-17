@@ -21,6 +21,7 @@ import { PasswordRequest } from 'src/core/models/request/password-request.model'
 })
 export class ApiService {
   private endpoint = environment.api_url;
+  public profilebar?:boolean;
 
   //constructor fonksiyonu, HttpClient nesnesini enjekte eder ve HTTP isteklerini yapmak için kullanır.
 
