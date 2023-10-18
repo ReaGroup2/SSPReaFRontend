@@ -43,7 +43,11 @@ messageButton.style.cursor = 'grabbing';
  }
 
   
-
+ handleDoubleClick(event: MouseEvent) {
+ this.openModal();
+  // Çift tıklamayı engellemek için aşağıdaki satırı kullanabilirsiniz.
+  event.preventDefault();
+}
    
 
   ngOnInit(): void {
