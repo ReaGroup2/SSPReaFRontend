@@ -1,5 +1,5 @@
 
-    <a class="postcard__img_link" style="cursor: pointer;" (click)="eventDetail(item.id)" *ngFor="let item of events">
+    <a class="postcard__img_link" style="cursor: pointer;" (click)="eventDetail(item.id)" *ngFor="let item of getDisplayedEvents(); let i = index">
         <article class="postcard {{cardColor}} mt-2">
          
             <img
@@ -51,5 +51,8 @@
           
         </article>
       </a>
+      <button style="margin-right: 10px;" (click)="prevPage()">Önceki Sayfa</button><span style="margin-right: 10px; color: black;">{{currentPage}}/{{this.events!.length/1}}</span>
+<button style="margin-right: 10px;" (click)="nextPage()">Sonraki Sayfa</button><span [style.color]="currentPage==item ? 'green' : 'black'" style="margin-left: 10px;cursor: pointer;" (click)="goThatPage(item)" *ngFor="let item of generateNumbers(events!.length/1)">{{item}}</span>
+
        
  
