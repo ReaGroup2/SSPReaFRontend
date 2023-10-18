@@ -85,7 +85,19 @@ export class EventDetailCommentComponent {
         a.userId === this.currentUser.id && a.commentId === comment.id
     );
     if (index > -1) {
-      window.alert('Bu yorum beğenilmiş.');
+      let id:any=this.allCommentLikes?.at(index)?.id;
+      let status=this.apiService.deleteEntity(id, CommentLike);
+      status.then((response) => {
+        if (response?.status == ResponseStatus.Ok) {
+          window.alert('beğeni geri alındı');
+          this.getAllCommentLike();
+          
+        } else {
+          window.alert('silme işleminde hata oluştu');
+        }
+      });
+      
+      
       
     } else {
       this.commentLike.commentId = comment.id;
