@@ -32,7 +32,7 @@ export class AttendedEventsComponent implements OnInit {
   newEvent?: Event[];
   allCategories?: Category[];
   selectedCategory?: Category;
-  eventRequest?: EventRequest;
+  eventRequest!: EventRequest;
   currentUser?:User;
   selectedImage: File | null = null;
 
@@ -151,10 +151,8 @@ async getCreatedEvents(){
     this.text=CharacterService.TurkishCharacterFix(this.text);
     /*this.eventRequest!.isActive=true;*/
     this.eventRequest!.imagePath = this.text;
-    /*2023-10-04T14:27:51.199Z*/
-    /*
-    this.eventRequest!.startDate=new Date(this.startDate!);
-    this.eventRequest!.finishDate=new Date(this.finishDate!);*/
+    this.eventRequest!.startDate=new Date(this.eventRequest!.startDate?.toString()+':00.000Z')
+    this.eventRequest!.finishDate=new Date(this.eventRequest!.finishDate?.toString()+':00.000Z')
     this.uploadProfileImage(this.text);
     //console.log(this.eventRequest);
     console.log(this.eventRequest)

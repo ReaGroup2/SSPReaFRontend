@@ -42,8 +42,8 @@
           <td>
             <p>{{ item.description?.substring(0, 30) }}...</p>
           </td>
-          <td>{{ item.startDate }}</td>
-          <td>{{ item.finishDate }}</td>
+          <td>{{item.startDate!.toString().substring(0,10)}}{{"  "}}{{item.startDate!.toString().substring(11,16)}}</td>
+          <td>{{item.finishDate!.toString().substring(0,10)}}{{"  "}}{{item.finishDate!.toString().substring(11,16)}}</td>
           <td>{{ item.isActive }}</td>
           <td>{{ item.creator?.id }}</td>
           <td>{{ item.creator?.fullName }}</td>
@@ -75,7 +75,7 @@
     <div>
       <form>
         <div class="row">
-          <div class="col-md-6 col-sm-12">
+          <div class="col-6">
             <div *ngIf="!isCreate" class="form-group">
               <label>Id:</label>
               <input
@@ -134,13 +134,13 @@
               />
             </div>
           </div>
-          <div class="col-md-6 col-sm-12">
+          <div class="col-6">
             <div class="form-group">
               <label>Event Başlangıç Tarihi:</label>
               <input
                 [(ngModel)]="selectedEditEvent!.startDate"
                 [ngModelOptions]="{ standalone: true }"
-                type="datetime"
+                type="datetime-local"
                 class="form-control"
                 required
               />
@@ -150,7 +150,7 @@
               <input
                 [(ngModel)]="selectedEditEvent!.finishDate"
                 [ngModelOptions]="{ standalone: true }"
-                type="datetime"
+                type="datetime-local"
                 class="form-control"
                 required
               />
@@ -167,7 +167,7 @@
             </div>
             <div *ngIf="!isCreate" class="form-group">
               <img
-                src="https://i0.wp.com/bakikaracay.com/wp-content/uploads/2016/09/Kamera-I%C5%9F%C4%B1k-Foto%C4%9Fraf.jpg?fit=1600%2C1067&ssl=1"
+                src="{{selectedEditEvent!.imagePath}}"
                 style="width: 60px; height: 60px"
               />
             </div>

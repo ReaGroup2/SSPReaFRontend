@@ -156,8 +156,8 @@ export class AllEventsComponent implements OnInit {
 
     //ng modeldan gelen verileri event Requeste aktardık
     this.eventRequest!.creatorId = this.selectedEditEvent?.creatorId;
-    this.eventRequest!.startDate = this.selectedEditEvent?.startDate;
-    this.eventRequest!.finishDate = this.selectedEditEvent?.finishDate;
+    this.eventRequest!.startDate = new Date(this.selectedEditEvent?.startDate?.toString()+':00.000Z');
+    this.eventRequest!.finishDate = new Date(this.selectedEditEvent?.finishDate?.toString()+':00.000Z');
     this.eventRequest!.description = this.selectedEditEvent?.description;
     this.eventRequest!.imagePath = this.selectedEditEvent?.imagePath;
     this.eventRequest!.title = this.selectedEditEvent?.title;
@@ -177,10 +177,12 @@ export class AllEventsComponent implements OnInit {
     });
   }
   async updateEvent() {
-    //console.log("güncelleme çalıştı");
+    console.log("güncelleme çalıştı");
 
     this.selectedEditEvent!.categoryId = this.selectedCategory;
-    // console.log(this.selectedEditEvent);
+    this.selectedEditEvent!.finishDate=new Date(this.selectedEditEvent?.finishDate?.toString()+':00.000Z');
+    this.selectedEditEvent!.startDate=new Date(this.selectedEditEvent?.startDate?.toString()+':00.000Z');
+     console.log(this.selectedEditEvent);
     if (this.selectedImage != null) {
       this.text =
         this.selectedEditEvent?.categoryId +

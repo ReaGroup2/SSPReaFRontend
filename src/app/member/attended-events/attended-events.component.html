@@ -26,9 +26,11 @@
         <td>{{ item.id }}</td>
         <td>{{ item.user?.fullName }}</td>
         <td>{{ item.event?.title }}</td>
-        <!-- <td>{{item.event?.category?.categoryName}}</td>         -->
-        <td>{{ item.event?.startDate }}</td>
-        <td>{{ item.event?.finishDate }}</td>
+        <!-- <td>{{item.event?.category?.categoryName}}</td> 
+        {{item.startDate!.toString().substring(0,10)}}{{"  "}}{{item.startDate!.toString().substring(11,16)}}        -->
+        <td>{{ item.event?.startDate?.toString()?.substring(0,10)}}{{" "}}{{item.event?.startDate?.toString()?.substring(11,16)}}</td>
+        <td>{{ item.event?.finishDate?.toString()?.substring(0,10)}}{{" "}}{{item.event?.finishDate?.toString()?.substring(11,16)}}</td>
+
         <td>{{ item.event?.isActive }}</td>
         <td>{{ item.event?.creator?.fullName }}</td>
         <td>{{ item.event?.limit }}</td>
@@ -73,8 +75,8 @@
         <td>{{ item.title}}</td>
         
         <!-- <td>{{item.event?.category?.categoryName}}</td>         -->
-        <td>{{ item.startDate}}</td>
-        <td>{{ item.finishDate }}</td>
+        <td>{{item.startDate!.toString().substring(0,10)}}{{"  "}}{{item.startDate!.toString().substring(11,16)}}</td>
+        <td>{{item.finishDate!.toString().substring(0,10)}}{{"  "}}{{item.finishDate!.toString().substring(11,16)}}</td>
         <td>{{ item.isActive }}</td>
         <td>{{ item.creator?.fullName }}</td>
         <td>{{ item.limit }}</td>
