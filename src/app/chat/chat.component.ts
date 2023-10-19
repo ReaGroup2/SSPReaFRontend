@@ -28,6 +28,7 @@ export class ChatComponent {
 
   }
   async getSnapShot() {
+    this.messages=[];
     console.log("getSnapShot çalıştı");
      await this.fireStore.getMessageCollectionSnapshot(this.currentUser!.id.toString(), this.user!.id.toString()).then((data) => {
       data?.subscribe((data) => {
@@ -66,7 +67,7 @@ export class ChatComponent {
     
   }
   async getMessages() {
-
+    this.messages=[];
     this.messages = await this.fireStore.getMessage(this.currentUser!.id.toString(), this.user!.id.toString());
 
     
