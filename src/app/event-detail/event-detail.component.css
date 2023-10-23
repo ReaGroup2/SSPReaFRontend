@@ -159,7 +159,7 @@ a:hover {
 }
 
 
-/* COLORS */
+
  .green.play:hover {
   background: #79dd09;
   color: black;
@@ -343,7 +343,7 @@ a:hover {
 
 
 
-/* --------- 6.3 Testimonials ---------- */
+
 
 .testimonial {
   padding: 15px;
@@ -362,7 +362,7 @@ blockquote {
   padding-top: 12px;
 }
 
-/* Style Classic - Avatar above Testimonial */
+
 
 .testimonial.classic img {
   display: inline-block;
@@ -381,7 +381,7 @@ blockquote {
   margin: 10px auto 15px auto;
 }
 
-/* Style Big */
+
 
 .testimonial.bigtest {
   padding-top: 0;
@@ -391,7 +391,7 @@ blockquote {
   font-size: 22px;
 }
 
-/* Section Headings */
+
 
 .section-heading {
   padding: 0 0 15px 0;
@@ -411,7 +411,7 @@ blockquote {
   padding-bottom: 0;
 }
 
-/*Style*/
+
 
 .button {
   font-size: 16px;
@@ -425,16 +425,5 @@ blockquote {
   border-style: solid;
 }
 
-/* Play Button */
 
-#video-section {
-  position: relative;
-}
 
-.play-video {
-  height: 110px;
-  position: absolute;
-  top: 50%;
-  margin-top: -110px;
-  width: 100%;
-}

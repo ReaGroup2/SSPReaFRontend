@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
-/* This pen */
+
 body {
   font-family: "Baloo 2", cursive;
   font-size: 16px;
@@ -24,7 +24,7 @@ a:hover {
 
 
 
-/* Cards */
+
 .postcard {
   position: relative;
 
@@ -194,7 +194,7 @@ a:hover {
     background: #e1e5ea;
   }
 }
-/* COLORS */
+
 .postcard .postcard__tagbox .green.play:hover {
   background: #79dd09;
   color: black;
@@ -378,11 +378,4 @@ a:hover {
 
 
 
-@keyframes kalp {
-	0% {
-		background-position: 0 0;
-	}
-	100% {
-		background-position: -2800px 0;
-	}
-}
+
