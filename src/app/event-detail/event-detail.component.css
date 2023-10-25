@@ -32,10 +32,6 @@
     width: 160%;
   }
 }
-
-
-
-
 .border {
   border-radius: 0.75em;
   border: 0.75em solid #fff;
@@ -129,22 +125,6 @@
   }
 }
 
-body {
-  font-family: "Baloo 2", cursive;
-  font-size: 16px;
-  color: #ffffff;
-  text-rendering: optimizeLegibility;
-  font-weight: initial;
-}
-
-.dark {
-  background: #110f16;
-}
-
-.light {
-  background: #f3f5f7;
-}
-
 a,
 a:hover {
   text-decoration: none;
@@ -165,29 +145,6 @@ a:hover {
   color: black;
 }
 
-.green :hover {
-  color: #79dd09;
-}
-
-.green  {
-  background-color: #79dd09;
-}
-
-.green::before {
-  background-image: linear-gradient(
-    -30deg,
-    rgba(121, 221, 9, 0.1),
-    transparent 50%
-  );
-}
-
-.green:nth-child(2n)::before {
-  background-image: linear-gradient(
-    30deg,
-    rgba(121, 221, 9, 0.1),
-    transparent 50%
-  );
-}
 
   .blue.play:hover {
   background: #0076bd;
@@ -274,76 +231,6 @@ a:hover {
   );
 }
 
-@media screen and (min-width: 769px) {
-  .green::before {
-    background-image: linear-gradient(
-      -80deg,
-      rgba(121, 221, 9, 0.1),
-      transparent 50%
-    );
-  }
-
-  .green:nth-child(2n)::before {
-    background-image: linear-gradient(
-      80deg,
-      rgba(121, 221, 9, 0.1),
-      transparent 50%
-    );
-  }
-
-  .blue::before {
-    background-image: linear-gradient(
-      -80deg,
-      rgba(0, 118, 189, 0.1),
-      transparent 50%
-    );
-  }
-
-  .blue:nth-child(2n)::before {
-    background-image: linear-gradient(
-      80deg,
-      rgba(0, 118, 189, 0.1),
-      transparent 50%
-    );
-  }
-
-  .red::before {
-    background-image: linear-gradient(
-      -80deg,
-      rgba(189, 21, 11, 0.1),
-      transparent 50%
-    );
-  }
-
-  .red:nth-child(2n)::before {
-    background-image: linear-gradient(
-      80deg,
-      rgba(189, 21, 11, 0.1),
-      transparent 50%
-    );
-  }
-
-  .yellow::before {
-    background-image: linear-gradient(
-      -80deg,
-      rgba(189, 187, 73, 0.1),
-      transparent 50%
-    );
-  }
-
-  .yellow:nth-child(2n)::before {
-    background-image: linear-gradient(
-      80deg,
-      rgba(189, 187, 73, 0.1),
-      transparent 50%
-    );
-  }
-}
-
-
-
-
-
 
 .testimonial {
   padding: 15px;
@@ -361,9 +248,6 @@ blockquote {
 .testimonial footer {
   padding-top: 12px;
 }
-
-
-
 .testimonial.classic img {
   display: inline-block;
   margin-bottom: 25px;
@@ -380,19 +264,12 @@ blockquote {
   height: 4px;
   margin: 10px auto 15px auto;
 }
-
-
-
 .testimonial.bigtest {
   padding-top: 0;
 }
-
 .testimonial.bigtest q {
   font-size: 22px;
 }
-
-
-
 .section-heading {
   padding: 0 0 15px 0;
   font-size: 50px !important;
@@ -400,9 +277,6 @@ blockquote {
 .section-heading h3 {
   font-size: 60px !important;
 }
-
-
-
 .section-heading h3 {
   font-size: 14px;
   font-weight: bold;
@@ -410,9 +284,6 @@ blockquote {
   letter-spacing: 2px;
   padding-bottom: 0;
 }
-
-
-
 .button {
   font-size: 16px;
   margin: 35px 0;
@@ -424,6 +295,3 @@ blockquote {
   border-width: 3px;
   border-style: solid;
 }
-
-
-

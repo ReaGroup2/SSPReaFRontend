@@ -1,33 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 
-body {
-  font-family: "Baloo 2", cursive;
-  font-size: 16px;
-  color: #ffffff;
-  text-rendering: optimizeLegibility;
-  font-weight: initial;
-}
-
-.dark {
-  background: #110f16;
-}
-
-.light {
-  background: #f3f5f7;
-}
-
 a,
 a:hover {
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-
-
-
-
 .postcard {
   position: relative;
-
   flex-wrap: wrap;
   display: flex;
   box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
@@ -37,7 +16,7 @@ a:hover {
   position: relative;
   color: #ffffff;
 }
-.postcard.dark {
+.postcard {
   background-color: #18151f;
 }
 .postcard.light {
@@ -125,7 +104,6 @@ a:hover {
 .postcard:hover .postcard__bar {
   width: 100px;
 }
-
 @media screen and (min-width: 769px) {
   .postcard {
     flex-wrap: inherit;
@@ -176,7 +154,6 @@ a:hover {
   .postcard__text {
     padding: 2rem 3.5rem;
   }
-
   .postcard__text:before {
     content: "";
     position: absolute;
@@ -185,11 +162,9 @@ a:hover {
     height: 130%;
     width: 55px;
   }
-
-  .postcard.dark .postcard__text:before {
+  .postcard .postcard__text:before {
     background: #18151f;
   }
-
   .postcard.light .postcard__text:before {
     background: #e1e5ea;
   }
@@ -200,28 +175,11 @@ a:hover {
   color: black;
 }
 
-.green .postcard__title:hover {
+.postcard__title:hover {
   color: #79dd09;
 }
-
-.green .postcard__bar {
+.postcard__bar {
   background-color: #79dd09;
-}
-
-.green::before {
-  background-image: linear-gradient(
-    -30deg,
-    rgba(121, 221, 9, 0.1),
-    transparent 50%
-  );
-}
-
-.green:nth-child(2n)::before {
-  background-image: linear-gradient(
-    30deg,
-    rgba(121, 221, 9, 0.1),
-    transparent 50%
-  );
 }
 
 .postcard .postcard__tagbox .blue.play:hover {
@@ -308,74 +266,5 @@ a:hover {
     transparent 50%
   );
 }
-
-@media screen and (min-width: 769px) {
-  .green::before {
-    background-image: linear-gradient(
-      -80deg,
-      rgba(121, 221, 9, 0.1),
-      transparent 50%
-    );
-  }
-
-  .green:nth-child(2n)::before {
-    background-image: linear-gradient(
-      80deg,
-      rgba(121, 221, 9, 0.1),
-      transparent 50%
-    );
-  }
-
-  .blue::before {
-    background-image: linear-gradient(
-      -80deg,
-      rgba(0, 118, 189, 0.1),
-      transparent 50%
-    );
-  }
-
-  .blue:nth-child(2n)::before {
-    background-image: linear-gradient(
-      80deg,
-      rgba(0, 118, 189, 0.1),
-      transparent 50%
-    );
-  }
-
-  .red::before {
-    background-image: linear-gradient(
-      -80deg,
-      rgba(189, 21, 11, 0.1),
-      transparent 50%
-    );
-  }
-
-  .red:nth-child(2n)::before {
-    background-image: linear-gradient(
-      80deg,
-      rgba(189, 21, 11, 0.1),
-      transparent 50%
-    );
-  }
-
-  .yellow::before {
-    background-image: linear-gradient(
-      -80deg,
-      rgba(189, 187, 73, 0.1),
-      transparent 50%
-    );
-  }
-
-  .yellow:nth-child(2n)::before {
-    background-image: linear-gradient(
-      80deg,
-      rgba(189, 187, 73, 0.1),
-      transparent 50%
-    );
-  }
-}
-
-
-
 
 
