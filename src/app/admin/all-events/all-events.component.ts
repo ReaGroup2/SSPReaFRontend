@@ -119,9 +119,13 @@ export class AllEventsComponent implements OnInit {
   }
 
   //Etkinlik Ekle-Sil-Güncelle metodları
-  confirmDelete(id: any) {
+  confirmDelete(id: any,path:string) {
+
     const confirmDelete = window.confirm('Silmek istiyor musunuz?');
     if (confirmDelete) {
+     this.service.deleteImage(path);
+     console.log("silme çalıştı")
+     
       let status = this.service.deleteEntity(id, Event);
       status.then((response) => {
         if (response?.status == ResponseStatus.Ok) {
@@ -137,6 +141,7 @@ export class AllEventsComponent implements OnInit {
   }
   createEvent() {
     // console.log('ekleme çalıştı');
+    this.selectedEditEvent!.categoryId = this.selectedCategory;
     this.text =
       this.selectedEditEvent?.categoryId +
       '_' +

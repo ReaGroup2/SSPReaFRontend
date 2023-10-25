@@ -72,13 +72,13 @@ messageButton.style.cursor = 'grabbing';
   getUsers(){
     this.apiService.getAllEntities(User).subscribe(data=>{
       this.users=data.data.filter(x=>x.id!=this.currentUser?.id);
-      console.log(this.users);
+      //console.log(this.users);
     });
   }
   selectUser(user:User){
     this.selectedUser=user;
 
-    console.log(this.selectedUser);
+    //console.log(this.selectedUser);
   }
 
   

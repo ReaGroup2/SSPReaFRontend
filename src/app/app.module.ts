@@ -55,6 +55,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomerSupportComponent } from './admin/customer-support/customer-support.component';
+
 
 @NgModule({
   declarations: [
@@ -97,7 +99,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShowDialogComponent,
     SloganComponent,
     SliderComponent,
-    WhyChooseUsComponent
+    WhyChooseUsComponent,
+    CustomerSupportComponent,
+    
   ],
 
   imports: [

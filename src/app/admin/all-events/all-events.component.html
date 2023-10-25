@@ -52,7 +52,7 @@
           <td style="display: flex">
             <a
               href="javascript: void(0);"
-              (click)="confirmDelete(item.id)"
+              (click)="confirmDelete(item.id,item.imagePath!.substring(53))"
               class="btn btn-sm bg-danger text-white"
               >Delete</a
             >

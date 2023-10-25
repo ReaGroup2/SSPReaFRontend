@@ -15,6 +15,7 @@
                     .replace(/Ö/g, 'O')
                     .replace(/â/g, 'a')
                     .replace(/Â/g, 'A')
+                    .replace('.', 'x')
                     .replace(' ','_');
       }
       

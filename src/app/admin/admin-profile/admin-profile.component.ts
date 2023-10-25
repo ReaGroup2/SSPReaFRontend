@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Comment } from 'src/core/models/comment.model';
+import { Event } from 'src/core/models/event.model';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { User } from 'src/core/models/user.model';
 import { ApiService } from 'src/core/services/api/api.service';
@@ -18,12 +20,19 @@ export class AdminProfileComponent implements OnInit {
   showModal = false;
   currentUser?: User | null;
 
+  userCount?: number;
+  eventCount?: number;
+  commentCount?: number;
+
   constructor(
     private readonly apiService: ApiService,
     private readonly authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit() {
+    this.getUsers();
+    this.getEvents();
+    this.getComments();
     this.apiService.getProfileInfo().subscribe((user) => {
       this.currentUser = user.data;
       // console.log('imagepath:' + this.currentUser.imagePath);
@@ -48,13 +57,13 @@ export class AdminProfileComponent implements OnInit {
       'http://localhost:5258/api/Image/GetImage?resimKimlik=' +
       this.currentUser!.email +
       '.jpeg';
-      const maleRadioButton = document.querySelector('input[name="IsMale"]:checked') as HTMLInputElement;
-      const selectedValue = maleRadioButton.value;
+    const maleRadioButton = document.querySelector('input[name="IsMale"]:checked') as HTMLInputElement;
+    const selectedValue = maleRadioButton.value;
 
-      if (selectedValue == 'true')
-        this.currentUser!.isMale = true;
-      else if (selectedValue == 'false')
-        this.currentUser!.isMale = false;
+    if (selectedValue == 'true')
+      this.currentUser!.isMale = true;
+    else if (selectedValue == 'false')
+      this.currentUser!.isMale = false;
 
 
     let status = await this.apiService.updateEntity(
@@ -104,5 +113,22 @@ export class AdminProfileComponent implements OnInit {
       // Resim seçilmedi
       console.error('Lütfen bir resim seçin...');
     }
+  }
+
+  getUsers() {
+    this.apiService.getAllEntities(User).subscribe((res) => {
+      this.userCount = res.data.length;
+    })
+  }
+  getEvents() {
+    this.apiService.getAllEntities(Event).subscribe((res) => {
+      this.eventCount = res.data.length;
+    })
+
+  } getComments() {
+    this.apiService.getAllEntities(Comment).subscribe((res) => {
+      this.commentCount = res.data.length;
+    })
+
   }
 }

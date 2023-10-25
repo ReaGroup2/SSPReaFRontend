@@ -144,6 +144,11 @@ export class ApiService {
     });
   }
 
+  deleteImage(resimKimlik: string): Observable<any> {
+    console.log(this.endpoint+"/Image/DeleteImage?resimKimlik="+resimKimlik);
+    return this.http.delete(this.endpoint+"/Image/DeleteImage?resimKimlik="+resimKimlik);
+  }
+
   sendEmail(emailRequest:MailRequest):Observable<any> {
 
     return this.http.post(`${this.endpoint}/mail`, emailRequest);

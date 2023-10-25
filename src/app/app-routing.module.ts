@@ -23,6 +23,7 @@ import { ChatComponent } from './chat/chat.component';
 import { RefleshPage } from './refleshPage';
 import { adminControl, loginControl, organizatorMemberControl } from './admin-control';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CustomerSupportComponent } from './admin/customer-support/customer-support.component';
 
 
 
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'member-mycomments', component: MyCommentsComponent, canActivate: [organizatorMemberControl] },
   { path: 'member-mylikes', component: MyLikesComponent, canActivate: [organizatorMemberControl] },
   { path: 'profile', component: AdminProfileComponent, canActivate: [loginControl] },
+  {path:'chatbot',component:CustomerSupportComponent}
 
   
 ];
